@@ -1,0 +1,34 @@
+{
+  "_note": "PLACEHOLDER contact details — replace every value marked TBC before launch. Everything on the site reads from this file.",
+  "name": "SLC Car Rental Services",
+  "legalName": "SmartLink Consultants",
+  "shortName": "SLC",
+  "domain": "https://www.example.com",
+  "years": 13,
+  "foundedYear": 2013,
+  "city": "Islamabad",
+  "region": "Islamabad Capital Territory",
+  "areas": ["Islamabad", "Rawalpindi", "Lahore", "Peshawar", "Murree", "Northern Areas"],
+  "phoneDisplay": "+92 300 0000000",
+  "phoneTel": "+923000000000",
+  "phone2Display": "+92 51 0000000",
+  "phone2Tel": "+92510000000",
+  "whatsapp": "923000000000",
+  "email": "info@example.com",
+  "address": {
+    "street": "Office address TBC",
+    "locality": "Islamabad",
+    "region": "Islamabad Capital Territory",
+    "postalCode": "44000",
+    "country": "PK"
+  },
+  "hours": "Mon–Sun, 24 hours",
+  "hoursSchema": "Mo-Su 00:00-23:59",
+  "mapQuery": "Islamabad, Pakistan",
+  "social": {
+    "facebook": "",
+    "instagram": "",
+    "linkedin": ""
+  },
+  "gaId": ""
+}

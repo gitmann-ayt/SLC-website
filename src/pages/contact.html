@@ -1,0 +1,24 @@
+<!--meta {
+  "title": "Contact SLC | Book a Rental Car in Islamabad 24/7",
+  "description": "Call, WhatsApp or email SLC Car Rental Services to book a car with driver or self drive in Islamabad & Rawalpindi. Quick replies, 24/7 bookings.",
+  "nav": "contact",
+  "crumb": "Contact Us"
+} -->
+{{> header}}
+<main id="main">
+<section class="page-hero" aria-labelledby="page-h">
+  <div class="stripes stripes--hero" aria-hidden="true"></div>
+  <div class="container">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Contact Us</span></nav>
+    <h1 id="page-h">Contact us to book your rental car</h1>
+    <p class="lead">The fastest way to book is a call or a WhatsApp message. You can also send the form below and we'll get straight back to you.</p>
+    <div class="quick-contacts">
+      <a class="qc" href="tel:{{site.phoneTel}}"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span><small>Call 24/7</small>{{site.phoneDisplay}}</span></a>
+      <a class="qc qc--wa" href="{{@wa}}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg><span><small>WhatsApp</small>Chat now</span></a>
+      <a class="qc" href="mailto:{{site.email}}"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span><small>Email</small>{{site.email}}</span></a>
+    </div>
+  </div>
+</section>
+{{> contact-section}}
+</main>
+{{> footer}}

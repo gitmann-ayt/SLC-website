@@ -1,0 +1,70 @@
+<!--meta {
+  "title": "About SLC Car Rental Services | 13 Years in Pakistan",
+  "description": "SLC Car Rental Services by SmartLink Consultants: 13 years of rent a car service in Islamabad for families, companies, banks & NGOs such as USAID and Silkbank.",
+  "nav": "about",
+  "crumb": "About Us"
+} -->
+{{> header}}
+<main id="main">
+<section class="page-hero" aria-labelledby="page-h">
+  <div class="stripes stripes--hero" aria-hidden="true"></div>
+  <div class="container">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">About Us</span></nav>
+    <h1 id="page-h">About SLC Car Rental Services</h1>
+    <p class="lead">{{site.years}} years of keeping Pakistan moving: on time, in comfort and without the hassle.</p>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="story-h">
+  <div class="container why-grid">
+    <div class="why-badge" aria-hidden="true">
+      <div class="seal"><span class="seal-num">{{site.years}}</span><span class="seal-txt">Years</span><span class="seal-sub">★ Since {{site.foundedYear}} ★</span></div>
+    </div>
+    <div class="prose">
+      <p class="eyebrow">★ Our story ★</p>
+      <h2 id="story-h">SmartLink Consultants: the people behind SLC</h2>
+      <p><strong>SLC Car Rental Services</strong> is the car rental division of <strong>{{site.legalName}}</strong>. We started {{site.years}} years ago with a simple promise: a clean, reliable car and a professional driver, exactly when and where you need them.</p>
+      <p>Since then we have grown into a trusted rent a car partner in {{site.city}} and Rawalpindi. We serve families and visitors as well as international development agencies, banks, construction firms, industry and humanitarian organisations. Our fleet covers Pakistan's everyday favourites, from the Suzuki Alto and Toyota Corolla to the Honda Civic, Toyota Prado, Land Cruiser, Hiace and Coaster.</p>
+      <p>Whether it's a one-hour airport transfer, a week in the northern areas or a year-long project fleet, our team plans every trip with the same care.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--cream" aria-labelledby="values-h">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">★ What we stand for ★</p>
+      <h2 id="values-h">Reliability, safety and honest service</h2>
+    </div>
+    <div class="services">
+      <article class="service"><span class="svc-icon"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span><h3>Always on time</h3><p>Punctuality is the foundation of every booking, whether it's a 4 am airport run or a full-day field visit.</p></article>
+      <article class="service"><span class="svc-icon"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span><h3>Safety first</h3><p>Regularly serviced vehicles and verified, experienced drivers on every route.</p></article>
+      <article class="service"><span class="svc-icon"><svg class="icon" aria-hidden="true"><use href="#i-receipt"/></svg></span><h3>Honest pricing</h3><p>Clear quotes before you book, with no surprises on the bill.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--ink" aria-labelledby="clients-h">
+  <div class="stripes stripes--ink" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow eyebrow--light">★ Trusted by ★</p>
+      <h2 id="clients-h">Organisations we've worked with</h2>
+    </div>
+    {{@clients}}
+    <h3 class="sub-h">What our clients say</h3>
+    {{@testimonials}}
+  </div>
+</section>
+
+<section class="section" id="credits" aria-labelledby="credits-h">
+  <div class="container narrow">
+    <h2 id="credits-h" class="h-small">Photo credits</h2>
+    <p class="muted">Vehicle photographs are used under Creative Commons licences from Wikimedia Commons and have been cropped and resized.</p>
+    {{@credits}}
+  </div>
+</section>
+
+{{> contact-section}}
+</main>
+{{> footer}}

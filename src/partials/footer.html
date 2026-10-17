@@ -1,0 +1,45 @@
+<footer class="site-footer">
+  <div class="stripes stripes--footer" aria-hidden="true"></div>
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="/assets/img/logo-160.webp" width="160" height="131" loading="lazy" decoding="async" alt="SLC Car Rental Services badge">
+      <p><strong>{{site.name}}</strong>, a venture of {{site.legalName}}. {{site.years}} years of reliable rent a car service in Islamabad, Rawalpindi and across Pakistan, with driver or self drive.</p>
+    </div>
+    <div>
+      <h2 class="footer-h">Explore</h2>
+      <ul class="footer-links">
+        <li><a href="/fleet.html">Our Fleet</a></li>
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/about.html">About SLC</a></li>
+        <li><a href="/#faq">FAQs</a></li>
+        <li><a href="/contact.html">Contact &amp; Booking</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-h">Popular rentals</h2>
+      <ul class="footer-links">
+        <li><a href="/fleet.html#suv">Prado &amp; Land Cruiser on rent</a></li>
+        <li><a href="/fleet.html#sedan">Corolla, Civic &amp; City on rent</a></li>
+        <li><a href="/fleet.html#van">Hiace &amp; Coaster on rent</a></li>
+        <li><a href="/fleet.html#economy">Economy cars on rent</a></li>
+        <li><a href="/#services">Airport pick &amp; drop</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-h">Get in touch</h2>
+      {{@contactList}}
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© {{@year}} {{site.name}} · {{site.legalName}}. All rights reserved.</p>
+    <p><a href="/about.html#credits">Photo credits</a></p>
+  </div>
+</footer>
+
+<nav class="mobile-bar" aria-label="Quick contact">
+  <a href="tel:{{site.phoneTel}}"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call</a>
+  <a class="mb-wa" href="{{@wa}}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</a>
+  <a class="mb-book" href="/contact.html#book"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Book now</a>
+</nav>
+</body>
+</html>

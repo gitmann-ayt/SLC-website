@@ -1,0 +1,44 @@
+<!--meta {
+  "title": "Cars on Rent in Islamabad: Our Full Fleet | SLC",
+  "description": "Corolla, Civic, City, Yaris, Alto, Prado, Fortuner, Land Cruiser, Hiace & Coaster on rent in Islamabad & Rawalpindi. With driver or self drive. Book on WhatsApp.",
+  "nav": "fleet",
+  "crumb": "Our Fleet"
+} -->
+{{> header}}
+<main id="main">
+<section class="page-hero" aria-labelledby="page-h">
+  <div class="stripes stripes--hero" aria-hidden="true"></div>
+  <div class="container">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Our Fleet</span></nav>
+    <h1 id="page-h">Our fleet: cars on rent in Islamabad &amp; Rawalpindi</h1>
+    <p class="lead">Economy hatchbacks, comfortable sedans, 4x4 SUVs, vans and coasters. If it's driven in Pakistan, chances are it's in our fleet. Every car is available with a professional driver, and selected cars as self drive.</p>
+    <div class="cta-row">
+      <a class="btn btn-cream" href="tel:{{site.phoneTel}}"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call {{site.phoneDisplay}}</a>
+      <a class="btn btn-wa" href="{{@wa}}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Ask on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-label="All cars">
+  <div class="container">
+    {{@fleet all}}
+    <div class="notice">
+      <svg class="icon" aria-hidden="true"><use href="#i-headset"/></svg>
+      <p><strong>Don't see the car you need?</strong> Our network covers almost every make and model in Pakistan, including luxury cars, double cabins and buses. <a href="{{@wa}}" target="_blank" rel="noopener">Ask us on WhatsApp</a> or <a href="tel:{{site.phoneTel}}">call {{site.phoneDisplay}}</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--cream" aria-labelledby="fleet-seo-h">
+  <div class="container narrow prose">
+    <h2 id="fleet-seo-h">Choosing the right rental car</h2>
+    <p><strong>Economy cars</strong> such as the Suzuki Alto, Cultus and Wagon R are the most affordable way to get around Islamabad and Rawalpindi. They suit daily errands, office commutes and short visits.</p>
+    <p><strong>Sedans</strong> such as the Toyota Corolla, Toyota Yaris, Honda City and Honda Civic offer comfort for corporate meetings, family trips and intercity travel on the motorway to Lahore or Peshawar.</p>
+    <p><strong>SUVs and 4x4s</strong>, including the Toyota Prado, Fortuner, Land Cruiser, Hilux Revo, Kia Sportage, Hyundai Tucson and Honda BR-V, are ideal for protocol duty, VIP guests and tours to Murree, Naran, Skardu and Hunza.</p>
+    <p><strong>Vans and coasters</strong> such as the Toyota Hiace and Toyota Coaster move teams, wedding guests and tour groups together, comfortably and on schedule.</p>
+  </div>
+</section>
+
+{{> contact-section}}
+</main>
+{{> footer}}
