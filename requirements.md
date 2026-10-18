@@ -36,6 +36,8 @@ Build a fast, responsive, search-engine-optimised marketing website for SLC Car 
 | City hubs | `/rent-a-car-islamabad/`, `/rent-a-car-rawalpindi/` | Target "rent a car Islamabad / Rawalpindi"; the Islamabad hub links every sector page |
 | Area pages | `/rent-a-car-g8-islamabad/` … (G-6–G-13, F-6–F-11, I-8, Blue Area, Bahria Town, DHA) | One page per sector, each with its own copy, rates table, FAQs and `Service` schema (added 18 Oct 2026, see `smartlink-seo-aeo-spec.md`) |
 | Service pages | `/rent-a-car-with-driver-islamabad/`, `/self-drive-rent-a-car-islamabad/`, `/monthly-car-rental-islamabad/`, `/islamabad-airport-rent-a-car/`, `/wedding-car-rental-islamabad/` | One page per service keyword |
+| Car-model pages | `/cars/<model>-rent-islamabad/` (Corolla, Civic, City, Alto & Wagon R, Prado, Land Cruiser V8, Fortuner, Revo, Grand Cabin, Coaster, Mercedes, Audi, Lexus LX 570) | One page per model family: specs, daily rates, FAQs, `Product` schema |
+| Blog | `/blog/` and `/blog/<slug>/` | Guides for long-tail and AI-answer searches (prices, self-drive requirements, mileage limits) |
 
 ## 4. Contact & conversion (highest priority)
 
@@ -51,7 +53,7 @@ Contact must be **in the hero section** and in every other place a visitor might
 - The forms work without a server: they open WhatsApp with the details filled in. An email option (`mailto:`) is available as a fallback. A form backend (e.g. Formspree or a PHP mailer) can be added later.
 - Phone numbers use `tel:` links and email uses `mailto:` links.
 
-**[TBC] contact details:** phone number(s), WhatsApp number, email, office address, working hours, Google Maps location, and social media links. The site currently uses clearly fake placeholders (`+92 300 0000000`, `info@example.com`). All of them live in **one file**: `src/data/site.json`.
+**Contact details (confirmed 18 Oct 2026):** mobile/WhatsApp +92 310 0000132, landline 051 234 0084, email smartlinkservicesg8@gmail.com, office Kashif Bell-Air Plaza, G-8 Markaz. **[TBC]:** office number, Google Maps pin, social media links, production domain. All of them live in **one file**: `src/data/site.json`.
 
 ## 5. Fleet
 

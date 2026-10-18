@@ -21,6 +21,8 @@ Upload the **contents of `dist/`** to any web host (cPanel, Netlify, Vercel, Clo
 | Testimonials (**drafts: replace with approved quotes**) | `src/data/testimonials.json` |
 | FAQs (home page) | `src/data/faqs.json` |
 | Area, city & service landing pages (sectors, Rawalpindi, airport…) | `src/data/areas.json`, one entry per page, layout in `src/templates/landing.html` |
+| Car-model pages (`/cars/toyota-prado-rent-islamabad/` …) | `src/data/models.json`: one entry per model family, listing its car ids; layout in `src/templates/model.html` |
+| Blog posts (`/blog/<file name>/`) | one file per post in `src/blog/`, with a `<!--meta {...} -->` comment (title, description, h1, date, excerpt, faqs); layout in `src/templates/post.html`. The /blog/ index lists them newest first |
 | Rates | `rate` (PKR per day) on each car in `src/data/cars.json`, then set `ratesUpdated` in `site.json`. Cards, rate tables, the price list on /cars/, schema and `llms.txt` all read it. In page copy write `{{price.<car id>}}` (e.g. `{{price.prado}}`) or `{{price.from}}` instead of typing a number |
 | Page text | `src/pages/*.html`, shared header/footer in `src/partials/` |
 
@@ -37,7 +39,8 @@ SEO/AEO plan this follows: `smartlink-seo-aeo-spec.md`.
 ```
 build.js            zero-dependency static builder
 src/pages/          page templates (meta title/description at the top); x.html is published at /x/
-src/templates/      landing.html: layout for every page in src/data/areas.json
+src/templates/      landing.html (areas.json pages), model.html (models.json pages), post.html (blog posts)
+src/blog/           blog posts
 src/partials/       header, footer, contact section
 src/data/           JSON content
 src/static/         favicon etc. copied to site root

@@ -9,7 +9,9 @@
  * src/pages/cars.html is published at /cars/ (index.html at /, 404.html stays /404.html).
  *
  * Area, city and service landing pages (/rent-a-car-g9-islamabad/ etc.) are generated from
- * src/data/areas.json with the template src/templates/landing.html.
+ * src/data/areas.json with the template src/templates/landing.html, car-model pages
+ * (/cars/toyota-prado-rent-islamabad/) from src/data/models.json with src/templates/model.html,
+ * and blog posts (/blog/<file name>/) from src/blog/*.html with src/templates/post.html.
  *
  * Inside pages, templates and partials:
  *   {{site.phoneDisplay}}   value from src/data/site.json (HTML-escaped)
@@ -31,6 +33,7 @@ const clients = readJSON('clients.json');
 const testimonials = readJSON('testimonials.json').items;
 const faqs = readJSON('faqs.json');
 const areas = readJSON('areas.json');
+const models = readJSON('models.json');
 const credits = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets/img/credits.json'), 'utf8'));
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -48,6 +51,28 @@ const addressLine = () => [site.address.officeNo, site.address.street, site.addr
 const carById = Object.fromEntries(cars.map((c) => [c.id, c]));
 const areaBySlug = Object.fromEntries(areas.map((a) => [a.slug, a]));
 const faqById = Object.fromEntries(faqs.map((f) => [f.id, f]));
+const modelUrl = (slug) => `/cars/${slug}/`;
+const modelBySlug = Object.fromEntries(models.map((m) => [m.slug, m]));
+const modelByCar = {};
+for (const m of models)
+  for (const id of m.cars) {
+    if (!carById[id]) throw new Error(`models.json ${m.slug}: unknown car "${id}"`);
+    modelByCar[id] = m;
+  }
+const fmtDate = (d) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+
+// Blog posts: src/blog/<slug>.html, each starting with a <!--meta {...} --> comment like the pages.
+const posts = fs
+  .readdirSync(path.join(SRC, 'blog'))
+  .filter((f) => f.endsWith('.html'))
+  .map((file) => {
+    const raw = fs.readFileSync(path.join(SRC, 'blog', file), 'utf8');
+    const m = raw.match(/^<!--meta\s+([\s\S]*?)-->\s*/);
+    if (!m) throw new Error(`blog/${file}: missing meta comment`);
+    const slug = file.replace(/\.html$/, '');
+    return { ...JSON.parse(m[1]), slug, path: `/blog/${slug}/`, body: raw.slice(m[0].length) };
+  })
+  .sort((a, b) => b.date.localeCompare(a.date));
 const rates_ = cars.map((c) => c.rate).filter(Boolean);
 const minRate = Math.min(...rates_), maxRate = Math.max(...rates_);
 const ratesUpdatedText = site.ratesUpdated
@@ -91,7 +116,7 @@ function carCard(c, place) {
     <span class="car-tag">${esc(catLabel(c.category))}</span>
   </div>
   <div class="car-body">
-    <h3 class="car-title"><span>${esc(c.make)}</span> ${esc(c.model)}</h3>
+    <h3 class="car-title">${modelByCar[c.id] ? `<a href="${modelUrl(modelByCar[c.id].slug)}">` : ''}<span>${esc(c.make)}</span> ${esc(c.model)}${modelByCar[c.id] ? '</a>' : ''}</h3>
     <p class="car-use">${esc(c.use)}</p>
     <ul class="car-specs" aria-label="Specifications">
       <li>${icon('seat')}${c.seats} seats</li>
@@ -187,7 +212,7 @@ function faq(arg, meta) {
 function bookingForm(variant = 'hero', meta = {}) {
   const id = variant;
   const carOptions = categories
-    .map((cat) => `<optgroup label="${esc(cat.long)}">${cars.filter((c) => c.category === cat.id).map((c) => `<option>${esc(carName(c))}</option>`).join('')}</optgroup>`)
+    .map((cat) => `<optgroup label="${esc(cat.long)}">${cars.filter((c) => c.category === cat.id).map((c) => `<option${meta.selectCar === carName(c) ? ' selected' : ''}>${esc(carName(c))}</option>`).join('')}</optgroup>`)
     .join('');
   const full = variant === 'contact';
   const pickup = meta.pickup || (meta.type && meta.type !== 'service' ? meta.place : '');
@@ -284,7 +309,7 @@ function napLine() {
 }
 
 function waPage(arg, meta) {
-  return wa(`Assalam o Alaikum SLC, I need a car on rent ${meta.in}.`);
+  return wa(meta.waText || `Assalam o Alaikum SLC, I need a car on rent ${meta.in}.`);
 }
 
 function sections(arg, meta) {
@@ -334,7 +359,7 @@ function priceList(arg, meta) {
       const list = cars.filter((c) => c.category === cat.id);
       return `<tbody>
   <tr class="rates-group"><th scope="colgroup" colspan="3">${esc(cat.long)}</th></tr>
-${list.map((c) => `  <tr><th scope="row">${esc(carName(c))}</th><td>${c.seats}</td><td>${c.rate ? `<strong>${money(c.rate)}</strong>` : '<span class="rate-ask">Ask for rate</span>'}</td></tr>`).join('\n')}
+${list.map((c) => `  <tr><th scope="row">${modelByCar[c.id] ? `<a href="${modelUrl(modelByCar[c.id].slug)}">${esc(carName(c))}</a>` : esc(carName(c))}</th><td>${c.seats}</td><td>${c.rate ? `<strong>${money(c.rate)}</strong>` : '<span class="rate-ask">Ask for rate</span>'}</td></tr>`).join('\n')}
 </tbody>`;
     })
     .join('\n');
@@ -375,14 +400,78 @@ function areaGrid(arg) {
 
 // {{@pageLinks areas}} / {{@pageLinks services}}: plain link lists for the footer.
 function pageLinks(arg) {
+  if (arg === 'models') return `<ul>${models.map((m) => `<li><a href="${modelUrl(m.slug)}">${esc(m.name)} on rent</a></li>`).join('')}</ul>`;
   const list = areas.filter((a) => (arg === 'services' ? a.type === 'service' : a.type !== 'service'));
   return `<ul>${list.map((a) => `<li><a href="${pageUrl(a.slug)}">${esc(linkLabel(a))}</a></li>`).join('')}</ul>`;
+}
+
+/* ----- car-model page components (meta = the page's entry in models.json) ----- */
+
+function modelPhoto(arg, meta) {
+  const c = carById[meta.cars[0]];
+  const img = c.img || c.id;
+  return `<figure class="model-photo img-wrap"><img src="/assets/img/cars/${img}-800.webp" srcset="/assets/img/cars/${img}-480.webp 480w, /assets/img/cars/${img}-800.webp 800w" sizes="(min-width: 1100px) 680px, 92vw" width="800" height="600" decoding="async" alt="${esc(`${meta.name} for rent in Islamabad`)}"></figure>`;
+}
+
+function specTable(arg, meta) {
+  const list = meta.cars.map((id) => carById[id]);
+  const rows = [
+    ['Seats', (c) => c.seats],
+    ['Transmission', (c) => esc(c.transmission)],
+    ['Fuel', (c) => esc(c.fuel)],
+    ['Colours', (c) => esc(c.colors || '')],
+    ['Rate per day', (c) => (c.rate ? `<strong class="nowrap">${money(c.rate)}</strong>` : '<span class="rate-ask">Ask for rate</span>')],
+  ];
+  const head = list.length > 1 ? `<thead><tr><td></td>${list.map((c) => `<th scope="col">${esc(c.model)}</th>`).join('')}</tr></thead>` : '';
+  return `
+<div class="table-wrap">
+<table class="rates rates--spec">
+  <caption>${esc(meta.name)} on rent in Islamabad and Rawalpindi. Every car can be booked with a driver; self drive is offered on selected cars.</caption>
+  ${head}
+  <tbody>
+${rows.map(([label, f]) => `  <tr><th scope="row">${label}</th>${list.map((c) => `<td>${f(c)}</td>`).join('')}</tr>`).join('\n')}
+  </tbody>
+</table>
+</div>
+${ratesNote(meta)}`;
+}
+
+function relatedCars(arg, meta) {
+  return `<div class="car-grid">${meta.related
+    .map((slug) => {
+      const m = modelBySlug[slug];
+      if (!m) throw new Error(`${meta.slug}: unknown related model "${slug}"`);
+      return carCard(carById[m.cars[0]], 'in Islamabad');
+    })
+    .join('')}</div>`;
+}
+
+/* ----- blog components ----- */
+
+const readingTime = (post) => Math.max(1, Math.round(stripTags(post.body).split(/\s+/).length / 200));
+
+function postMeta(arg, meta) {
+  return `<time datetime="${meta.date}">${fmtDate(meta.date)}</time>${meta.updated ? ` · Updated <time datetime="${meta.updated}">${fmtDate(meta.updated)}</time>` : ''} · ${readingTime(meta)} min read`;
+}
+
+function postBody(arg, meta) {
+  return render(meta.body, meta);
+}
+
+// {{@postList all}} = every post; {{@postList others}} = every post except the current one.
+function postList(arg, meta) {
+  const list = posts.filter((p) => arg !== 'others' || p.slug !== meta.slug);
+  return `<ul class="post-list">${list
+    .map(
+      (p) => `<li><a href="${p.path}"><time datetime="${p.date}">${fmtDate(p.date)}</time><strong>${esc(p.h1)}</strong><span>${esc(fill(p.excerpt))}</span><span class="post-more">Read the guide${icon('arrow')}</span></a></li>`
+    )
+    .join('')}</ul>`;
 }
 
 const components = {
   fleet, pageCars, fleetCount, carList, clients: clientsStrip, clientNames, testimonials: testimonialCards, faq,
   bookingForm, contactList, map, wa: waLink, credits: credits_, year: () => String(new Date().getFullYear()),
-  crumbs, lead, napLine, waPage, sections, rates, priceList, ratesHeading, carsHeading, faqHeading, nearbyHeading, nearby, areaGrid, pageLinks,
+  crumbs, lead, napLine, waPage, sections, rates, priceList, modelPhoto, specTable, relatedCars, postMeta, postBody, postList, ratesHeading, carsHeading, faqHeading, nearbyHeading, nearby, areaGrid, pageLinks,
 };
 
 /* ---------------- page shell ---------------- */
@@ -592,14 +681,76 @@ for (const a of areas) {
   emit(meta, render(landing, meta));
 }
 
+// Car-model pages
+const modelTpl = fs.readFileSync(path.join(SRC, 'templates', 'model.html'), 'utf8');
+for (const m of models) {
+  const list = m.cars.map((id) => carById[id]);
+  const meta = {
+    ...m,
+    type: 'model',
+    path: modelUrl(m.slug),
+    nav: 'fleet',
+    in: 'in Islamabad',
+    nearby: m.links,
+    selectCar: carName(list[0]),
+    waText: `Assalam o Alaikum SLC, I'd like to rent the ${m.name} in Islamabad. Please share availability.`,
+    crumbs: [{ name: 'Our Fleet', path: '/cars/' }, { name: m.name, path: modelUrl(m.slug) }],
+  };
+  meta.schemas = list.map((c) => ({
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: `${carName(c)} for rent in Islamabad`,
+    image: abs(`/assets/img/cars/${c.img || c.id}-800.webp`),
+    brand: { '@type': 'Brand', name: c.make },
+    description: `${carName(c)} on rent in Islamabad and Rawalpindi: ${c.seats} seats, ${c.transmission.toLowerCase()}, ${c.fuel.toLowerCase()}. ${c.use}.`,
+    ...(c.rate
+      ? {
+          offers: {
+            '@type': 'Offer',
+            url: abs(meta.path),
+            price: c.rate,
+            priceCurrency: 'PKR',
+            priceSpecification: { '@type': 'UnitPriceSpecification', price: c.rate, priceCurrency: 'PKR', unitCode: 'DAY', unitText: 'per day' },
+            businessFunction: 'http://purl.org/goodrelations/v1#LeaseOut',
+            availability: 'https://schema.org/InStock',
+            seller: { '@id': abs('/#business') },
+          },
+        }
+      : {}),
+  }));
+  emit(meta, render(modelTpl, meta));
+}
+
+// Blog posts
+const postTpl = fs.readFileSync(path.join(SRC, 'templates', 'post.html'), 'utf8');
+for (const p of posts) {
+  const meta = { ...p, type: 'post', nav: 'blog', crumbs: [{ name: 'Blog', path: '/blog/' }, { name: p.h1, path: p.path }] };
+  meta.schemas = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: fill(p.h1),
+      description: fill(p.description),
+      datePublished: p.date,
+      dateModified: p.updated || p.date,
+      image: abs('/assets/img/og-image.jpg'),
+      mainEntityOfPage: abs(p.path),
+      author: { '@id': abs('/#business') },
+      publisher: { '@id': abs('/#business') },
+      inLanguage: 'en-PK',
+    },
+  ];
+  emit(meta, render(postTpl, meta));
+}
+
 // sitemap.xml, robots.txt, llms.txt, manifest
 const indexable = built.filter((m) => !m.noindex);
-const priority = (m) => (m.path === '/' ? '1.0' : m.type === 'city' || m.slug === 'rent-a-car-g8-islamabad' ? '0.9' : '0.8');
+const priority = (m) => (m.path === '/' ? '1.0' : m.type === 'city' || m.slug === 'rent-a-car-g8-islamabad' ? '0.9' : m.type === 'post' ? '0.6' : '0.8');
 const today = new Date().toISOString().slice(0, 10);
 fs.writeFileSync(
   path.join(DIST, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${indexable
-    .map((m) => `  <url><loc>${abs(m.path)}</loc><lastmod>${today}</lastmod><priority>${priority(m)}</priority></url>`)
+    .map((m) => `  <url><loc>${abs(m.path)}</loc><lastmod>${m.type === 'post' ? m.updated || m.date : today}</lastmod><priority>${priority(m)}</priority></url>`)
     .join('\n')}\n</urlset>\n`
 );
 
@@ -639,6 +790,12 @@ ${byType('area').map((m) => llmLink(m)).join('\n')}
 
 ## Services
 ${byType('service').map((m) => llmLink(m)).join('\n')}
+
+## Cars
+${byType('model').map((m) => llmLink(m)).join('\n')}
+
+## Guides
+${byType('post').map((m) => llmLink(m, fill(m.excerpt))).join('\n')}
 `
 );
 
