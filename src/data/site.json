@@ -41,6 +41,6 @@
   "gaId": "",
   "geo": null,
   "mapsUrl": "",
-  "ratesUpdated": "",
-  "_ratesNote": "ratesUpdated: date the rates in categories.json were last checked, e.g. 2026-10-18. Leave empty until real rates are added."
+  "ratesUpdated": "2026-10-18",
+  "_ratesNote": "ratesUpdated: the date the rates in cars.json were last checked. Change it whenever you change a rate."
 }

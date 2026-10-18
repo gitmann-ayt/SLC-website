@@ -42,34 +42,49 @@ const catLabel = (id) => (categories.find((c) => c.id === id) || {}).long || id;
 const carName = (c) => `${c.make} ${c.model}`;
 const pageUrl = (slug) => `/${slug}/`;
 const stripTags = (s) => String(s).replace(/<[^>]+>/g, '');
-const money = (n) => `Rs ${Number(n).toLocaleString('en-US')}`;
+const money = (n) => `PKR ${Number(n).toLocaleString('en-US')}`;
 const addressLine = () => [site.address.officeNo, site.address.street, site.address.locality].filter(Boolean).join(', ');
-
-// {{site.x}} tokens in plain-text fields (FAQ answers, schema), unescaped: escape the result once where it is output.
-const fill = (s) =>
-  String(s ?? '').replace(/\{\{(site\.[\w.]+)\}\}/g, (_, p) => {
-    const v = get({ site }, p);
-    if (v === undefined) throw new Error(`Unknown token {{${p}}}`);
-    return v;
-  });
 
 const carById = Object.fromEntries(cars.map((c) => [c.id, c]));
 const areaBySlug = Object.fromEntries(areas.map((a) => [a.slug, a]));
 const faqById = Object.fromEntries(faqs.map((f) => [f.id, f]));
-const ratedCats = categories.filter((c) => c.dayRate);
-const hasMonthRates = categories.some((c) => c.monthRate);
+const rates_ = cars.map((c) => c.rate).filter(Boolean);
+const minRate = Math.min(...rates_), maxRate = Math.max(...rates_);
+const ratesUpdatedText = site.ratesUpdated
+  ? new Date(site.ratesUpdated).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+  : '';
+
+// Token values: {{site.x}} from site.json, {{price.<car id>}} = that car's daily rate, {{price.from}} = the lowest rate.
+function tokenValue(p, meta) {
+  if (p.startsWith('meta.')) return get(meta, p.slice(5));
+  if (p.startsWith('price.')) {
+    const key = p.slice(6);
+    if (key === 'from') return money(minRate);
+    return carById[key] && carById[key].rate ? money(carById[key].rate) : undefined;
+  }
+  return get({ site }, p);
+}
+
+// Tokens in plain-text fields (FAQ answers, schema), unescaped: escape the result once where it is output.
+const fill = (s) =>
+  String(s ?? '').replace(/\{\{((?:site|price)\.[\w.-]+)\}\}/g, (_, p) => {
+    const v = tokenValue(p);
+    if (v === undefined) throw new Error(`Unknown token {{${p}}}`);
+    return v;
+  });
 
 /* ---------------- components ---------------- */
 
 function carCard(c, place) {
   const name = carName(c);
-  const msg = `Assalam o Alaikum SLC, I'd like to rent the ${name}${place ? ` ${place}` : ''}. Please share availability and rate.`;
+  const msg = `Assalam o Alaikum SLC, I'd like to rent the ${name}${place ? ` ${place}` : ''}${c.rate ? ` (${money(c.rate)}/day)` : ''}. Please share availability.`;
   const alt = place ? `${name} for rent ${place}` : `${name} available for rent in ${site.city} with or without driver`;
+  const img = c.img || c.id;
   return `
 <article class="car-card" data-cat="${c.category}">
   <div class="car-media img-wrap">
-    <img src="/assets/img/cars/${c.id}-480.webp"
-         srcset="/assets/img/cars/${c.id}-480.webp 480w, /assets/img/cars/${c.id}-800.webp 800w"
+    <img src="/assets/img/cars/${img}-480.webp"
+         srcset="/assets/img/cars/${img}-480.webp 480w, /assets/img/cars/${img}-800.webp 800w"
          sizes="(min-width: 1100px) 340px, (min-width: 700px) 45vw, 92vw"
          width="800" height="600" loading="lazy" decoding="async"
          alt="${esc(alt)}">
@@ -82,8 +97,9 @@ function carCard(c, place) {
       <li>${icon('seat')}${c.seats} seats</li>
       <li>${icon('gear')}${esc(c.transmission)}</li>
       <li>${icon('fuel')}${esc(c.fuel)}</li>
+      ${c.colors ? `<li>${icon('drop')}${esc(c.colors)}</li>` : ''}
     </ul>
-    <p class="car-rate">${icon('star', 'star')} Ask for today's rate · with or without driver</p>
+    <p class="car-price">${c.rate ? `<strong>${money(c.rate)}</strong> <span>/ day</span>` : `${icon('star', 'star')} Ask for today's rate`}</p>
     <div class="car-actions">
       <a class="btn btn-wa btn-sm" href="${wa(msg)}" target="_blank" rel="noopener" aria-label="Book ${esc(name)} on WhatsApp">${icon('whatsapp')}WhatsApp</a>
       <a class="btn btn-outline btn-sm" href="tel:${site.phoneTel}" aria-label="Call to book ${esc(name)}">${icon('phone')}Call</a>
@@ -282,30 +298,55 @@ function sections(arg, meta) {
     .join('\n');
 }
 
+function ratesNote(meta) {
+  const updated = ratesUpdatedText ? `Rates last updated <time datetime="${esc(site.ratesUpdated)}">${ratesUpdatedText}</time>. ` : '';
+  return `<p class="rates-note">${updated}Rates are per day. What's included (driver, fuel, mileage) depends on the booking and is confirmed before you book. <a href="${waPage(null, meta)}" target="_blank" rel="noopener">Ask on WhatsApp</a> or <a href="tel:${site.phoneTel}">call ${esc(site.phoneDisplay)}</a>.</p>`;
+}
+
+// Landing pages: one row per car type with the lowest daily rate.
 function rates(arg, meta) {
-  const cell = (n) => `<td>${n ? `From ${money(n)}` : `<span class="rate-ask">Ask for rate</span>`}</td>`;
   const rows = categories
     .map((cat) => {
       const list = cars.filter((c) => c.category === cat.id);
       const seats = list.map((c) => c.seats);
       const lo = Math.min(...seats), hi = Math.max(...seats);
-      return `<tr><th scope="row">${esc(cat.long)}</th><td>${esc(list.map(carName).join(', '))}</td><td>${lo === hi ? lo : `${lo}–${hi}`}</td>${cell(cat.dayRate)}${hasMonthRates ? cell(cat.monthRate) : ''}</tr>`;
+      const from = Math.min(...list.map((c) => c.rate || Infinity));
+      return `<tr><th scope="row">${esc(cat.long)}</th><td>${esc(list.map(carName).join(', '))}</td><td>${lo === hi ? lo : `${lo}–${hi}`}</td><td>${isFinite(from) ? `From <strong>${money(from)}</strong>` : '<span class="rate-ask">Ask for rate</span>'}</td></tr>`;
     })
     .join('\n');
-  const updated = site.ratesUpdated
-    ? `Rates last updated <time datetime="${esc(site.ratesUpdated)}">${new Date(site.ratesUpdated).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</time>. `
-    : '';
   return `
 <div class="table-wrap">
-<table class="rates">
-  <caption>${esc(meta.ratesH || `Car rental rates ${meta.in}`)}, by car type</caption>
-  <thead><tr><th scope="col">Car type</th><th scope="col">Popular models</th><th scope="col">Seats</th><th scope="col">Per day</th>${hasMonthRates ? '<th scope="col">Per month</th>' : ''}</tr></thead>
+<table class="rates rates--types">
+  <caption>${esc(meta.ratesH || `Car rental rates ${meta.in}`)}, by car type. <a href="/cars/#rates">See the rate for every car</a>.</caption>
+  <thead><tr><th scope="col">Car type</th><th scope="col">Models</th><th scope="col">Seats</th><th scope="col">Per day</th></tr></thead>
   <tbody>
 ${rows}
   </tbody>
 </table>
 </div>
-<p class="rates-note">${updated}The final rate depends on the car, your dates, with or without driver, and fuel. <a href="${waPage(null, meta)}" target="_blank" rel="noopener">Ask on WhatsApp</a> or <a href="tel:${site.phoneTel}">call ${esc(site.phoneDisplay)}</a> and we confirm the exact rate before you book.</p>`;
+${ratesNote(meta)}`;
+}
+
+// Fleet page: every car and its daily rate, grouped by car type.
+function priceList(arg, meta) {
+  const groups = categories
+    .map((cat) => {
+      const list = cars.filter((c) => c.category === cat.id);
+      return `<tbody>
+  <tr class="rates-group"><th scope="colgroup" colspan="3">${esc(cat.long)}</th></tr>
+${list.map((c) => `  <tr><th scope="row">${esc(carName(c))}</th><td>${c.seats}</td><td>${c.rate ? `<strong>${money(c.rate)}</strong>` : '<span class="rate-ask">Ask for rate</span>'}</td></tr>`).join('\n')}
+</tbody>`;
+    })
+    .join('\n');
+  return `
+<div class="table-wrap">
+<table class="rates rates--list">
+  <caption>Daily car rental rates in Islamabad and Rawalpindi, ${cars.length} cars</caption>
+  <thead><tr><th scope="col">Car</th><th scope="col">Seats</th><th scope="col">Per day</th></tr></thead>
+${groups}
+</table>
+</div>
+${ratesNote({ in: 'in Islamabad' })}`;
 }
 
 const ratesHeading = (arg, meta) => esc(meta.ratesH || `Car rental rates ${meta.in}`);
@@ -341,7 +382,7 @@ function pageLinks(arg) {
 const components = {
   fleet, pageCars, fleetCount, carList, clients: clientsStrip, clientNames, testimonials: testimonialCards, faq,
   bookingForm, contactList, map, wa: waLink, credits: credits_, year: () => String(new Date().getFullYear()),
-  crumbs, lead, napLine, waPage, sections, rates, ratesHeading, carsHeading, faqHeading, nearbyHeading, nearby, areaGrid, pageLinks,
+  crumbs, lead, napLine, waPage, sections, rates, priceList, ratesHeading, carsHeading, faqHeading, nearbyHeading, nearby, areaGrid, pageLinks,
 };
 
 /* ---------------- page shell ---------------- */
@@ -375,7 +416,7 @@ function businessSchema() {
       ...areas.filter((a) => a.type === 'area').map((a) => ({ '@type': 'Place', name: a.place })),
     ],
     openingHours: site.hoursSchema,
-    priceRange: ratedCats.length ? `${money(Math.min(...ratedCats.map((c) => c.dayRate)))} - ${money(Math.max(...ratedCats.map((c) => c.dayRate)))}` : '$$',
+    priceRange: `${money(minRate)} - ${money(maxRate)}`,
     sameAs: [...Object.values(site.social), site.mapsUrl].filter(Boolean),
   };
   return `<script type="application/ld+json">${JSON.stringify(s)}</script>`;
@@ -461,8 +502,8 @@ function render(tpl, meta) {
       return components[name](arg && arg.trim(), meta);
     })
     .replace(/\{\{nav:(\w+)\}\}/g, (_, n) => (meta.nav === n ? ' aria-current="page"' : ''))
-    .replace(/\{\{([\w.]+)\}\}/g, (_, p) => {
-      const v = p.startsWith('meta.') ? get(meta, p.slice(5)) : get({ site }, p);
+    .replace(/\{\{([\w.-]+)\}\}/g, (_, p) => {
+      const v = tokenValue(p, meta);
       if (v === undefined) throw new Error(`Unknown token {{${p}}}`);
       return esc(v);
     });
@@ -545,16 +586,7 @@ for (const a of areas) {
         a.type === 'service'
           ? [{ '@type': 'City', name: 'Islamabad' }, { '@type': 'City', name: 'Rawalpindi' }]
           : { '@type': a.type === 'city' ? 'City' : 'Place', name: a.place },
-      ...(ratedCats.length
-        ? {
-            offers: {
-              '@type': 'AggregateOffer',
-              priceCurrency: 'PKR',
-              lowPrice: Math.min(...ratedCats.map((c) => c.dayRate)),
-              highPrice: Math.max(...ratedCats.map((c) => c.dayRate)),
-            },
-          }
-        : {}),
+      offers: { '@type': 'AggregateOffer', priceCurrency: 'PKR', lowPrice: minRate, highPrice: maxRate, offerCount: cars.length },
     },
   ];
   emit(meta, render(landing, meta));
@@ -584,7 +616,7 @@ fs.writeFileSync(
   path.join(DIST, 'llms.txt'),
   `# ${site.name}
 
-> ${site.name} (${site.legalName}) is a car rental company in ${addressLine()}, Pakistan, in business since ${site.foundedYear}. It rents cars with a driver or as self drive in Islamabad and Rawalpindi, from the Suzuki Alto to the Toyota Prado, Land Cruiser, Hiace and Coaster, with delivery to every sector. Phone/WhatsApp ${site.phoneDisplay}. Open ${site.hours}.
+> ${site.name} (${site.legalName}) is a car rental company in ${addressLine()}, Pakistan, in business since ${site.foundedYear}. It rents cars with a driver or as self drive in Islamabad and Rawalpindi, from the Suzuki Alto to the Toyota Land Cruiser V8, Mercedes S-Class, Lexus LX 570 and Coaster, with delivery to every sector. Daily rates start at ${money(minRate)}. Phone/WhatsApp ${site.phoneDisplay}. Open ${site.hours}.
 
 ## Key facts
 - Office: ${addressLine()}, ${site.address.region}, Pakistan
@@ -592,9 +624,8 @@ fs.writeFileSync(
 - Hours: ${site.hours}
 - Experience: ${site.years} years (since ${site.foundedYear})
 - Services: rent a car with driver, self drive (selected cars; CNIC, driving licence and refundable deposit), monthly and corporate contracts, Islamabad Airport pick and drop, wedding cars, out-of-city tours
-- Fleet (${cars.length} models): ${cars.map(carName).join(', ')}
 - Organisations served: ${clients.map((c) => c.name).join(', ')}
-- Rates: ${ratedCats.length ? ratedCats.map((c) => `${c.long} from ${money(c.dayRate)}/day`).join('; ') : 'quoted per booking; call or WhatsApp for the current rate'}
+- Daily rates${ratesUpdatedText ? ` (updated ${ratesUpdatedText})` : ''}: ${cars.map((c) => `${carName(c)} ${c.rate ? money(c.rate) : 'on request'}`).join('; ')}
 
 ## Key pages
 ${llmLink(built.find((m) => m.path === '/'), 'home page')}

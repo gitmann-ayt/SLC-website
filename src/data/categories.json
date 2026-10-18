@@ -1,6 +1,7 @@
 [
-  {"id": "economy", "label": "Economy", "long": "Economy & Hatchback", "dayRate": null, "monthRate": null},
-  {"id": "sedan", "label": "Sedans", "long": "Sedans", "dayRate": null, "monthRate": null},
-  {"id": "suv", "label": "SUVs & 4x4", "long": "SUVs & 4x4", "dayRate": null, "monthRate": null},
-  {"id": "van", "label": "Vans & Coasters", "long": "Vans & Coasters", "dayRate": null, "monthRate": null}
+  {"id": "economy", "label": "Economy", "long": "Economy & Hatchback"},
+  {"id": "sedan", "label": "Sedans", "long": "Sedans"},
+  {"id": "suv", "label": "SUVs & 4x4", "long": "SUVs & 4x4"},
+  {"id": "luxury", "label": "Luxury", "long": "Luxury cars"},
+  {"id": "van", "label": "Vans & Coasters", "long": "Vans & Coasters"}
 ]

@@ -60,13 +60,14 @@ Contact must be **in the hero section** and in every other place a visitor might
 
 | Category | Cars |
 |---|---|
-| Economy / Hatchback | Suzuki Alto, Suzuki Cultus, Suzuki Wagon R |
-| Sedan | Toyota Yaris, Toyota Corolla, Honda City, Honda Civic |
-| SUV & 4x4 | Honda BR-V, Kia Sportage, Hyundai Tucson, Toyota Fortuner, Toyota Prado, Toyota Land Cruiser, Toyota Hilux Revo |
-| Vans & Coasters | Toyota Hiace, Toyota Coaster |
+| Economy / Hatchback | Suzuki Alto, Suzuki Wagon R |
+| Sedan | Toyota Yaris, Honda City, Toyota Corolla, Corolla Grande, Honda Civic 2022, Honda Civic 2025, Hyundai Elantra |
+| SUV & 4x4 | Honda BR-V, Toyota Revo, Toyota Prado, Toyota Fortuner, Kia Sportage, Hyundai Tucson, Toyota Land Cruiser V8 |
+| Luxury | Mercedes S400, S500, E250, C180, Audi A6, A5, A4, Lexus LX 570 |
+| Vans & Coasters | Toyota Grand Cabin (13 seats), Coaster 4C (22 seats), Coaster 5C (28 seats) |
 
 - Each car card shows: photo, make & model, category, seats, transmission, fuel, ideal use, and WhatsApp/Call buttons.
-- **Prices:** none are shown until the client supplies them. Cards say "Ask for today's rate". **[TBC]**
+- **Prices:** daily rates per car supplied by the client on 18 Oct 2026, from PKR 4,000 (Alto) to PKR 150,000 (Lexus LX 570). They live in `src/data/cars.json` (`rate`). Whether a rate includes driver and fuel is confirmed per booking. **[TBC]**
 - **Easy maintenance:** cars are stored in one data file (`src/data/cars.json`). Adding or removing a car means editing that file and rebuilding the site. No HTML changes are needed.
 - Photos are freely licensed (Wikimedia Commons) and credited on the About page. The client may replace them with photos of their own cars later, which is recommended.
 
