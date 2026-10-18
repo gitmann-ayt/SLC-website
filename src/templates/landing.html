@@ -1,0 +1,65 @@
+{{> header}}
+<main id="main">
+<section class="page-hero" aria-labelledby="page-h">
+  <div class="stripes stripes--hero" aria-hidden="true"></div>
+  <div class="container">
+    {{@crumbs}}
+    <h1 id="page-h">{{meta.h1}}</h1>
+    <p class="lead">{{@lead}}</p>
+    <div class="cta-row">
+      <a class="btn btn-cream" href="tel:{{site.phoneTel}}"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call {{site.phoneDisplay}}</a>
+      <a class="btn btn-wa" href="{{@waPage}}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp us</a>
+    </div>
+    {{@napLine}}
+  </div>
+</section>
+
+<section class="section" aria-label="{{meta.h1}}">
+  <div class="container landing-grid">
+    <div class="prose landing-copy">{{@sections}}</div>
+    <aside class="card side-card" aria-labelledby="side-h">
+      <h2 class="form-title" id="side-h">Get a quote</h2>
+      <p class="form-sub">Send your trip details straight to our team on WhatsApp.</p>
+      {{@bookingForm side}}
+    </aside>
+  </div>
+</section>
+
+<section class="section section--cream" aria-labelledby="rates-h">
+  <div class="container narrow">
+    <h2 id="rates-h">{{@ratesHeading}}</h2>
+    {{@rates}}
+  </div>
+</section>
+
+<section class="section" aria-labelledby="cars-h">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">★ Popular cars ★</p>
+      <h2 id="cars-h">{{@carsHeading}}</h2>
+    </div>
+    {{@pageCars}}
+    <div class="center fleet-more"><a class="btn btn-ink btn-lg" href="/cars/">See all {{@fleetCount}} cars<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+  </div>
+</section>
+
+<section class="section section--cream" aria-labelledby="faq-h">
+  <div class="container narrow">
+    <div class="section-head">
+      <p class="eyebrow">★ FAQ ★</p>
+      <h2 id="faq-h">{{@faqHeading}}</h2>
+    </div>
+    {{@faq page}}
+  </div>
+</section>
+
+<section class="section section--tight" aria-labelledby="nearby-h">
+  <div class="container center">
+    <h2 id="nearby-h" class="h-small">{{@nearbyHeading}}</h2>
+    {{@nearby}}
+  </div>
+</section>
+
+{{> contact-section}}
+</main>
+{{> footer}}

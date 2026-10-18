@@ -1,0 +1,1354 @@
+[
+  {
+    "slug": "rent-a-car-islamabad",
+    "type": "city",
+    "group": "city",
+    "name": "Islamabad",
+    "place": "Islamabad",
+    "in": "in Islamabad",
+    "sub": "Every sector, Blue Area & airport",
+    "title": "Rent a Car in Islamabad | SLC Car Rental Services",
+    "description": "Rent a car in Islamabad with driver or self drive, from Alto to Prado and Coaster. Office in G-8 Markaz, delivery to every sector. Call or WhatsApp 24/7.",
+    "h1": "Rent a Car in Islamabad",
+    "lead": "{{site.name}} rents cars in Islamabad with a professional driver or as self drive, from a Suzuki Alto to a Toyota Prado, Land Cruiser or 29-seat Coaster. Our office is in Kashif Bell-Air Plaza, G-8 Markaz, and we deliver to every sector, Blue Area and Islamabad International Airport, 24 hours a day.",
+    "sections": [
+      {
+        "h": "Rent a car in every sector of Islamabad",
+        "p": [
+          "Choose your sector for local details: the sub-sectors and landmarks we cover, the cars that suit the area and answers to local questions. If your sector isn't listed, we still deliver there. Just give us the address when you book."
+        ],
+        "html": "{{@areaGrid islamabad}}"
+      },
+      {
+        "h": "Why book with an Islamabad-based rental company",
+        "p": [
+          "We have run rent a car services from Islamabad for {{site.years}} years, for families, visitors, banks, NGOs and international organisations. Our drivers know the sectors, Srinagar Highway, the Islamabad Expressway and the motorway routes to Lahore and Peshawar.",
+          "Because the cars are already in the city, same-day bookings are usually possible. One call covers everything: the car, the driver, fuel options and a clear quote before you confirm."
+        ]
+      },
+      {
+        "h": "With driver, self drive or monthly",
+        "p": [
+          "Most customers book a car <a href=\"/rent-a-car-with-driver-islamabad/\">with a driver</a>, by the day or for a single trip. If you would rather drive yourself, selected cars are available as <a href=\"/self-drive-rent-a-car-islamabad/\">self drive</a> with a CNIC, a valid licence and a refundable deposit. Companies and families who need a car for weeks or months can take a <a href=\"/monthly-car-rental-islamabad/\">monthly rental</a> with a dedicated driver and one invoice."
+        ]
+      }
+    ],
+    "cars": [
+      "alto",
+      "corolla",
+      "civic",
+      "prado"
+    ],
+    "nearbyH": "Also serving",
+    "nearby": [
+      "rent-a-car-rawalpindi",
+      "islamabad-airport-rent-a-car",
+      "rent-a-car-bahria-town",
+      "rent-a-car-dha-islamabad"
+    ],
+    "faqs": [
+      {
+        "q": "How much does it cost to rent a car in Islamabad per day?",
+        "a": "The daily rate depends on the car, whether you need a driver, fuel and how many days you book. Economy hatchbacks such as the Suzuki Alto cost the least, then sedans, then SUVs and vans. Call or WhatsApp us with your dates and we confirm the exact rate before you book, with no hidden charges."
+      },
+      {
+        "q": "Do you deliver rental cars anywhere in Islamabad?",
+        "a": "Yes. We bring the car to your home, office or hotel in any Islamabad sector, including Blue Area, the E, F, G and I sectors and Islamabad International Airport. Tell us the address and time when you book."
+      },
+      {
+        "q": "Can I rent a car in Islamabad without a driver?",
+        "a": "Yes. Selected cars are available as self drive. You need your CNIC (or passport for foreign nationals), a valid driving licence and a refundable security deposit. We confirm the deposit for your car when we send the quote."
+      },
+      {
+        "q": "Where is your office in Islamabad?",
+        "a": "Our office is in Kashif Bell-Air Plaza, G-8 Markaz, Islamabad. Bookings are open {{site.hours}}. Call {{site.phoneDisplay}} or send a WhatsApp message before you visit so the car is ready."
+      }
+    ]
+  },
+  {
+    "slug": "rent-a-car-rawalpindi",
+    "type": "city",
+    "group": "city",
+    "name": "Rawalpindi",
+    "place": "Rawalpindi",
+    "in": "in Rawalpindi",
+    "sub": "Saddar, Bahria Town, DHA & more",
+    "title": "Rent a Car in Rawalpindi | SLC Car Rental Services",
+    "description": "Rent a car in Rawalpindi with driver or self drive: Saddar, Bahria Town, DHA, Satellite Town & more. Corolla, Civic, Prado, Hiace. Call or WhatsApp 24/7.",
+    "h1": "Rent a Car in Rawalpindi",
+    "lead": "{{site.name}} provides rent a car in Rawalpindi with a driver or as self drive, delivered from our office in G-8 Markaz, Islamabad. We cover Saddar, Satellite Town, Bahria Town, DHA, Chaklala and the rest of the city around the clock, with cars from economy hatchbacks to the Prado, Hiace and Coaster.",
+    "sections": [
+      {
+        "h": "Areas we cover in Rawalpindi",
+        "p": [
+          "For us, Islamabad and Rawalpindi work as one city. Our drivers cross between them every day, so a pick-up in Rawalpindi is booked the same way as one in Islamabad: tell us the address, the time and the car."
+        ],
+        "list": [
+          "Saddar and Cantt",
+          "Satellite Town and Murree Road",
+          "Committee Chowk and Raja Bazaar",
+          "Chaklala Scheme III",
+          "Westridge and Peshawar Road",
+          "Gulraiz and Adiala Road",
+          "Bahria Town, all phases",
+          "DHA, all phases"
+        ]
+      },
+      {
+        "h": "Weddings, airport runs and trips from Rawalpindi",
+        "p": [
+          "Weddings and family events often need several vehicles at once. We put together sedans and SUVs for the barat and family and a Hiace or Coaster for guests, so everyone arrives at the venue together. See <a href=\"/wedding-car-rental-islamabad/\">wedding car rental</a> for details.",
+          "We also do <a href=\"/islamabad-airport-rent-a-car/\">airport pick and drop</a>, daily office commutes and trips from Rawalpindi to Murree, Lahore, Peshawar and the northern areas."
+        ]
+      }
+    ],
+    "cars": [
+      "corolla",
+      "prado",
+      "hiace",
+      "coaster"
+    ],
+    "nearbyH": "Areas near Rawalpindi",
+    "nearby": [
+      "rent-a-car-bahria-town",
+      "rent-a-car-dha-islamabad",
+      "rent-a-car-i8-islamabad",
+      "rent-a-car-islamabad"
+    ],
+    "faqs": [
+      {
+        "q": "Do you provide rent a car service in Rawalpindi?",
+        "a": "Yes. We deliver cars with or without a driver anywhere in Rawalpindi, including Saddar, Satellite Town, Chaklala, Bahria Town and DHA. Our office is in G-8 Markaz, Islamabad, and bookings are open 24 hours a day."
+      },
+      {
+        "q": "Can I book a car from Rawalpindi to Murree or Lahore?",
+        "a": "Yes. We pick you up in Rawalpindi and drive you to Murree, Lahore, Peshawar or the northern areas, one way or return. For mountain roads we suggest a 4x4 such as the Toyota Prado or Fortuner."
+      },
+      {
+        "q": "Can I book several cars for a wedding in Rawalpindi?",
+        "a": "Yes. We can provide sedans or SUVs for the barat and family and a Toyota Hiace (14 seats) or Coaster (29 seats) for guests, all with drivers. Book as soon as your dates are fixed, especially in the winter wedding season."
+      }
+    ]
+  },
+  {
+    "slug": "rent-a-car-g6-islamabad",
+    "type": "area",
+    "group": "islamabad",
+    "parent": "rent-a-car-islamabad",
+    "name": "G-6",
+    "place": "G-6, Islamabad",
+    "in": "in G-6 Islamabad",
+    "sub": "G-6/1 – G-6/4 · Aabpara · Melody",
+    "title": "Rent a Car in G-6 Islamabad | SLC Car Rental Services",
+    "description": "Rent a car in G-6 Islamabad with driver or self drive. Delivery to Aabpara, Melody and G-6/1 to G-6/4, close to Blue Area. Call or WhatsApp 24/7.",
+    "h1": "Rent a Car in G-6, Islamabad",
+    "lead": "{{site.name}} delivers rental cars to G-6 with a driver or as self drive, from our office in G-8 Markaz. We cover G-6/1 to G-6/4, Aabpara Market and Melody Market, close to Blue Area and the government offices, 24 hours a day.",
+    "sections": [
+      {
+        "h": "Car rental in G-6, Aabpara and Melody",
+        "p": [
+          "G-6 is one of Islamabad's oldest sectors, home to Aabpara Market, Melody Market and the Polyclinic hospital, and a short drive from Blue Area and the federal government offices. If you are in the city for official work, a car with a driver saves you hunting for parking and directions.",
+          "We deliver to homes, guest houses and offices in every part of G-6, and collect the car from the same place when you are done."
+        ]
+      },
+      {
+        "h": "Cars with driver for official visits",
+        "p": [
+          "For a day of meetings, book a sedan such as the Toyota Corolla or Honda Civic with a driver who waits between appointments. For delegations, choose a Prado or Land Cruiser, or a Hiace for a whole team."
+        ]
+      }
+    ],
+    "cars": [
+      "corolla",
+      "civic",
+      "prado",
+      "hiace"
+    ],
+    "nearby": [
+      "rent-a-car-g7-islamabad",
+      "rent-a-car-blue-area-islamabad",
+      "rent-a-car-f6-islamabad",
+      "rent-a-car-f7-islamabad"
+    ],
+    "faqs": [
+      {
+        "q": "Do you deliver rental cars to Aabpara and Melody in G-6?",
+        "a": "Yes. We deliver cars with or without a driver to Aabpara, Melody Market and every street in G-6/1 to G-6/4. Send the address and time on WhatsApp and we confirm the car."
+      },
+      {
+        "q": "Can I hire a car with driver in G-6 for official meetings?",
+        "a": "Yes. Book a sedan or SUV with a driver for a few hours or the full day. The driver waits between meetings, so you can go from G-6 to Blue Area and other offices without worrying about parking."
+      },
+      {
+        "q": "Do you provide cars for visiting delegations?",
+        "a": "Yes. For delegations we provide Toyota Prado, Land Cruiser and Fortuner SUVs, and Hiace or Coaster vans for larger groups, all with experienced drivers. Corporate and NGO invoicing is available."
+      }
+    ]
+  },
+  {
+    "slug": "rent-a-car-g7-islamabad",
+    "type": "area",
+    "group": "islamabad",
+    "parent": "rent-a-car-islamabad",
+    "name": "G-7",
+    "place": "G-7, Islamabad",
+    "in": "in G-7 Islamabad",
+    "sub": "G-7/1 – G-7/4 · Sitara Market",
+    "title": "Rent a Car in G-7 Islamabad | SLC Car Rental Services",
+    "description": "Rent a car in G-7 Islamabad with driver or self drive. Delivery to G-7/1 to G-7/4 and Sitara Market from our G-8 office next door. Call or WhatsApp 24/7.",
+    "h1": "Rent a Car in G-7, Islamabad",
+    "lead": "{{site.name}} delivers cars with a driver or as self drive to G-7 from our office in G-8 Markaz, right next door. We cover G-7/1 to G-7/4 and Sitara Market (G-7 Markaz), 24 hours a day, with cars from the Suzuki Alto to the Toyota Land Cruiser.",
+    "sections": [
+      {
+        "h": "Car rental in G-7 and Sitara Market",
+        "p": [
+          "G-7 is one of Islamabad's older, established sectors, with Sitara Market at its centre and Blue Area a few minutes away. It borders G-8, where our office is, so G-7 bookings can usually be delivered quickly.",
+          "Book a car with a driver for errands around Sitara Market and Blue Area, for weddings and family visits, or for a trip to Murree. Or take a self-drive car when you want to set your own schedule."
+        ]
+      },
+      {
+        "h": "Choosing a car in G-7",
+        "p": [
+          "For narrow streets and quick errands, a Suzuki Alto or Wagon R is easy to drive and park. For guests, meetings and weddings, the Honda Civic and Toyota Corolla are the usual choice, and the Prado or Land Cruiser for VIP visits."
+        ]
+      }
+    ],
+    "cars": [
+      "wagonr",
+      "corolla",
+      "civic",
+      "landcruiser"
+    ],
+    "nearby": [
+      "rent-a-car-g8-islamabad",
+      "rent-a-car-g6-islamabad",
+      "rent-a-car-blue-area-islamabad",
+      "rent-a-car-f7-islamabad"
+    ],
+    "faqs": [
+      {
+        "q": "Do you deliver rental cars to Sitara Market, G-7?",
+        "a": "Yes. We deliver to Sitara Market and every street in G-7/1 to G-7/4. Our office is in G-8 Markaz, the neighbouring sector, so G-7 is quick for us to reach."
+      },
+      {
+        "q": "Can I rent a car with driver for a few hours in G-7?",
+        "a": "Yes. Short bookings with a driver are available for errands, appointments and airport runs. Call or WhatsApp with the time and the places you need to go, and we quote before you confirm."
+      },
+      {
+        "q": "Which car should I book for a wedding in G-7?",
+        "a": "For the bride and groom, families usually book a Honda Civic, Toyota Prado or Land Cruiser. For guests, add a Toyota Hiace (14 seats) or Coaster (29 seats). Book early in the wedding season so the cars you want are free."
+      }
+    ]
+  },
+  {
+    "slug": "rent-a-car-g8-islamabad",
+    "type": "area",
+    "group": "islamabad",
+    "parent": "rent-a-car-islamabad",
+    "name": "G-8",
+    "place": "G-8, Islamabad",
+    "in": "in G-8 Islamabad",
+    "sub": "Our office · G-8 Markaz",
+    "title": "Rent a Car in G-8 Islamabad | SLC Car Rental Services",
+    "description": "Rent a car in G-8 Islamabad from our office in Kashif Bell-Air Plaza, G-8 Markaz. With driver or self drive, Alto to Prado. Call or WhatsApp 24/7.",
+    "h1": "Rent a Car in G-8 Islamabad",
+    "lead": "{{site.name}} has its office in Kashif Bell-Air Plaza, G-8 Markaz, so you can collect a car in G-8 or have it brought to your door in G-8/1, G-8/2, G-8/3 or G-8/4. Cars are available with a driver or as self drive, 24 hours a day.",
+    "sections": [
+      {
+        "h": "Our G-8 office in Kashif Bell-Air Plaza",
+        "p": [
+          "You'll find us in Kashif Bell-Air Plaza in G-8 Markaz, the commercial centre of the sector. Call or send a WhatsApp message when you are on your way, and we'll guide you in and have the car ready.",
+          "Our cars and drivers start from G-8, so bookings here usually have the shortest wait anywhere in the city."
+        ]
+      },
+      {
+        "h": "Why people rent a car in G-8",
+        "p": [
+          "G-8 is a central residential sector with PIMS hospital in G-8/3 and Srinagar Highway along its southern edge. Common reasons to book a car here:"
+        ],
+        "list": [
+          "Airport pick and drop via Srinagar Highway",
+          "Hospital visits and appointments at PIMS",
+          "Weddings and family events in the twin cities",
+          "Day trips to Murree and longer tours to the north",
+          "A monthly car for the office commute or school runs"
+        ]
+      },
+      {
+        "h": "Monthly car rental in G-8",
+        "p": [
+          "If you need a car for weeks or months, a <a href=\"/monthly-car-rental-islamabad/\">monthly rental</a> saves booking day by day. Families and offices in G-8 can take a car with a dedicated driver or a self-drive car for the month, with one clear invoice."
+        ]
+      }
+    ],
+    "cars": [
+      "alto",
+      "corolla",
+      "civic",
+      "prado"
+    ],
+    "nearby": [
+      "rent-a-car-g9-islamabad",
+      "rent-a-car-g7-islamabad",
+      "rent-a-car-f8-islamabad",
+      "rent-a-car-g10-islamabad",
+      "rent-a-car-blue-area-islamabad"
+    ],
+    "faqs": [
+      {
+        "q": "Where is SLC Car Rental Services in G-8?",
+        "a": "Our office is in Kashif Bell-Air Plaza, G-8 Markaz, Islamabad. Call {{site.phoneDisplay}} or send a WhatsApp message before you come, and we will guide you to the office and have your car ready."
+      },
+      {
+        "q": "Can I collect the rental car myself from G-8 Markaz?",
+        "a": "Yes. You can collect the car from our G-8 office, or we can deliver it to your home or office anywhere in G-8. For self drive, bring your CNIC, driving licence and the security deposit when you collect."
+      },
+      {
+        "q": "Do you deliver cars to all of G-8, including near PIMS?",
+        "a": "Yes. We deliver to every part of G-8: G-8/1, G-8/2, G-8/3 near PIMS hospital, and G-8/4. Share your street and house number on WhatsApp and the car comes to your door."
+      }
+    ]
+  },
+  {
+    "slug": "rent-a-car-g9-islamabad",
+    "type": "area",
+    "group": "islamabad",
+    "parent": "rent-a-car-islamabad",
+    "name": "G-9",
+    "place": "G-9, Islamabad",
+    "in": "in G-9 Islamabad",
+    "sub": "G-9/1 – G-9/4 · Karachi Company",
+    "title": "Rent a Car in G-9 Islamabad | SLC Car Rental Services",
+    "description": "Rent a car in G-9 Islamabad, delivered from our G-8 Markaz office next door. Karachi Company, G-9/1 to G-9/4. With driver or self drive. Call 24/7.",
+    "h1": "Rent a Car in G-9, Islamabad",
+    "lead": "Need a car in G-9? {{site.name}} delivers cars with a driver or as self drive to G-9 from our office in G-8 Markaz, the next sector along. We cover G-9/1 to G-9/4, Karachi Company and Peshawar Mor, 24 hours a day.",
+    "sections": [
+      {
+        "h": "Car rental in G-9 and Karachi Company",
+        "p": [
+          "G-9 Markaz, better known as Karachi Company, is one of Islamabad's busiest markets, full of shops, academies and offices. Parking there is hard, so many people prefer a car with a driver who drops them at the door and waits.",
+          "G-9 shares a border with G-8, where our office is, so it is one of the quickest sectors for us to reach. For a same-day booking, call and tell us your sub-sector and the time you need the car."
+        ]
+      },
+      {
+        "h": "Choosing a car in G-9",
+        "p": [
+          "Economy cars such as the Suzuki Alto and Cultus are the cheapest way to get around for errands and daily use. The Toyota Corolla and Honda Civic suit weddings, airport runs and intercity trips. For a big family, the 7-seat Honda BR-V or a 14-seat Toyota Hiace takes everyone in one go."
+        ]
+      }
+    ],
+    "cars": [
+      "alto",
+      "cultus",
+      "corolla",
+      "brv"
+    ],
+    "nearby": [
+      "rent-a-car-g8-islamabad",
+      "rent-a-car-g10-islamabad",
+      "rent-a-car-g11-islamabad",
+      "rent-a-car-f8-islamabad"
+    ],
+    "faqs": [
+      {
+        "q": "Do you deliver rental cars to Karachi Company, G-9?",
+        "a": "Yes. We deliver to Karachi Company (G-9 Markaz) and every street in G-9/1 to G-9/4. Our office is in the neighbouring G-8 Markaz, so G-9 is one of the quickest areas for us to reach."
+      },
+      {
+        "q": "Can I get a car with driver from G-9 to Islamabad Airport?",
+        "a": "Yes. We do airport pick and drop from G-9 at any hour, using Srinagar Highway, which runs along the south of the sector. Share your flight time and we plan the pick-up around it."
+      },
+      {
+        "q": "Is self drive available in G-9?",
+        "a": "Yes, for selected cars. Bring your CNIC, a valid driving licence and a refundable deposit. We can deliver the car to your door in G-9, or you can collect it from our office in G-8 Markaz next door."
+      }
+    ]
+  },
+  {
+    "slug": "rent-a-car-g10-islamabad",
+    "type": "area",
+    "group": "islamabad",
+    "parent": "rent-a-car-islamabad",
+    "name": "G-10",
+    "place": "G-10, Islamabad",
+    "in": "in G-10 Islamabad",
+    "sub": "G-10/1 – G-10/4 · G-10 Markaz",
+    "title": "Rent a Car in G-10 Islamabad | SLC Car Rental Services",
+    "description": "Rent a car in G-10 Islamabad with driver or self drive. Doorstep delivery to G-10/1 to G-10/4 and G-10 Markaz from our G-8 office. Call or WhatsApp 24/7.",
+    "h1": "Rent a Car in G-10, Islamabad",
+    "lead": "{{site.name}} delivers rental cars to G-10 with a driver or as self drive, from our office in G-8 Markaz, two sectors away. We cover G-10/1, G-10/2, G-10/3, G-10/4 and G-10 Markaz, with cars from the Suzuki Alto to the Toyota Prado, 24 hours a day.",
+    "sections": [
+      {
+        "h": "Car rental for G-10 families",
+        "p": [
+          "G-10 is a mostly residential sector between G-9 and G-11, with G-10 Markaz at its centre and Srinagar Highway along its southern edge. It is quick for us to reach from G-8, and quick to leave towards the airport or the motorway.",
+          "We can help with weddings, visits to relatives in Rawalpindi, hospital appointments and trips to Murree. Tell us how many people are travelling and we'll suggest the right car, from a 5-seat sedan to a 7-seat SUV or a Hiace."
+        ]
+      },
+      {
+        "h": "Daily, weekly and monthly rentals in G-10",
+        "p": [
+          "Book a car with a driver for a few hours, for a full day or by the week. For longer needs, a <a href=\"/monthly-car-rental-islamabad/\">monthly car rental</a> gives you a fixed monthly rate and, if you want, the same driver every day."
+        ]
+      }
+    ],
+    "cars": [
+      "corolla",
+      "city",
+      "brv",
+      "hiace"
+    ],
+    "nearby": [
+      "rent-a-car-g9-islamabad",
+      "rent-a-car-g11-islamabad",
+      "rent-a-car-f10-islamabad",
+      "rent-a-car-g8-islamabad"
+    ],
+    "faqs": [
+      {
+        "q": "Can I book a car with driver in G-10 for a full day?",
+        "a": "Yes. A full-day booking with a driver can include several stops around Islamabad and Rawalpindi. Tell us the start time, the places you need to go and roughly when you'll finish, and we quote a clear rate before you confirm."
+      },
+      {
+        "q": "Do you deliver rental cars to G-10 Markaz?",
+        "a": "Yes. We deliver to G-10 Markaz and to homes in G-10/1, G-10/2, G-10/3 and G-10/4. Send your address on WhatsApp and we'll confirm the car and the delivery time."
+      },
+      {
+        "q": "Which car is best for a family trip from G-10?",
+        "a": "For up to four passengers, a Toyota Corolla or Honda City is comfortable. For six or seven people, choose a Honda BR-V, Toyota Fortuner or Prado. Larger groups fit in a Toyota Hiace (14 seats) or Coaster (29 seats)."
+      }
+    ]
+  },
+  {
+    "slug": "rent-a-car-g11-islamabad",
+    "type": "area",
+    "group": "islamabad",
+    "parent": "rent-a-car-islamabad",
+    "name": "G-11",
+    "place": "G-11, Islamabad",
+    "in": "in G-11 Islamabad",
+    "sub": "G-11/1 – G-11/4 · G-11 Markaz",
+    "title": "Rent a Car in G-11 Islamabad | SLC Car Rental Services",
+    "description": "Rent a car in G-11 Islamabad with driver or self drive, delivered to G-11/1 to G-11/4 and G-11 Markaz. Corolla, Civic, Prado & more. Call 24/7.",
+    "h1": "Rent a Car in G-11, Islamabad",
+    "lead": "Looking for rent a car in G-11? {{site.name}} brings cars with a driver or for self drive to any address in G-11/1 to G-11/4 and G-11 Markaz, from our office in G-8 Markaz. Bookings are open 24 hours, with cars from economy hatchbacks to the Prado and Land Cruiser.",
+    "sections": [
+      {
+        "h": "Rent a car in G-11, delivered to your door",
+        "p": [
+          "G-11 sits at the western end of the central G-sectors, next to G-10 and F-11 and on Srinagar Highway, the main road to Islamabad International Airport. That makes it a convenient starting point for airport runs and for trips out of the city.",
+          "We bring the car to your door in G-11 at the time you choose. If you book with a driver, the driver arrives with the car. For self drive, we hand over the keys after checking your documents."
+        ]
+      },
+      {
+        "h": "Out-of-city trips from G-11",
+        "p": [
+          "From G-11, Srinagar Highway leads straight towards the airport and the motorways to Lahore and Peshawar. We arrange one-way and return trips with experienced drivers, and 4x4s such as the Prado and Fortuner for Murree, Naran and the northern areas."
+        ]
+      }
+    ],
+    "cars": [
+      "corolla",
+      "civic",
+      "fortuner",
+      "prado"
+    ],
+    "nearby": [
+      "rent-a-car-g10-islamabad",
+      "rent-a-car-f11-islamabad",
+      "rent-a-car-g13-islamabad",
+      "rent-a-car-g9-islamabad"
+    ],
+    "faqs": [
+      {
+        "q": "How do I get a rental car delivered to G-11?",
+        "a": "Call or WhatsApp us with your address in G-11, your dates and the car you want. We confirm the rate and the delivery time, and the car is brought to your door, with or without a driver."
+      },
+      {
+        "q": "Can I rent a car in G-11 for a trip to Lahore or Peshawar?",
+        "a": "Yes. We do one-way and return trips from G-11 to Lahore, Peshawar and other cities with an experienced driver. Ask for the out-of-city rate, which depends on the car, the distance and the number of days."
+      },
+      {
+        "q": "Can I rent a 4x4 in G-11 for the northern areas?",
+        "a": "Yes. The Toyota Prado, Fortuner and Land Cruiser are available with drivers experienced on mountain roads, for Murree, Naran, Skardu and Hunza. Book early in summer, when demand is highest."
+      }
+    ]
+  },
+  {
+    "slug": "rent-a-car-g13-islamabad",
+    "type": "area",
+    "group": "islamabad",
+    "parent": "rent-a-car-islamabad",
+    "name": "G-13",
+    "place": "G-13, Islamabad",
+    "in": "in G-13 Islamabad",
+    "sub": "G-13/1 – G-13/4 · near the airport road",
+    "title": "Rent a Car in G-13 Islamabad | SLC Car Rental Services",
+    "description": "Rent a car in G-13 Islamabad with driver or self drive. Delivery to G-13/1 to G-13/4, close to Srinagar Highway and the airport. Call or WhatsApp 24/7.",
+    "h1": "Rent a Car in G-13, Islamabad",
+    "lead": "{{site.name}} delivers rental cars to G-13, with a driver or as self drive, from our office in G-8 Markaz. We cover G-13/1 to G-13/4 and G-13 Markaz around the clock. G-13 sits on Srinagar Highway, closer to Islamabad International Airport than the central sectors.",
+    "sections": [
+      {
+        "h": "Car rental in G-13 and nearby",
+        "p": [
+          "G-13 is a newer, fast-growing residential sector at the western end of the G-series, beside G-14 and Srinagar Highway. Being on the airport side of the city, it's a practical base for airport pick and drop and for relatives arriving from abroad.",
+          "We also deliver to G-14 and the sectors and housing societies nearby. Tell us your exact address when you book."
+        ]
+      },
+      {
+        "h": "Longer rentals in G-13",
+        "p": [
+          "If you've just moved to G-13 or have family staying for a few weeks, a weekly or <a href=\"/monthly-car-rental-islamabad/\">monthly car rental</a> saves booking day by day. Choose a self-drive car or a car with a regular driver."
+        ]
+      }
+    ],
+    "cars": [
+      "alto",
+      "city",
+      "corolla",
+      "hiace"
+    ],
+    "nearby": [
+      "rent-a-car-g11-islamabad",
+      "islamabad-airport-rent-a-car",
+      "rent-a-car-g10-islamabad",
+      "rent-a-car-f11-islamabad"
+    ],
+    "faqs": [
+      {
+        "q": "Do you deliver rental cars to G-13 Islamabad?",
+        "a": "Yes. We deliver to every part of G-13, including G-13/1 to G-13/4 and G-13 Markaz, with or without a driver. Bookings are open 24 hours; send your address on WhatsApp to confirm."
+      },
+      {
+        "q": "Can you pick up my family from the airport and drop them in G-13?",
+        "a": "Yes. We meet arrivals at Islamabad International Airport at any hour and drive them to G-13. Share the flight number and we track the arrival, so the driver is waiting even if the flight is late."
+      },
+      {
+        "q": "Do you serve G-14 and nearby areas as well?",
+        "a": "Yes. Along with G-13 we deliver to G-14 and other sectors and housing societies nearby. Tell us your exact address when you book and we confirm the delivery time."
+      }
+    ]
+  },
+  {
+    "slug": "rent-a-car-f6-islamabad",
+    "type": "area",
+    "group": "islamabad",
+    "parent": "rent-a-car-islamabad",
+    "name": "F-6",
+    "place": "F-6, Islamabad",
+    "in": "in F-6 Islamabad",
+    "sub": "F-6/1 – F-6/4 · Super Market · Kohsar",
+    "title": "Rent a Car in F-6 Islamabad | SLC Car Rental Services",
+    "description": "Rent a car in F-6 Islamabad with driver or self drive. Delivery to Super Market, Kohsar Market and F-6/1 to F-6/4. Corolla, Civic, Prado. Call 24/7.",
+    "h1": "Rent a Car in F-6, Islamabad",
+    "lead": "{{site.name}} delivers cars with a driver or as self drive to F-6, including Super Market, Kohsar Market and F-6/1 to F-6/4. Cars come from our office in G-8 Markaz, 24 hours a day, from comfortable sedans to the Prado and Land Cruiser.",
+    "sections": [
+      {
+        "h": "Car rental in F-6",
+        "p": [
+          "F-6 is one of Islamabad's most established sectors, at the foot of the Margalla Hills, with Super Market (F-6 Markaz) and Kohsar Market at its heart and Blue Area and the Diplomatic Enclave close by. It suits a car with a driver: for office and embassy visits, airport transfers and evenings out.",
+          "For {{site.years}} years we have worked with international organisations such as USAID and iEARN, so we know what they expect: punctual drivers, clean cars and proper invoices."
+        ]
+      },
+      {
+        "h": "Corporate and monthly rentals in F-6",
+        "p": [
+          "Organisations based in F-6 can take a <a href=\"/monthly-car-rental-islamabad/\">monthly car rental</a> with a dedicated driver and one consolidated invoice. Short-term cars for visiting staff can be added when you need them."
+        ]
+      }
+    ],
+    "cars": [
+      "corolla",
+      "civic",
+      "prado",
+      "landcruiser"
+    ],
+    "nearby": [
+      "rent-a-car-f7-islamabad",
+      "rent-a-car-g6-islamabad",
+      "rent-a-car-blue-area-islamabad",
+      "rent-a-car-f8-islamabad"
+    ],
+    "faqs": [
+      {
+        "q": "Do you deliver rental cars to Kohsar Market and Super Market, F-6?",
+        "a": "Yes. We deliver to homes, offices and guest houses across F-6/1 to F-6/4, including Super Market and Kohsar Market. Send your address on WhatsApp and we confirm the delivery time."
+      },
+      {
+        "q": "Do you provide cars with driver for NGOs and international organisations in F-6?",
+        "a": "Yes. We have provided cars and drivers to international organisations and NGOs for {{site.years}} years, with monthly contracts, dedicated drivers and consolidated invoicing. Short-term cars for visiting staff are available too."
+      },
+      {
+        "q": "Can I rent a car in F-6 for an airport transfer at night?",
+        "a": "Yes. Bookings are open 24 hours. Tell us the flight time and your F-6 address, and the driver collects you with time to spare, or meets you at arrivals if you are landing."
+      }
+    ]
+  },
+  {
+    "slug": "rent-a-car-f7-islamabad",
+    "type": "area",
+    "group": "islamabad",
+    "parent": "rent-a-car-islamabad",
+    "name": "F-7",
+    "place": "F-7, Islamabad",
+    "in": "in F-7 Islamabad",
+    "sub": "F-7/1 – F-7/4 · Jinnah Super",
+    "title": "Rent a Car in F-7 Islamabad | SLC Car Rental Services",
+    "description": "Rent a car in F-7 Islamabad with driver or self drive. Delivery to Jinnah Super Market and F-7/1 to F-7/4 from our G-8 office. Call or WhatsApp 24/7.",
+    "h1": "Rent a Car in F-7, Islamabad",
+    "lead": "{{site.name}} delivers rental cars to F-7, with a driver or as self drive, from our office in G-8 Markaz. We cover Jinnah Super Market (F-7 Markaz) and every street in F-7/1 to F-7/4, 24 hours a day.",
+    "sections": [
+      {
+        "h": "Car rental in F-7 and Jinnah Super",
+        "p": [
+          "F-7 is one of Islamabad's best-known sectors, with Jinnah Super Market at its centre, plenty of restaurants and cafés, and Blue Area on its southern side. Parking around Jinnah Super can be difficult in the evening, so a driver who drops you and waits is often easier than driving yourself.",
+          "For guests staying in F-7, we can keep a car and driver on call for the length of their visit, or deliver a self-drive car to the door."
+        ]
+      },
+      {
+        "h": "Popular cars in F-7",
+        "p": [
+          "The Honda Civic and Toyota Corolla are good choices for dinners, meetings and airport runs. For family trips out of the city, a Toyota Fortuner or Prado gives more space, and for a large group a Hiace takes up to 14 passengers."
+        ]
+      }
+    ],
+    "cars": [
+      "corolla",
+      "civic",
+      "fortuner",
+      "hiace"
+    ],
+    "nearby": [
+      "rent-a-car-f6-islamabad",
+      "rent-a-car-f8-islamabad",
+      "rent-a-car-blue-area-islamabad",
+      "rent-a-car-g7-islamabad"
+    ],
+    "faqs": [
+      {
+        "q": "Do you deliver rental cars to Jinnah Super Market, F-7?",
+        "a": "Yes. We deliver to Jinnah Super Market and every street in F-7/1 to F-7/4, with or without a driver. Send your address and time on WhatsApp and we confirm the car."
+      },
+      {
+        "q": "Can I keep a car and driver for a guest staying in F-7?",
+        "a": "Yes. Book a car with driver for the length of the visit, by the day or by the week. The driver is on call for your guest's plans, from the airport pick-up to meetings and sightseeing."
+      },
+      {
+        "q": "Can I book a car in F-7 for the same day?",
+        "a": "Usually, yes. Call or WhatsApp us with the time you need the car and the car you want, and we confirm availability and the arrival time. Our office in G-8 Markaz is a short drive away."
+      }
+    ]
+  },
+  {
+    "slug": "rent-a-car-f8-islamabad",
+    "type": "area",
+    "group": "islamabad",
+    "parent": "rent-a-car-islamabad",
+    "name": "F-8",
+    "place": "F-8, Islamabad",
+    "in": "in F-8 Islamabad",
+    "sub": "F-8/1 – F-8/4 · F-8 Markaz",
+    "title": "Rent a Car in F-8 Islamabad | SLC Car Rental Services",
+    "description": "Rent a car in F-8 Islamabad with driver or self drive, delivered from our G-8 Markaz office next door. F-8/1 to F-8/4 and F-8 Markaz. Call 24/7.",
+    "h1": "Rent a Car in F-8, Islamabad",
+    "lead": "Need a rental car in F-8? {{site.name}} delivers cars with a driver or as self drive to F-8/1 to F-8/4 and F-8 Markaz from our office in G-8 Markaz, the neighbouring sector to the south. Bookings are open 24 hours.",
+    "sections": [
+      {
+        "h": "Car rental in F-8",
+        "p": [
+          "F-8 is a central sector with F-8 Markaz at its centre, close to Centaurus Mall and Blue Area. Because it borders G-8, where our office is, we reach most F-8 addresses quickly, which helps when you need a car at short notice.",
+          "Book a car with a driver for meetings and appointments, for airport pick and drop, or for family events, by the hour, the day or the week."
+        ]
+      },
+      {
+        "h": "Self drive in F-8",
+        "p": [
+          "Prefer to drive? Selected cars are available as <a href=\"/self-drive-rent-a-car-islamabad/\">self drive</a>. Bring your CNIC, a valid driving licence and a refundable deposit, and we deliver the car to your F-8 address, or you can collect it from our G-8 office."
+        ]
+      }
+    ],
+    "cars": [
+      "city",
+      "corolla",
+      "civic",
+      "sportage"
+    ],
+    "nearby": [
+      "rent-a-car-g8-islamabad",
+      "rent-a-car-f7-islamabad",
+      "rent-a-car-f10-islamabad",
+      "rent-a-car-blue-area-islamabad"
+    ],
+    "faqs": [
+      {
+        "q": "Do you deliver rental cars to F-8 Markaz?",
+        "a": "Yes. We deliver to F-8 Markaz and every street in F-8/1 to F-8/4. Our office is in the neighbouring G-8 Markaz, so F-8 is one of the quickest sectors for us to reach."
+      },
+      {
+        "q": "Can a driver pick me up from Centaurus Mall?",
+        "a": "Yes. Our drivers can collect you from Centaurus Mall, F-8 Markaz or any address in F-8 and take you anywhere in Islamabad, Rawalpindi or beyond. Send the pick-up time and point on WhatsApp."
+      },
+      {
+        "q": "Can I collect a car from your office if I live in F-8?",
+        "a": "Yes. Our office in Kashif Bell-Air Plaza, G-8 Markaz, is in the next sector. Call ahead so the car is ready, or ask us to deliver it to your door in F-8 instead."
+      }
+    ]
+  },
+  {
+    "slug": "rent-a-car-f10-islamabad",
+    "type": "area",
+    "group": "islamabad",
+    "parent": "rent-a-car-islamabad",
+    "name": "F-10",
+    "place": "F-10, Islamabad",
+    "in": "in F-10 Islamabad",
+    "sub": "F-10/1 – F-10/4 · F-10 Markaz",
+    "title": "Rent a Car in F-10 Islamabad | SLC Car Rental Services",
+    "description": "Rent a car in F-10 Islamabad with driver or self drive. Delivery to F-10 Markaz and F-10/1 to F-10/4. Alto, Corolla, BR-V, Fortuner. Call or WhatsApp 24/7.",
+    "h1": "Rent a Car in F-10, Islamabad",
+    "lead": "{{site.name}} delivers rental cars to F-10 with a driver or as self drive, from our office in G-8 Markaz. We cover F-10 Markaz and F-10/1 to F-10/4 around the clock, with cars from the Suzuki Alto to the Toyota Prado.",
+    "sections": [
+      {
+        "h": "Car rental in F-10",
+        "p": [
+          "F-10 is a well-established residential sector north of G-10, with F-10 Markaz as its shopping and dining centre and Fatima Jinnah Park next door in F-9.",
+          "We bring the car to your door, or the driver arrives with it, at the time you choose. For family visiting from abroad, we can arrange the airport pick-up and keep the same car for their stay."
+        ]
+      },
+      {
+        "h": "Weekend and family trips from F-10",
+        "p": [
+          "Planning a weekend away? Book a car with driver from F-10 to Murree, Nathia Gali or the northern areas, or a self-drive car for local outings. A 7-seat SUV such as the Honda BR-V or Toyota Fortuner suits most families."
+        ]
+      }
+    ],
+    "cars": [
+      "alto",
+      "corolla",
+      "brv",
+      "fortuner"
+    ],
+    "nearby": [
+      "rent-a-car-f11-islamabad",
+      "rent-a-car-f8-islamabad",
+      "rent-a-car-g10-islamabad",
+      "rent-a-car-g9-islamabad"
+    ],
+    "faqs": [
+      {
+        "q": "Do you deliver rental cars to F-10 Markaz?",
+        "a": "Yes. We deliver to F-10 Markaz and every street in F-10/1 to F-10/4, with or without a driver. Send your address on WhatsApp and we confirm the car and delivery time."
+      },
+      {
+        "q": "Can I book a car from F-10 for a weekend in Murree or Nathia Gali?",
+        "a": "Yes. Book a car with driver for a day trip or a weekend in Murree, Nathia Gali or the Galiyat. For the hills we recommend an SUV such as the Fortuner or Prado, especially in winter."
+      },
+      {
+        "q": "Can I rent a car by the week in F-10?",
+        "a": "Yes. Cars can be booked by the day, the week or the month, with or without a driver. Ask us for a weekly or monthly rate for your dates."
+      }
+    ]
+  },
+  {
+    "slug": "rent-a-car-f11-islamabad",
+    "type": "area",
+    "group": "islamabad",
+    "parent": "rent-a-car-islamabad",
+    "name": "F-11",
+    "place": "F-11, Islamabad",
+    "in": "in F-11 Islamabad",
+    "sub": "F-11/1 – F-11/4 · F-11 Markaz",
+    "title": "Rent a Car in F-11 Islamabad | SLC Car Rental Services",
+    "description": "Rent a car in F-11 Islamabad with driver or self drive, delivered to F-11 Markaz and F-11/1 to F-11/4. Corolla, Civic, BR-V, Prado. Call or WhatsApp 24/7.",
+    "h1": "Rent a Car in F-11, Islamabad",
+    "lead": "{{site.name}} brings rental cars to F-11, with a driver or as self drive, from our office in G-8 Markaz. We deliver to F-11 Markaz, its apartment buildings and every street in F-11/1 to F-11/4, 24 hours a day.",
+    "sections": [
+      {
+        "h": "Car rental in F-11",
+        "p": [
+          "F-11 is a modern residential sector in the west of the city, north of G-11 and west of F-10, with F-11 Markaz full of shops, offices and apartment buildings.",
+          "We deliver to apartments, houses and offices. Give us the building or street when you book and the driver will call you on arrival."
+        ]
+      },
+      {
+        "h": "Airport and intercity trips from F-11",
+        "p": [
+          "From F-11 it's a straightforward drive to Islamabad International Airport and the motorways. Book a car with driver for an airport drop at any hour, or for a one-way or return trip to Lahore or Peshawar."
+        ]
+      }
+    ],
+    "cars": [
+      "city",
+      "civic",
+      "brv",
+      "prado"
+    ],
+    "nearby": [
+      "rent-a-car-f10-islamabad",
+      "rent-a-car-g11-islamabad",
+      "rent-a-car-g13-islamabad",
+      "rent-a-car-g10-islamabad"
+    ],
+    "faqs": [
+      {
+        "q": "Do you deliver rental cars to apartments in F-11 Markaz?",
+        "a": "Yes. We deliver to apartment buildings in F-11 Markaz and to homes in F-11/1 to F-11/4. Tell us the building name or street and the driver will call you when the car arrives."
+      },
+      {
+        "q": "Can I book a late-night airport drop from F-11?",
+        "a": "Yes. Bookings are open 24 hours. Tell us your flight time and pick-up address in F-11, and the driver will be at your door with time to spare."
+      },
+      {
+        "q": "Is self drive available in F-11?",
+        "a": "Yes, for selected cars. You need your CNIC, a valid driving licence and a refundable security deposit, which we confirm with your quote. We can deliver the self-drive car to your door in F-11."
+      }
+    ]
+  },
+  {
+    "slug": "rent-a-car-i8-islamabad",
+    "type": "area",
+    "group": "islamabad",
+    "parent": "rent-a-car-islamabad",
+    "name": "I-8",
+    "place": "I-8, Islamabad",
+    "in": "in I-8 Islamabad",
+    "sub": "I-8/1 – I-8/4 · near Faizabad",
+    "title": "Rent a Car in I-8 Islamabad | SLC Car Rental Services",
+    "description": "Rent a car in I-8 Islamabad with driver or self drive. Delivery to I-8 Markaz and I-8/1 to I-8/4, close to Faizabad and Rawalpindi. Call or WhatsApp 24/7.",
+    "h1": "Rent a Car in I-8, Islamabad",
+    "lead": "{{site.name}} delivers cars with a driver or as self drive to I-8, including I-8 Markaz and I-8/1 to I-8/4, from our office in G-8 Markaz. I-8 sits next to Faizabad and the Islamabad Expressway, so it's also a handy pick-up point for trips into Rawalpindi.",
+    "sections": [
+      {
+        "h": "Car rental in I-8",
+        "p": [
+          "I-8 is a popular residential sector in the south-east of Islamabad, with I-8 Markaz at its centre and quick links to Rawalpindi through Faizabad. That makes it a good base if your plans cover both cities: offices in Islamabad, family in Rawalpindi, or a wedding in either.",
+          "We deliver to every street in I-8, with or without a driver, at the time you choose."
+        ]
+      },
+      {
+        "h": "One call for both twin cities",
+        "p": [
+          "Whether you need a car with driver to commute between I-8 and <a href=\"/rent-a-car-rawalpindi/\">Rawalpindi</a>, a self-drive car for the week, or a Hiace for a family event, we arrange it from one call."
+        ]
+      }
+    ],
+    "cars": [
+      "cultus",
+      "corolla",
+      "city",
+      "hiace"
+    ],
+    "nearby": [
+      "rent-a-car-rawalpindi",
+      "rent-a-car-g8-islamabad",
+      "rent-a-car-g7-islamabad",
+      "rent-a-car-dha-islamabad"
+    ],
+    "faqs": [
+      {
+        "q": "Do you deliver rental cars to I-8 Markaz?",
+        "a": "Yes. We deliver to I-8 Markaz and every street in I-8/1 to I-8/4, with or without a driver. Send your address on WhatsApp and we confirm the car and the delivery time."
+      },
+      {
+        "q": "Can I rent a car in I-8 for trips to Rawalpindi?",
+        "a": "Yes. I-8 is next to Faizabad, so Rawalpindi is a short drive away. Book a car with driver for trips between the twin cities, or a self-drive car if you prefer to drive yourself."
+      },
+      {
+        "q": "Can you provide several cars for an event in I-8?",
+        "a": "Yes. We can send sedans, SUVs and a Toyota Hiace or Coaster together for weddings and family events, all with drivers, so everyone arrives at the venue on time."
+      }
+    ]
+  },
+  {
+    "slug": "rent-a-car-blue-area-islamabad",
+    "type": "area",
+    "group": "islamabad",
+    "parent": "rent-a-car-islamabad",
+    "name": "Blue Area",
+    "place": "Blue Area, Islamabad",
+    "in": "in Blue Area Islamabad",
+    "sub": "Jinnah Avenue · offices & hotels",
+    "title": "Rent a Car in Blue Area Islamabad | SLC Car Rental Services",
+    "description": "Rent a car with driver in Blue Area, Islamabad for meetings, guests and company travel. Corolla, Civic, Prado, Land Cruiser. Monthly contracts. Call 24/7.",
+    "h1": "Rent a Car in Blue Area, Islamabad",
+    "lead": "{{site.name}} provides cars with a driver or as self drive to offices, banks and hotels in Blue Area, along Jinnah Avenue. Cars come from our office in G-8 Markaz, 24 hours a day, for a few hours, a full day or on a monthly corporate contract.",
+    "sections": [
+      {
+        "h": "Corporate car rental in Blue Area",
+        "p": [
+          "Blue Area is Islamabad's central business district: the strip of offices, banks, hotels and shops along Jinnah Avenue between the F and G sectors. For {{site.years}} years we have provided cars and drivers to banks, companies, NGOs and international organisations, including Silkbank and USAID.",
+          "A car with a driver is the easiest way to handle a day of meetings in Blue Area. The driver drops you at each office and waits nearby, so you never have to look for parking."
+        ]
+      },
+      {
+        "h": "Cars for visiting guests and delegations",
+        "p": [
+          "For guests and delegations we provide sedans such as the Honda Civic and Toyota Corolla, SUVs such as the Prado and Land Cruiser, and Hiace or Coaster vans for teams. We can meet them at <a href=\"/islamabad-airport-rent-a-car/\">Islamabad International Airport</a> and keep the same car and driver for their whole stay."
+        ]
+      }
+    ],
+    "cars": [
+      "corolla",
+      "civic",
+      "prado",
+      "landcruiser"
+    ],
+    "nearby": [
+      "rent-a-car-g6-islamabad",
+      "rent-a-car-g7-islamabad",
+      "rent-a-car-f6-islamabad",
+      "rent-a-car-f7-islamabad"
+    ],
+    "faqs": [
+      {
+        "q": "Can I hire a car with driver in Blue Area for a day of meetings?",
+        "a": "Yes. Book a sedan or SUV with a driver for a few hours or the full day. The driver takes you between offices on Jinnah Avenue and across the city, and waits while you are in your meetings."
+      },
+      {
+        "q": "Do you offer monthly corporate car rental for Blue Area offices?",
+        "a": "Yes. Monthly contracts include a dedicated car and driver and one consolidated invoice, and several cars can be on one contract. We have run corporate and NGO contracts for {{site.years}} years."
+      },
+      {
+        "q": "Can you collect our guests from the airport and bring them to a Blue Area hotel?",
+        "a": "Yes. Share the flight details and the hotel, and the driver meets your guests at Islamabad International Airport and brings them to Blue Area. We track the flight, so a delay is not a problem."
+      }
+    ]
+  },
+  {
+    "slug": "rent-a-car-bahria-town",
+    "type": "area",
+    "group": "rawalpindi",
+    "parent": "rent-a-car-rawalpindi",
+    "name": "Bahria Town",
+    "place": "Bahria Town, Rawalpindi",
+    "in": "in Bahria Town",
+    "sub": "All phases",
+    "title": "Rent a Car in Bahria Town | SLC Car Rental Services",
+    "description": "Rent a car in Bahria Town with driver or self drive, delivered to any phase. Corolla, Civic, Prado, Hiace and Coaster for weddings and trips. Call 24/7.",
+    "h1": "Rent a Car in Bahria Town, Rawalpindi & Islamabad",
+    "lead": "{{site.name}} delivers rental cars to every phase of Bahria Town, with a driver or as self drive, from our office in G-8 Markaz, Islamabad. Bookings are open 24 hours, for daily use, weddings, airport pick and drop and trips out of the city.",
+    "sections": [
+      {
+        "h": "Car rental in Bahria Town",
+        "p": [
+          "Bahria Town is one of the largest housing communities in the twin cities, spread across several phases between Islamabad and Rawalpindi. We deliver to homes and offices in all of them. Just tell us the phase, sector and house number when you book.",
+          "Bahria Town is also a popular place for weddings and family events. We can provide the cars for the barat and family together with a Hiace or Coaster for guests, all arriving at the venue together."
+        ]
+      },
+      {
+        "h": "Trips from Bahria Town",
+        "p": [
+          "From Bahria Town we drive you to Islamabad International Airport, into Islamabad or Rawalpindi, or out of the city to Lahore, Murree and the northern areas. For longer stays, a <a href=\"/monthly-car-rental-islamabad/\">monthly car</a> with or without a driver is also available."
+        ]
+      }
+    ],
+    "cars": [
+      "corolla",
+      "civic",
+      "prado",
+      "coaster"
+    ],
+    "nearby": [
+      "rent-a-car-dha-islamabad",
+      "rent-a-car-rawalpindi",
+      "rent-a-car-islamabad",
+      "wedding-car-rental-islamabad"
+    ],
+    "faqs": [
+      {
+        "q": "Do you deliver rental cars to all phases of Bahria Town?",
+        "a": "Yes. We deliver to every phase of Bahria Town, with or without a driver. Send the phase, sector and house number on WhatsApp and we confirm the car and the delivery time."
+      },
+      {
+        "q": "Can I book wedding cars in Bahria Town?",
+        "a": "Yes. Book a Honda Civic, Toyota Prado or Land Cruiser for the groom and family, and a Toyota Hiace or Coaster for guests, all with drivers. Book early in the wedding season so the cars you want are free."
+      },
+      {
+        "q": "Can you drop me from Bahria Town to Islamabad Airport?",
+        "a": "Yes. We do airport pick and drop from Bahria Town at any hour. Tell us your flight time and we work out the pick-up time with you, with time to spare for check-in."
+      }
+    ]
+  },
+  {
+    "slug": "rent-a-car-dha-islamabad",
+    "type": "area",
+    "group": "rawalpindi",
+    "parent": "rent-a-car-rawalpindi",
+    "name": "DHA",
+    "place": "DHA Islamabad–Rawalpindi",
+    "in": "in DHA Islamabad",
+    "sub": "All phases",
+    "title": "Rent a Car in DHA Islamabad | SLC Car Rental Services",
+    "description": "Rent a car in DHA Islamabad–Rawalpindi with driver or self drive, delivered to every phase. Corolla, City, Fortuner, Prado. Call or WhatsApp 24/7.",
+    "h1": "Rent a Car in DHA Islamabad",
+    "lead": "{{site.name}} delivers cars with a driver or as self drive to every phase of DHA Islamabad–Rawalpindi, from our office in G-8 Markaz. We're available 24 hours a day for daily use, airport transfers, weddings and out-of-city trips.",
+    "sections": [
+      {
+        "h": "Car rental in DHA",
+        "p": [
+          "DHA Islamabad–Rawalpindi lies alongside Bahria Town on the southern side of the twin cities. We deliver to houses and offices in all phases. Share the phase, sector and street when you book and the car comes to your door.",
+          "For daily use, the Toyota Corolla and Honda City are comfortable and economical. For family trips and guests, an SUV such as the Toyota Fortuner or Prado gives more room."
+        ]
+      },
+      {
+        "h": "Monthly and self-drive rentals in DHA",
+        "p": [
+          "If you need a car for weeks or months, a <a href=\"/monthly-car-rental-islamabad/\">monthly rental</a> with a dedicated driver or a <a href=\"/self-drive-rent-a-car-islamabad/\">self-drive car</a> saves booking day by day."
+        ]
+      }
+    ],
+    "cars": [
+      "city",
+      "corolla",
+      "fortuner",
+      "prado"
+    ],
+    "nearby": [
+      "rent-a-car-bahria-town",
+      "rent-a-car-rawalpindi",
+      "rent-a-car-i8-islamabad",
+      "rent-a-car-islamabad"
+    ],
+    "faqs": [
+      {
+        "q": "Do you deliver rental cars to every phase of DHA?",
+        "a": "Yes. We deliver cars with or without a driver to all phases of DHA Islamabad–Rawalpindi. Send the phase, sector and street on WhatsApp and we confirm the delivery time."
+      },
+      {
+        "q": "Can I rent a car in DHA for a month?",
+        "a": "Yes. Monthly rental is available with a dedicated driver or as self drive on selected cars. Ask us for a monthly rate for the car you want."
+      },
+      {
+        "q": "Can you drive me from DHA to Lahore or Murree?",
+        "a": "Yes. We do one-way and return trips from DHA to Lahore, Murree, Peshawar and the northern areas with experienced drivers. For mountain roads we suggest the Toyota Fortuner or Prado."
+      }
+    ]
+  },
+  {
+    "slug": "rent-a-car-with-driver-islamabad",
+    "type": "service",
+    "group": "service",
+    "name": "Rent a car with driver",
+    "place": "Islamabad",
+    "in": "with driver in Islamabad",
+    "serviceType": "Car rental with driver",
+    "title": "Rent a Car with Driver Islamabad | SLC Car Rental Services",
+    "description": "Rent a car with driver in Islamabad and Rawalpindi: trained drivers, clean cars, 24/7. By the hour, day, month or out-of-city trip. Call or WhatsApp.",
+    "h1": "Rent a Car with Driver in Islamabad",
+    "lead": "Every car at {{site.name}} can be booked with a trained, uniformed driver who knows Islamabad, Rawalpindi and the intercity routes. Book for a few hours, a full day, an out-of-city trip or a whole month, 24 hours a day, from our office in G-8 Markaz.",
+    "sections": [
+      {
+        "h": "What's included with a driver",
+        "p": [
+          "When you rent a car with a driver, you only need to tell us where and when. We take care of the rest:"
+        ],
+        "list": [
+          "A trained, uniformed and courteous driver",
+          "A clean, well-maintained car of your choice",
+          "Pick-up from your home, office, hotel or the airport",
+          "Waiting time between your stops, as agreed in the quote",
+          "Driver hours, overtime and out-of-city allowance confirmed before you book"
+        ]
+      },
+      {
+        "h": "Popular trips with a driver",
+        "p": [
+          "Our drivers handle <a href=\"/islamabad-airport-rent-a-car/\">airport pick and drop</a>, days of meetings in <a href=\"/rent-a-car-blue-area-islamabad/\">Blue Area</a>, <a href=\"/wedding-car-rental-islamabad/\">weddings</a>, hospital visits, sightseeing and trips to Murree, Lahore, Peshawar and the northern areas. For the mountains we send drivers experienced on hill roads, in 4x4s such as the Prado and Fortuner."
+        ]
+      }
+    ],
+    "ratesH": "Rates for a car with driver",
+    "cars": [
+      "corolla",
+      "civic",
+      "prado",
+      "hiace"
+    ],
+    "nearbyH": "Related services",
+    "nearby": [
+      "self-drive-rent-a-car-islamabad",
+      "monthly-car-rental-islamabad",
+      "islamabad-airport-rent-a-car",
+      "wedding-car-rental-islamabad"
+    ],
+    "faqs": [
+      {
+        "q": "How much is a car with driver per day in Islamabad?",
+        "a": "It depends on the car, the hours you need and whether fuel is included. Tell us your plan, such as the start time, the stops and the finish time, and we send a clear quote before you book. Economy cars cost the least and SUVs and vans the most."
+      },
+      {
+        "q": "What is included in the with-driver rate?",
+        "a": "The car, the driver and the agreed hours. The quote also states the overtime rate, whether fuel is included and, for trips outside the twin cities, the driver's out-of-city allowance, so there are no surprises."
+      },
+      {
+        "q": "Can I book a car with driver for an out-of-city trip?",
+        "a": "Yes. We drive to Lahore, Peshawar, Murree, Naran, Skardu, Hunza and anywhere else in Pakistan, one way or return. For overnight trips, the quote includes the driver's out-of-city allowance."
+      },
+      {
+        "q": "Are your drivers experienced?",
+        "a": "Yes. Our drivers are trained, uniformed professionals who know Islamabad, Rawalpindi and the intercity routes. For the northern areas we send drivers experienced on mountain roads."
+      }
+    ],
+    "carsH": "Popular cars to book with a driver"
+  },
+  {
+    "slug": "self-drive-rent-a-car-islamabad",
+    "type": "service",
+    "group": "service",
+    "name": "Self drive rent a car",
+    "place": "Islamabad",
+    "in": "as self drive in Islamabad",
+    "serviceType": "Self-drive car rental",
+    "title": "Self Drive Rent a Car Islamabad | SLC Car Rental Services",
+    "description": "Self drive rent a car in Islamabad and Rawalpindi. Bring your CNIC, licence and a refundable deposit. Collect in G-8 or get it delivered. Call 24/7.",
+    "h1": "Self Drive Rent a Car in Islamabad",
+    "lead": "{{site.name}} rents selected cars in Islamabad without a driver, so you drive yourself. You need your CNIC (or passport), a valid driving licence and a refundable security deposit. Collect the car from our office in G-8 Markaz or have it delivered to your door.",
+    "sections": [
+      {
+        "h": "What you need for self drive",
+        "list": [
+          "Your original CNIC, or passport for foreign nationals",
+          "A valid driving licence",
+          "A refundable security deposit (we confirm the amount with your quote)",
+          "A phone number we can reach you on during the rental"
+        ]
+      },
+      {
+        "h": "How self drive works",
+        "p": [
+          "Tell us your dates and the car you'd like. We confirm availability, the daily rate, the deposit and what's included, such as any daily mileage allowance and the fuel policy. When you collect the car, we check your documents, note the fuel level and condition with you, and hand over the keys. Return the car at the agreed time and the deposit is refunded once the car has been checked."
+        ]
+      },
+      {
+        "h": "Which cars are available as self drive?",
+        "p": [
+          "Self drive is offered on selected cars, and the list changes with availability, so ask for the current self-drive cars for your dates. If the car you want isn't available as self drive, you can book it <a href=\"/rent-a-car-with-driver-islamabad/\">with a driver</a> instead."
+        ]
+      }
+    ],
+    "ratesH": "Self drive rates in Islamabad",
+    "cars": [
+      "alto",
+      "cultus",
+      "city",
+      "corolla"
+    ],
+    "nearbyH": "Related services",
+    "nearby": [
+      "rent-a-car-with-driver-islamabad",
+      "monthly-car-rental-islamabad",
+      "islamabad-airport-rent-a-car",
+      "rent-a-car-islamabad"
+    ],
+    "faqs": [
+      {
+        "q": "What documents do I need for self drive in Islamabad?",
+        "a": "Your original CNIC (or passport for foreign nationals), a valid driving licence and a refundable security deposit. We confirm the deposit amount for your car when we send the quote."
+      },
+      {
+        "q": "Is there a security deposit for self drive?",
+        "a": "Yes. Self drive needs a refundable security deposit. The amount depends on the car and is confirmed in your quote. It is returned when the car comes back on time and in the same condition."
+      },
+      {
+        "q": "What does a daily mileage limit mean?",
+        "a": "Some self-drive rates include a set number of kilometres per day, and extra kilometres are charged per km. We tell you whether your rate has a limit, and the per-km charge, before you book."
+      },
+      {
+        "q": "Can I take a self-drive car out of Islamabad?",
+        "a": "Tell us your route when you book. Trips outside Islamabad and Rawalpindi need to be agreed in advance, and for mountain areas we may recommend a car with a driver experienced on hill roads."
+      }
+    ],
+    "carsH": "Choose your car"
+  },
+  {
+    "slug": "monthly-car-rental-islamabad",
+    "type": "service",
+    "group": "service",
+    "name": "Monthly car rental",
+    "place": "Islamabad",
+    "in": "by the month in Islamabad",
+    "serviceType": "Monthly car rental",
+    "title": "Monthly Car Rental in Islamabad | SLC Car Rental Services",
+    "description": "Monthly car rental in Islamabad and Rawalpindi for companies, NGOs and families. Dedicated driver or self drive, one monthly invoice. {{site.years}} years' experience.",
+    "h1": "Monthly Car Rental in Islamabad",
+    "lead": "{{site.name}} rents cars by the month in Islamabad and Rawalpindi, with a dedicated driver or as self drive. For {{site.years}} years we have run monthly and project contracts for NGOs, banks and companies, as well as for families who need a car for a few weeks or months.",
+    "sections": [
+      {
+        "h": "Monthly rental for companies and NGOs",
+        "p": [
+          "Organisations get a fixed monthly rate per car, a dedicated driver who learns your team's routine, and one consolidated invoice. Several cars can sit on the same contract.",
+          "We have worked with organisations such as USAID, iEARN, Silkbank, Muslim Hands and TSL Builders. See <a href=\"/about/\">About us</a> for more."
+        ]
+      },
+      {
+        "h": "Monthly rental for families and visitors",
+        "p": [
+          "Relatives visiting from abroad, a new job in Islamabad, or your own car in the workshop: a monthly rental gives you a car without buying one. Choose a self-drive car or a car with a regular driver for school runs and the office commute."
+        ]
+      },
+      {
+        "h": "What affects the monthly rate",
+        "list": [
+          "The car you choose",
+          "With driver or self drive",
+          "Whether fuel is included",
+          "Daily hours and expected mileage",
+          "The number of cars on the contract"
+        ]
+      }
+    ],
+    "ratesH": "Monthly car rental rates in Islamabad",
+    "cars": [
+      "alto",
+      "corolla",
+      "city",
+      "hiace"
+    ],
+    "nearbyH": "Related services",
+    "nearby": [
+      "rent-a-car-with-driver-islamabad",
+      "self-drive-rent-a-car-islamabad",
+      "rent-a-car-blue-area-islamabad",
+      "rent-a-car-islamabad"
+    ],
+    "faqs": [
+      {
+        "q": "How much is a monthly car rental in Islamabad?",
+        "a": "It depends on the car, whether a driver is included, fuel, and the daily hours and mileage you need. Send us your requirements and we quote a fixed monthly rate per car, with no hidden charges."
+      },
+      {
+        "q": "Can the same driver come every day?",
+        "a": "Yes. On a monthly contract with driver, a dedicated driver is assigned to your car, so they learn your routes and timings. If the driver is on leave, we send a replacement."
+      },
+      {
+        "q": "Do you provide corporate invoicing for monthly rentals?",
+        "a": "Yes. Companies, banks and NGOs receive one consolidated monthly invoice for all cars on the contract. We have provided corporate and NGO contracts for {{site.years}} years."
+      }
+    ],
+    "carsH": "Popular cars for monthly rental"
+  },
+  {
+    "slug": "islamabad-airport-rent-a-car",
+    "type": "service",
+    "group": "service",
+    "name": "Airport pick & drop",
+    "place": "Islamabad International Airport",
+    "in": "at Islamabad Airport",
+    "serviceType": "Airport transfer and car rental",
+    "title": "Islamabad Airport Rent a Car & Pick and Drop | SLC",
+    "description": "Islamabad Airport pick and drop and rent a car, 24/7. Your flight is tracked, so the driver waits even if you land late. Sedans, SUVs, Hiace. Call to book.",
+    "h1": "Islamabad Airport Rent a Car, Pick and Drop",
+    "lead": "{{site.name}} provides 24/7 pick and drop at Islamabad International Airport, and cars with or without a driver for your whole stay. We track your flight, so the driver is waiting for you even if you land late.",
+    "sections": [
+      {
+        "h": "Airport pick-up",
+        "p": [
+          "Send us your flight number, arrival time and destination. The driver meets you at arrivals and takes you to any sector of Islamabad, to Rawalpindi, Bahria Town or DHA, or on to another city. For families and groups with luggage, choose an SUV or a Toyota Hiace."
+        ]
+      },
+      {
+        "h": "Airport drop-off",
+        "p": [
+          "Flying out? We collect you from your home, office or hotel with time to spare for check-in, at any hour of the day or night. Tell us the flight time and we work out the pick-up time with you."
+        ]
+      },
+      {
+        "h": "Keep the car for your stay",
+        "p": [
+          "Visiting Islamabad? Keep the same car, with or without a driver, for the length of your trip, and we drop you back at the airport when you leave."
+        ]
+      }
+    ],
+    "ratesH": "Airport transfer and rental rates",
+    "cars": [
+      "corolla",
+      "civic",
+      "prado",
+      "hiace"
+    ],
+    "nearbyH": "Related pages",
+    "nearby": [
+      "rent-a-car-with-driver-islamabad",
+      "rent-a-car-g13-islamabad",
+      "rent-a-car-g11-islamabad",
+      "rent-a-car-islamabad"
+    ],
+    "faqs": [
+      {
+        "q": "Do you provide pick and drop at Islamabad International Airport 24/7?",
+        "a": "Yes. We provide airport pick-up and drop-off at Islamabad International Airport at any hour of the day or night, to and from anywhere in Islamabad, Rawalpindi and beyond."
+      },
+      {
+        "q": "What happens if my flight is delayed?",
+        "a": "We track your flight using the flight number you give us, so the driver works to the actual landing time and is waiting when you come out of arrivals."
+      },
+      {
+        "q": "Can you pick up a group from the airport?",
+        "a": "Yes. A Toyota Hiace seats 14 passengers and a Coaster seats 29, with room for luggage. For a family, a 7-seat SUV such as the Prado or Fortuner is usually enough."
+      }
+    ],
+    "carsH": "Popular cars for airport transfers",
+    "pickup": "Islamabad International Airport"
+  },
+  {
+    "slug": "wedding-car-rental-islamabad",
+    "type": "service",
+    "group": "service",
+    "name": "Wedding car rental",
+    "place": "Islamabad",
+    "in": "as a wedding car in Islamabad",
+    "serviceType": "Wedding car rental",
+    "title": "Wedding Car Rental in Islamabad | SLC Car Rental Services",
+    "description": "Wedding car rental in Islamabad and Rawalpindi: Civic, Prado and Land Cruiser for the barat, Hiace and Coaster for guests, with drivers. Call or WhatsApp.",
+    "h1": "Wedding Car Rental in Islamabad",
+    "lead": "{{site.name}} provides wedding cars in Islamabad and Rawalpindi: sedans and SUVs such as the Honda Civic, Toyota Prado and Land Cruiser for the barat and family, and Hiace and Coaster vans for guests. Every car comes with a professional driver and arrives on time.",
+    "sections": [
+      {
+        "h": "Cars for the barat, family and guests",
+        "p": [
+          "Most weddings need more than one vehicle. Tell us the number of guests and the events (mehndi, barat, walima), and we'll suggest a fleet:"
+        ],
+        "list": [
+          "For the groom: Honda Civic, Toyota Prado or Land Cruiser",
+          "For family: Toyota Corolla, Honda City or Toyota Fortuner",
+          "For guests: Toyota Hiace (14 seats) and Coaster (29 seats)"
+        ]
+      },
+      {
+        "h": "Book early for the wedding season",
+        "p": [
+          "Demand peaks in the wedding season, especially in winter. Book as soon as your dates are fixed so the cars you want are reserved for every event. Ask us if you'd like the car decorated."
+        ]
+      }
+    ],
+    "ratesH": "Wedding car rental rates",
+    "cars": [
+      "civic",
+      "prado",
+      "landcruiser",
+      "coaster"
+    ],
+    "nearbyH": "Related pages",
+    "nearby": [
+      "rent-a-car-with-driver-islamabad",
+      "rent-a-car-bahria-town",
+      "rent-a-car-rawalpindi",
+      "rent-a-car-islamabad"
+    ],
+    "faqs": [
+      {
+        "q": "Which car is best for a wedding in Islamabad?",
+        "a": "For the groom, the Toyota Land Cruiser, Prado and Honda Civic are the most popular choices. For family, add Corollas or a Fortuner, and for guests a Toyota Hiace (14 seats) or Coaster (29 seats)."
+      },
+      {
+        "q": "Can I book several cars for one wedding?",
+        "a": "Yes. We can provide a full wedding fleet, from the groom's car to vans for guests, for each event. All the cars come with drivers and arrive at the venue together."
+      },
+      {
+        "q": "Do wedding cars come with a driver?",
+        "a": "Yes. Wedding cars are booked with a professional driver who is told the venues and timings in advance. The driver stays with the car for the agreed hours of each event."
+      }
+    ],
+    "carsH": "Popular wedding cars"
+  }
+]

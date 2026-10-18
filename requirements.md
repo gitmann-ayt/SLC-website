@@ -29,10 +29,13 @@ Build a fast, responsive, search-engine-optimised marketing website for SLC Car 
 | Page | URL | Purpose |
 |---|---|---|
 | Home | `/` | Hero with contact/booking, fleet preview, services, experience, clients & testimonials, how to book, FAQ, contact |
-| Our Fleet | `/fleet.html` | Full fleet, filterable by category, with an enquiry action on every car |
-| About Us | `/about.html` | Company story (SmartLink Consultants, 13 years), values, clients, photo credits |
-| Contact Us | `/contact.html` | Full contact page: booking form, phone, WhatsApp, email, address, hours, map |
+| Our Fleet | `/cars/` | Full fleet, filterable by category, with an enquiry action on every car |
+| About Us | `/about/` | Company story (SmartLink Consultants, 13 years), values, clients, photo credits |
+| Contact Us | `/contact/` | Full contact page: booking form, phone, WhatsApp, email, address, hours, map |
 | 404 | `/404.html` | Friendly not-found page with contact options |
+| City hubs | `/rent-a-car-islamabad/`, `/rent-a-car-rawalpindi/` | Target "rent a car Islamabad / Rawalpindi"; the Islamabad hub links every sector page |
+| Area pages | `/rent-a-car-g8-islamabad/` … (G-6–G-13, F-6–F-11, I-8, Blue Area, Bahria Town, DHA) | One page per sector, each with its own copy, rates table, FAQs and `Service` schema (added 18 Oct 2026, see `smartlink-seo-aeo-spec.md`) |
+| Service pages | `/rent-a-car-with-driver-islamabad/`, `/self-drive-rent-a-car-islamabad/`, `/monthly-car-rental-islamabad/`, `/islamabad-airport-rent-a-car/`, `/wedding-car-rental-islamabad/` | One page per service keyword |
 
 ## 4. Contact & conversion (highest priority)
 

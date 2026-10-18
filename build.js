@@ -6,9 +6,14 @@
  *
  * Pages live in src/pages/*.html and start with a meta comment:
  *   <!--meta {"title": "...", "description": "...", "nav": "fleet", "crumb": "Our Fleet"} -->
+ * src/pages/cars.html is published at /cars/ (index.html at /, 404.html stays /404.html).
  *
- * Inside pages and partials:
+ * Area, city and service landing pages (/rent-a-car-g9-islamabad/ etc.) are generated from
+ * src/data/areas.json with the template src/templates/landing.html.
+ *
+ * Inside pages, templates and partials:
  *   {{site.phoneDisplay}}   value from src/data/site.json (HTML-escaped)
+ *   {{meta.h1}}             value from the page's meta (HTML-escaped)
  *   {{@component arg}}      output of a component function below
  */
 const fs = require('fs');
@@ -25,6 +30,7 @@ const categories = readJSON('categories.json');
 const clients = readJSON('clients.json');
 const testimonials = readJSON('testimonials.json').items;
 const faqs = readJSON('faqs.json');
+const areas = readJSON('areas.json');
 const credits = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets/img/credits.json'), 'utf8'));
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -34,12 +40,31 @@ const wa = (text) => `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(t
 const icon = (name, cls = '') => `<svg class="icon ${cls}" aria-hidden="true"><use href="#i-${name}"/></svg>`;
 const catLabel = (id) => (categories.find((c) => c.id === id) || {}).long || id;
 const carName = (c) => `${c.make} ${c.model}`;
+const pageUrl = (slug) => `/${slug}/`;
+const stripTags = (s) => String(s).replace(/<[^>]+>/g, '');
+const money = (n) => `Rs ${Number(n).toLocaleString('en-US')}`;
+const addressLine = () => [site.address.officeNo, site.address.street, site.address.locality].filter(Boolean).join(', ');
+
+// {{site.x}} tokens in plain-text fields (FAQ answers, schema), unescaped: escape the result once where it is output.
+const fill = (s) =>
+  String(s ?? '').replace(/\{\{(site\.[\w.]+)\}\}/g, (_, p) => {
+    const v = get({ site }, p);
+    if (v === undefined) throw new Error(`Unknown token {{${p}}}`);
+    return v;
+  });
+
+const carById = Object.fromEntries(cars.map((c) => [c.id, c]));
+const areaBySlug = Object.fromEntries(areas.map((a) => [a.slug, a]));
+const faqById = Object.fromEntries(faqs.map((f) => [f.id, f]));
+const ratedCats = categories.filter((c) => c.dayRate);
+const hasMonthRates = categories.some((c) => c.monthRate);
 
 /* ---------------- components ---------------- */
 
-function carCard(c) {
+function carCard(c, place) {
   const name = carName(c);
-  const msg = `Assalam o Alaikum SLC, I'd like to rent the ${name}. Please share availability and rate.`;
+  const msg = `Assalam o Alaikum SLC, I'd like to rent the ${name}${place ? ` ${place}` : ''}. Please share availability and rate.`;
+  const alt = place ? `${name} for rent ${place}` : `${name} available for rent in ${site.city} with or without driver`;
   return `
 <article class="car-card" data-cat="${c.category}">
   <div class="car-media img-wrap">
@@ -47,7 +72,7 @@ function carCard(c) {
          srcset="/assets/img/cars/${c.id}-480.webp 480w, /assets/img/cars/${c.id}-800.webp 800w"
          sizes="(min-width: 1100px) 340px, (min-width: 700px) 45vw, 92vw"
          width="800" height="600" loading="lazy" decoding="async"
-         alt="${esc(name)} available for rent in ${esc(site.city)} with or without driver">
+         alt="${esc(alt)}">
     <span class="car-tag">${esc(catLabel(c.category))}</span>
   </div>
   <div class="car-body">
@@ -75,9 +100,18 @@ function fleet(arg) {
   return `
 <div class="fleet" data-fleet>
   <div class="tabs" role="tablist" aria-label="Filter cars by category">${tabs}</div>
-  <div class="car-grid">${list.map(carCard).join('')}</div>
-  <p class="fleet-empty" hidden>More cars in this category are available on request. <a href="/fleet.html">See the full fleet</a> or <a href="tel:${site.phoneTel}">call us</a>.</p>
+  <div class="car-grid">${list.map((c) => carCard(c)).join('')}</div>
+  <p class="fleet-empty" hidden>More cars in this category are available on request. <a href="/cars/">See the full fleet</a> or <a href="tel:${site.phoneTel}">call us</a>.</p>
 </div>`;
+}
+
+function pageCars(arg, meta) {
+  return `<div class="car-grid car-grid--4">${meta.cars
+    .map((id) => {
+      if (!carById[id]) throw new Error(`${meta.slug}: unknown car "${id}"`);
+      return carCard(carById[id], meta.in);
+    })
+    .join('')}</div>`;
 }
 
 function fleetCount() {
@@ -114,8 +148,10 @@ function testimonialCards() {
     .join('')}</div>`;
 }
 
-function faq() {
-  const items = faqs
+// {{@faq}} = the site-wide FAQ (src/data/faqs.json); {{@faq page}} = the landing page's own questions.
+function faq(arg, meta) {
+  const list = (arg === 'page' ? meta.faqs : faqs).map((f) => ({ q: fill(f.q), a: fill(f.a) }));
+  const items = list
     .map(
       (f, i) => `
   <details class="faq-item"${i === 0 ? ' open' : ''}>
@@ -127,23 +163,24 @@ function faq() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+    mainEntity: list.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
   };
   return `<div class="faq">${items}</div>\n<script type="application/ld+json">${JSON.stringify(schema)}</script>`;
 }
 
-function bookingForm(variant = 'hero') {
+function bookingForm(variant = 'hero', meta = {}) {
   const id = variant;
   const carOptions = categories
     .map((cat) => `<optgroup label="${esc(cat.long)}">${cars.filter((c) => c.category === cat.id).map((c) => `<option>${esc(carName(c))}</option>`).join('')}</optgroup>`)
     .join('');
-  const full = variant !== 'hero';
+  const full = variant === 'contact';
+  const pickup = meta.pickup || (meta.type && meta.type !== 'service' ? meta.place : '');
   return `
 <form class="book-form book-form--${variant}" data-book-form data-wa="${site.whatsapp}" data-email="${esc(site.email)}" novalidate>
   <div class="form-grid">
     <div class="field">
       <label for="${id}-pickup">Pick-up city / location</label>
-      <input id="${id}-pickup" name="pickup" type="text" autocomplete="address-level2" placeholder="e.g. Islamabad Airport" required>
+      <input id="${id}-pickup" name="pickup" type="text" autocomplete="address-level2" placeholder="e.g. Islamabad Airport"${pickup ? ` value="${esc(pickup)}"` : ''} required>
     </div>
     <div class="field">
       <label for="${id}-car">Preferred car</label>
@@ -167,8 +204,8 @@ function bookingForm(variant = 'hero') {
     </div>
     <fieldset class="field field--full seg">
       <legend>Service</legend>
-      <label><input type="radio" name="driver" value="With driver" checked><span>With driver</span></label>
-      <label><input type="radio" name="driver" value="Self drive"><span>Self drive</span></label>
+      <label><input type="radio" name="driver" value="With driver"${meta.slug === 'self-drive-rent-a-car-islamabad' ? '' : ' checked'}><span>With driver</span></label>
+      <label><input type="radio" name="driver" value="Self drive"${meta.slug === 'self-drive-rent-a-car-islamabad' ? ' checked' : ''}><span>Self drive</span></label>
     </fieldset>
     ${full ? `<div class="field field--full">
       <label for="${id}-msg">Anything else? <span class="opt">(optional)</span></label>
@@ -190,7 +227,7 @@ function contactList() {
   <li>${icon('phone')}<div><span class="cl-label">Call us 24/7</span><a href="tel:${site.phoneTel}">${esc(site.phoneDisplay)}</a>${site.phone2Display ? `<a href="tel:${site.phone2Tel}">${esc(site.phone2Display)}</a>` : ''}</div></li>
   <li>${icon('whatsapp')}<div><span class="cl-label">WhatsApp</span><a href="${wa('Assalam o Alaikum SLC, I need a car on rent.')}" target="_blank" rel="noopener">Chat with us now</a></div></li>
   <li>${icon('mail')}<div><span class="cl-label">Email</span><a href="mailto:${site.email}">${esc(site.email)}</a></div></li>
-  <li>${icon('pin')}<div><span class="cl-label">Office</span><address>${esc(site.address.street)}, ${esc(site.address.locality)}, Pakistan</address></div></li>
+  <li>${icon('pin')}<div><span class="cl-label">Office</span><address>${esc(addressLine())}, Pakistan</address></div></li>
   <li>${icon('clock')}<div><span class="cl-label">Hours</span><span>${esc(site.hours)}</span></div></li>
 </ul>`;
 }
@@ -213,9 +250,98 @@ function credits_() {
     .join('')}</ul>`;
 }
 
+/* ----- landing-page components (meta = the page's entry in areas.json) ----- */
+
+function crumbs(arg, meta) {
+  const parts = meta.crumbs.map((c, i) =>
+    i === meta.crumbs.length - 1 ? `<span aria-current="page">${esc(c.name)}</span>` : `<a href="${c.path}">${esc(c.name)}</a>`
+  );
+  return `<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>${parts.join('<span aria-hidden="true">/</span>')}</nav>`;
+}
+
+function lead(arg, meta) {
+  return meta.lead;
+}
+
+function napLine() {
+  return `<p class="nap">${icon('pin')}<span><strong>${esc(site.name)}</strong> · ${esc(addressLine())} · ${esc(site.hours)}</span></p>`;
+}
+
+function waPage(arg, meta) {
+  return wa(`Assalam o Alaikum SLC, I need a car on rent ${meta.in}.`);
+}
+
+function sections(arg, meta) {
+  return meta.sections
+    .map(
+      (s) =>
+        `<h2>${esc(s.h)}</h2>\n${(s.p || []).map((p) => `<p>${p}</p>`).join('\n')}` +
+        (s.list ? `\n<ul class="ticks">${s.list.map((li) => `<li>${icon('check')}<span>${esc(li)}</span></li>`).join('')}</ul>` : '') +
+        (s.html ? '\n' + render(s.html, meta) : '')
+    )
+    .join('\n');
+}
+
+function rates(arg, meta) {
+  const cell = (n) => `<td>${n ? `From ${money(n)}` : `<span class="rate-ask">Ask for rate</span>`}</td>`;
+  const rows = categories
+    .map((cat) => {
+      const list = cars.filter((c) => c.category === cat.id);
+      const seats = list.map((c) => c.seats);
+      const lo = Math.min(...seats), hi = Math.max(...seats);
+      return `<tr><th scope="row">${esc(cat.long)}</th><td>${esc(list.map(carName).join(', '))}</td><td>${lo === hi ? lo : `${lo}–${hi}`}</td>${cell(cat.dayRate)}${hasMonthRates ? cell(cat.monthRate) : ''}</tr>`;
+    })
+    .join('\n');
+  const updated = site.ratesUpdated
+    ? `Rates last updated <time datetime="${esc(site.ratesUpdated)}">${new Date(site.ratesUpdated).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</time>. `
+    : '';
+  return `
+<div class="table-wrap">
+<table class="rates">
+  <caption>${esc(meta.ratesH || `Car rental rates ${meta.in}`)}, by car type</caption>
+  <thead><tr><th scope="col">Car type</th><th scope="col">Popular models</th><th scope="col">Seats</th><th scope="col">Per day</th>${hasMonthRates ? '<th scope="col">Per month</th>' : ''}</tr></thead>
+  <tbody>
+${rows}
+  </tbody>
+</table>
+</div>
+<p class="rates-note">${updated}The final rate depends on the car, your dates, with or without driver, and fuel. <a href="${waPage(null, meta)}" target="_blank" rel="noopener">Ask on WhatsApp</a> or <a href="tel:${site.phoneTel}">call ${esc(site.phoneDisplay)}</a> and we confirm the exact rate before you book.</p>`;
+}
+
+const ratesHeading = (arg, meta) => esc(meta.ratesH || `Car rental rates ${meta.in}`);
+const carsHeading = (arg, meta) => esc(meta.carsH || `Popular cars on rent ${meta.in}`);
+const faqHeading = (arg, meta) => esc(meta.type === 'service' ? `${meta.name}: questions & answers` : `FAQs: renting a car ${meta.in}`);
+const nearbyHeading = (arg, meta) => esc(meta.nearbyH || `Also serving near ${meta.name}`);
+const linkLabel = (a) => (a.type === 'service' ? a.name : `Rent a car in ${a.name}`);
+
+function nearby(arg, meta) {
+  return `<ul class="chips">${meta.nearby
+    .map((slug) => {
+      const a = areaBySlug[slug];
+      if (!a) throw new Error(`${meta.slug}: unknown nearby page "${slug}"`);
+      return `<li><a href="${pageUrl(slug)}">${esc(linkLabel(a))}</a></li>`;
+    })
+    .join('')}</ul>`;
+}
+
+// {{@areaGrid islamabad}} = Islamabad sectors; {{@areaGrid all}} = both cities + every area.
+function areaGrid(arg) {
+  const list = areas.filter((a) => (arg === 'all' ? a.type !== 'service' : a.group === arg));
+  return `<ul class="area-grid">${list
+    .map((a) => `<li><a href="${pageUrl(a.slug)}"><span class="ag-pre">Rent a car in</span><strong>${esc(a.name)}</strong><small>${esc(a.sub || '')}</small></a></li>`)
+    .join('')}</ul>`;
+}
+
+// {{@pageLinks areas}} / {{@pageLinks services}}: plain link lists for the footer.
+function pageLinks(arg) {
+  const list = areas.filter((a) => (arg === 'services' ? a.type === 'service' : a.type !== 'service'));
+  return `<ul>${list.map((a) => `<li><a href="${pageUrl(a.slug)}">${esc(linkLabel(a))}</a></li>`).join('')}</ul>`;
+}
+
 const components = {
-  fleet, fleetCount, carList, clients: clientsStrip, clientNames, testimonials: testimonialCards, faq,
+  fleet, pageCars, fleetCount, carList, clients: clientsStrip, clientNames, testimonials: testimonialCards, faq,
   bookingForm, contactList, map, wa: waLink, credits: credits_, year: () => String(new Date().getFullYear()),
+  crumbs, lead, napLine, waPage, sections, rates, ratesHeading, carsHeading, faqHeading, nearbyHeading, nearby, areaGrid, pageLinks,
 };
 
 /* ---------------- page shell ---------------- */
@@ -236,32 +362,48 @@ function businessSchema() {
     slogan: `${site.years} years of trusted car rental in Pakistan`,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: site.address.street,
+      streetAddress: [site.address.officeNo, site.address.street].filter(Boolean).join(', '),
       addressLocality: site.address.locality,
       addressRegion: site.address.region,
       postalCode: site.address.postalCode,
       addressCountry: site.address.country,
     },
-    areaServed: site.areas.map((a) => ({ '@type': 'City', name: a })),
+    ...(site.geo ? { geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng } } : {}),
+    ...(site.mapsUrl ? { hasMap: site.mapsUrl } : {}),
+    areaServed: [
+      ...site.areas.map((a) => ({ '@type': 'City', name: a })),
+      ...areas.filter((a) => a.type === 'area').map((a) => ({ '@type': 'Place', name: a.place })),
+    ],
     openingHours: site.hoursSchema,
-    priceRange: '$$',
-    sameAs: Object.values(site.social).filter(Boolean),
+    priceRange: ratedCats.length ? `${money(Math.min(...ratedCats.map((c) => c.dayRate)))} - ${money(Math.max(...ratedCats.map((c) => c.dayRate)))}` : '$$',
+    sameAs: [...Object.values(site.social), site.mapsUrl].filter(Boolean),
   };
   return `<script type="application/ld+json">${JSON.stringify(s)}</script>`;
 }
 
+function websiteSchema() {
+  return `<script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': abs('/#website'),
+    name: site.name,
+    alternateName: 'SLC Rent a Car',
+    url: abs('/'),
+    publisher: { '@id': abs('/#business') },
+    inLanguage: 'en-PK',
+  })}</script>`;
+}
+
 function head(meta) {
   const url = abs(meta.path);
-  const crumbs = meta.crumb
+  const crumbs = meta.crumbs
     ? `<script type="application/ld+json">${JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: abs('/') },
-          { '@type': 'ListItem', position: 2, name: meta.crumb, item: url },
-        ],
+        itemListElement: [{ name: 'Home', path: '/' }, ...meta.crumbs].map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: abs(c.path) })),
       })}</script>`
     : '';
+  const extra = (meta.schemas || []).map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join('\n');
   const ga = site.gaId
     ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${site.gaId}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${site.gaId}');</script>`
     : '';
@@ -287,6 +429,9 @@ ${meta.noindex ? '<meta name="robots" content="noindex">' : `<link rel="canonica
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_PK">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(meta.title)}">
+<meta name="twitter:description" content="${esc(meta.description)}">
+<meta name="twitter:image" content="${abs('/assets/img/og-image.jpg')}">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="/assets/img/icon-192.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -299,7 +444,9 @@ ${heroPreload}
 <script>document.documentElement.className='js'</script>
 <script src="/assets/js/main.js?v=${BUILD_ID}" defer></script>
 ${businessSchema()}
+${meta.path === '/' ? websiteSchema() : ''}
 ${crumbs}
+${extra}
 ${ga}
 </head>`;
 }
@@ -311,7 +458,7 @@ function render(tpl, meta) {
     .replace(/\{\{>\s*([\w-]+)\s*\}\}/g, (_, name) => render(fs.readFileSync(path.join(SRC, 'partials', name + '.html'), 'utf8'), meta))
     .replace(/\{\{@(\w+)(?:\s+([^}]*))?\}\}/g, (_, name, arg) => {
       if (!components[name]) throw new Error(`Unknown component @${name}`);
-      return components[name](arg && arg.trim());
+      return components[name](arg && arg.trim(), meta);
     })
     .replace(/\{\{nav:(\w+)\}\}/g, (_, n) => (meta.nav === n ? ' aria-current="page"' : ''))
     .replace(/\{\{([\w.]+)\}\}/g, (_, p) => {
@@ -332,36 +479,138 @@ function copyDir(from, to) {
   }
 }
 
+// "/" → dist/index.html, "/cars/" → dist/cars/index.html, "/404.html" → dist/404.html
+const distFile = (p) => path.join(DIST, p.endsWith('/') ? p + 'index.html' : p);
+
 fs.rmSync(DIST, { recursive: true, force: true });
 fs.mkdirSync(DIST, { recursive: true });
 copyDir(path.join(ROOT, 'assets'), path.join(DIST, 'assets'));
 copyDir(path.join(SRC, 'static'), DIST);
 
+const built = []; // { meta } of every page, in sitemap order
+const titles = new Map();
+
+function emit(meta, body) {
+  for (const k of ['title', 'description']) meta[k] = render(meta[k], meta).replace(/&amp;/g, '&');
+  if (meta.title.length > 60) console.warn(`  ! ${meta.path}: title is ${meta.title.length} chars (max 60)`);
+  if (meta.description.length > 155) console.warn(`  ! ${meta.path}: description is ${meta.description.length} chars (max 155)`);
+  if (titles.has(meta.title)) console.warn(`  ! ${meta.path}: same title as ${titles.get(meta.title)}`);
+  titles.set(meta.title, meta.path);
+  const out = distFile(meta.path);
+  fs.mkdirSync(path.dirname(out), { recursive: true });
+  fs.writeFileSync(out, head(meta) + '\n' + body);
+  built.push(meta);
+  console.log(`  ✓ ${meta.path}`);
+}
+
+// Hand-written pages
 const pages = fs.readdirSync(path.join(SRC, 'pages')).filter((f) => f.endsWith('.html'));
-const sitemap = [];
+pages.sort((a, b) => (a === 'index.html' ? -1 : b === 'index.html' ? 1 : a.localeCompare(b)));
 for (const file of pages) {
   const raw = fs.readFileSync(path.join(SRC, 'pages', file), 'utf8');
   const m = raw.match(/^<!--meta\s+([\s\S]*?)-->\s*/);
   if (!m) throw new Error(`${file}: missing meta comment`);
   const meta = JSON.parse(m[1]);
-  meta.path = file === 'index.html' ? '/' : '/' + file;
-  for (const k of ['title', 'description']) meta[k] = render(meta[k], meta).replace(/&amp;/g, '&');
-  if (meta.title.length > 65) console.warn(`  ! ${file}: title is ${meta.title.length} chars`);
-  if (meta.description.length > 165) console.warn(`  ! ${file}: description is ${meta.description.length} chars`);
-  const body = render(raw.slice(m[0].length), meta);
-  fs.writeFileSync(path.join(DIST, file), head(meta) + '\n' + body);
-  if (!meta.noindex) sitemap.push(meta.path);
-  console.log(`  ✓ ${file}`);
+  const name = file.replace(/\.html$/, '');
+  meta.path = name === 'index' ? '/' : name === '404' ? '/404.html' : `/${name}/`;
+  if (meta.crumb) meta.crumbs = [{ name: meta.crumb, path: meta.path }];
+  emit(meta, render(raw.slice(m[0].length), meta));
 }
 
+// Generated landing pages: cities, areas, services
+const landing = fs.readFileSync(path.join(SRC, 'templates', 'landing.html'), 'utf8');
+for (const a of areas) {
+  const parent = a.parent && areaBySlug[a.parent];
+  if (a.parent && !parent) throw new Error(`${a.slug}: unknown parent "${a.parent}"`);
+  const meta = {
+    ...a,
+    path: pageUrl(a.slug),
+    nav: a.type === 'service' ? 'services' : 'areas',
+    faqs: [...a.faqs, ...(a.type === 'area' ? [faqById.documents] : [])],
+  };
+  meta.crumbs = [
+    ...(parent ? [{ name: parent.h1, path: pageUrl(parent.slug) }] : []),
+    { name: a.type === 'area' ? a.name : a.h1, path: meta.path },
+  ];
+  meta.schemas = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      name: a.h1,
+      serviceType: a.serviceType || 'Car rental',
+      url: abs(meta.path),
+      description: stripTags(fill(a.lead)),
+      provider: { '@id': abs('/#business') },
+      areaServed:
+        a.type === 'service'
+          ? [{ '@type': 'City', name: 'Islamabad' }, { '@type': 'City', name: 'Rawalpindi' }]
+          : { '@type': a.type === 'city' ? 'City' : 'Place', name: a.place },
+      ...(ratedCats.length
+        ? {
+            offers: {
+              '@type': 'AggregateOffer',
+              priceCurrency: 'PKR',
+              lowPrice: Math.min(...ratedCats.map((c) => c.dayRate)),
+              highPrice: Math.max(...ratedCats.map((c) => c.dayRate)),
+            },
+          }
+        : {}),
+    },
+  ];
+  emit(meta, render(landing, meta));
+}
+
+// sitemap.xml, robots.txt, llms.txt, manifest
+const indexable = built.filter((m) => !m.noindex);
+const priority = (m) => (m.path === '/' ? '1.0' : m.type === 'city' || m.slug === 'rent-a-car-g8-islamabad' ? '0.9' : '0.8');
 const today = new Date().toISOString().slice(0, 10);
 fs.writeFileSync(
   path.join(DIST, 'sitemap.xml'),
-  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemap
-    .map((p) => `  <url><loc>${abs(p)}</loc><lastmod>${today}</lastmod><priority>${p === '/' ? '1.0' : '0.8'}</priority></url>`)
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${indexable
+    .map((m) => `  <url><loc>${abs(m.path)}</loc><lastmod>${today}</lastmod><priority>${priority(m)}</priority></url>`)
     .join('\n')}\n</urlset>\n`
 );
-fs.writeFileSync(path.join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${abs('/sitemap.xml')}\n`);
+
+// AI search and answer engines are named explicitly so nobody blocks them by accident with a later "Disallow".
+const aiBots = ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'PerplexityBot', 'ClaudeBot', 'Claude-SearchBot', 'Google-Extended', 'Bingbot', 'Applebot-Extended'];
+fs.writeFileSync(
+  path.join(DIST, 'robots.txt'),
+  `User-agent: *\nAllow: /\n\n${aiBots.map((b) => `User-agent: ${b}`).join('\n')}\nAllow: /\n\nSitemap: ${abs('/sitemap.xml')}\n`
+);
+
+const llmLink = (m, note) => `- [${stripTags(m.h1 || m.title.split(' | ')[0])}](${abs(m.path)})${note ? `: ${note}` : ''}`;
+const byType = (t) => built.filter((m) => m.type === t);
+fs.writeFileSync(
+  path.join(DIST, 'llms.txt'),
+  `# ${site.name}
+
+> ${site.name} (${site.legalName}) is a car rental company in ${addressLine()}, Pakistan, in business since ${site.foundedYear}. It rents cars with a driver or as self drive in Islamabad and Rawalpindi, from the Suzuki Alto to the Toyota Prado, Land Cruiser, Hiace and Coaster, with delivery to every sector. Phone/WhatsApp ${site.phoneDisplay}. Open ${site.hours}.
+
+## Key facts
+- Office: ${addressLine()}, ${site.address.region}, Pakistan
+- Phone: ${site.phoneDisplay} · WhatsApp: +${site.whatsapp} · Email: ${site.email}
+- Hours: ${site.hours}
+- Experience: ${site.years} years (since ${site.foundedYear})
+- Services: rent a car with driver, self drive (selected cars; CNIC, driving licence and refundable deposit), monthly and corporate contracts, Islamabad Airport pick and drop, wedding cars, out-of-city tours
+- Fleet (${cars.length} models): ${cars.map(carName).join(', ')}
+- Organisations served: ${clients.map((c) => c.name).join(', ')}
+- Rates: ${ratedCats.length ? ratedCats.map((c) => `${c.long} from ${money(c.dayRate)}/day`).join('; ') : 'quoted per booking; call or WhatsApp for the current rate'}
+
+## Key pages
+${llmLink(built.find((m) => m.path === '/'), 'home page')}
+${byType('city').map((m) => llmLink(m)).join('\n')}
+- [Fleet](${abs('/cars/')}): all ${cars.length} cars
+- [About](${abs('/about/')})
+- [Contact & booking](${abs('/contact/')})
+
+## Areas
+${byType('area').map((m) => llmLink(m)).join('\n')}
+
+## Services
+${byType('service').map((m) => llmLink(m)).join('\n')}
+`
+);
+
 fs.writeFileSync(
   path.join(DIST, 'site.webmanifest'),
   JSON.stringify({
@@ -370,4 +619,14 @@ fs.writeFileSync(
     icons: [{ src: '/assets/img/icon-192.png', sizes: '192x192', type: 'image/png' }, { src: '/assets/img/icon-512.png', sizes: '512x512', type: 'image/png' }],
   })
 );
-console.log(`Built ${pages.length} pages → dist/`);
+
+// Every internal link must point at a page or file that exists.
+let broken = 0;
+for (const m of built) {
+  const html = fs.readFileSync(distFile(m.path), 'utf8');
+  for (const [, href] of html.matchAll(/href="(\/[^"#?]*)/g)) {
+    const target = href.endsWith('/') ? path.join(DIST, href, 'index.html') : path.join(DIST, href);
+    if (!fs.existsSync(target)) { console.warn(`  ! ${m.path}: broken link ${href}`); broken++; }
+  }
+}
+console.log(`Built ${built.length} pages → dist/${broken ? ` (${broken} broken links)` : ''}`);

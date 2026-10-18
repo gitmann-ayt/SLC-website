@@ -1,5 +1,5 @@
 {
-  "_note": "PLACEHOLDER contact details — replace every value marked TBC before launch. Everything on the site reads from this file.",
+  "_note": "PLACEHOLDER contact details: replace every value marked TBC before launch (office number, phone, WhatsApp, email, domain, geo). Everything on the site reads from this file.",
   "name": "SLC Car Rental Services",
   "legalName": "SmartLink Consultants",
   "shortName": "SLC",
@@ -8,7 +8,14 @@
   "foundedYear": 2013,
   "city": "Islamabad",
   "region": "Islamabad Capital Territory",
-  "areas": ["Islamabad", "Rawalpindi", "Lahore", "Peshawar", "Murree", "Northern Areas"],
+  "areas": [
+    "Islamabad",
+    "Rawalpindi",
+    "Lahore",
+    "Peshawar",
+    "Murree",
+    "Northern Areas"
+  ],
   "phoneDisplay": "+92 300 0000000",
   "phoneTel": "+923000000000",
   "phone2Display": "+92 51 0000000",
@@ -16,19 +23,24 @@
   "whatsapp": "923000000000",
   "email": "info@example.com",
   "address": {
-    "street": "Office address TBC",
+    "street": "Kashif Bell-Air Plaza, G-8 Markaz",
+    "officeNo": "",
     "locality": "Islamabad",
     "region": "Islamabad Capital Territory",
-    "postalCode": "44000",
+    "postalCode": "44080",
     "country": "PK"
   },
   "hours": "Mon–Sun, 24 hours",
   "hoursSchema": "Mo-Su 00:00-23:59",
-  "mapQuery": "Islamabad, Pakistan",
+  "mapQuery": "Kashif Bell Air Plaza, G-8 Markaz, Islamabad",
   "social": {
     "facebook": "",
     "instagram": "",
     "linkedin": ""
   },
-  "gaId": ""
+  "gaId": "",
+  "geo": null,
+  "mapsUrl": "",
+  "ratesUpdated": "",
+  "_ratesNote": "ratesUpdated: date the rates in categories.json were last checked, e.g. 2026-10-18. Leave empty until real rates are added."
 }

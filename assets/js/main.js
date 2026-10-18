@@ -123,6 +123,21 @@
     form.addEventListener('input', function (e) { if (e.target.classList.contains('is-invalid') && e.target.value.trim()) { e.target.classList.remove('is-invalid'); e.target.removeAttribute('aria-invalid'); } });
   });
 
+  /* ---------- analytics: count call and WhatsApp clicks as conversions (only when GA is set up) ---------- */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a || typeof window.gtag !== 'function') return;
+    var href = a.getAttribute('href');
+    var type = href.indexOf('tel:') === 0 ? 'call_click' : href.indexOf('https://wa.me/') === 0 ? 'whatsapp_click' : '';
+    if (type) window.gtag('event', type, { link_url: href.split('?')[0], page_path: location.pathname });
+  });
+  $$('[data-book-form]').forEach(function (form) {
+    // Runs after the booking handler above, which hides the error box when the form is valid.
+    form.addEventListener('submit', function () {
+      if (typeof window.gtag === 'function' && $('.form-error', form).hidden) window.gtag('event', 'whatsapp_booking', { page_path: location.pathname });
+    });
+  });
+
   /* ---------- map: load only on demand ---------- */
   $$('.map[data-map]').forEach(function (box) {
     var btn = $('.map-load', box);
