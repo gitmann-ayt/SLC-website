@@ -21,9 +21,38 @@
 
   /* ---------- images: shimmer until loaded, then fade in ---------- */
   $$('.img-wrap img').forEach(function (img) {
-    function done() { img.classList.add('is-loaded'); img.parentNode.classList.add('is-loaded'); }
+    function done() { img.classList.add('is-loaded'); img.closest('.img-wrap').classList.add('is-loaded'); }
     if (img.complete && img.naturalWidth) done();
     else { img.addEventListener('load', done); img.addEventListener('error', done); }
+  });
+
+  /* ---------- colour swatches: crossfade between a car's photos ---------- */
+  // Other colours have data-src only, so they download on the first hover/focus/tap of their swatch.
+  function photoFor(btn) {
+    var box = btn.closest('.car-card, .model-photo-wrap');
+    return box && $('.car-zoom img[data-colour="' + btn.dataset.colour + '"]', box);
+  }
+  function fetchPhoto(img) {
+    if (!img || !img.dataset.src) return;
+    img.sizes = img.dataset.sizes; img.srcset = img.dataset.srcset; img.src = img.dataset.src;
+    delete img.dataset.src;
+  }
+  $$('.swatch').forEach(function (btn) {
+    function warm() { fetchPhoto(photoFor(btn)); }
+    btn.addEventListener('pointerenter', warm);
+    btn.addEventListener('focus', warm);
+    btn.addEventListener('click', function () {
+      var img = photoFor(btn); if (!img) return;
+      fetchPhoto(img);
+      $$('.swatch', btn.parentNode).forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+      function show() {
+        if (btn.getAttribute('aria-pressed') !== 'true') return; // another colour was picked meanwhile
+        $$('.car-alt', img.parentNode).forEach(function (alt) { alt.classList.toggle('is-shown', alt === img); });
+      }
+      // crossfade only once the photo is there, so a slow connection never fades to an empty frame
+      if (!img.classList.contains('car-alt') || (img.complete && img.naturalWidth)) show();
+      else img.addEventListener('load', show, { once: true });
+    });
   });
 
   /* ---------- mobile menu ---------- */
@@ -186,7 +215,7 @@
 
   /* ---------- reveal on scroll ---------- */
   if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    var items = $$('.section-head, .car-card, .service, .step, .client, .t-card, .why-list li, .faq-item');
+    var items = $$('.section-head, .car-card, .service, .step, .marquee, .t-card, .why-list li, .faq-item');
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });

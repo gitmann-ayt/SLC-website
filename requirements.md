@@ -73,7 +73,7 @@ Contact must be **in the hero section** and in every other place a visitor might
 - Each car card shows: photo, make & model, category, seats, transmission, fuel, ideal use, and WhatsApp/Call buttons.
 - **Prices:** daily rates per car supplied by the client on 18 Oct 2026, from PKR 4,000 (Alto) to PKR 150,000 (Lexus LX 570). They live in `src/data/cars.json` (`rate`). Whether a rate includes driver and fuel is confirmed per booking. **[TBC]**
 - **Easy maintenance:** cars are stored in one data file (`src/data/cars.json`). Adding or removing a car means editing that file and rebuilding the site. No HTML changes are needed.
-- **Photo style:** car photos have their backgrounds removed and are converted to **black & white** for a consistent, professional look. They sit on a plain light background with a soft floor shadow. **[TODO]** the luxury cars and the Elantra (Mercedes S/E/C-Class, Audi A4/A5/A6, Lexus LX 570) still have ordinary colour photos and need the same treatment (add `<img>-1200.webp` and replace the 480/800 files).
+- **Photo style:** studio photos supplied by the client (19 Oct 2026), one per colour (white / black, white / grey for vans), shown in a 3:2 frame; visitors switch colour with swatches on the card and the car page. **[TODO]** Honda City: no photo supplied yet, it still shows the old black & white cut-out. The Wagon R "black" photo is actually silver.
 - Photos are freely licensed (Wikimedia Commons) and credited on the About page. The client may replace them with photos of their own cars later, which is recommended.
 
 ## 5a. Service areas

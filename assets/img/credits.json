@@ -1,33 +1,5 @@
 [
  {
-  "key": "alto",
-  "file": "File:Suzuki ALTO VAN (HBD-HA36V & HBD-HA25V).jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:Suzuki_ALTO_VAN_(HBD-HA36V_%26_HBD-HA25V).jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "Tokumeigakarinoaoshima"
- },
- {
-  "key": "wagonr",
-  "file": "File:2018 Suzuki Karimun Wagon R GL (front).jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:2018_Suzuki_Karimun_Wagon_R_GL_(front).jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "Alex Neman"
- },
- {
-  "key": "yaris",
-  "file": "File:2019 Toyota Vios 1.5 G facelift (Silver).jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:2019_Toyota_Vios_1.5_G_facelift_(Silver).jpg",
-  "license": "CC0",
-  "author": "Aaront1059"
- },
- {
-  "key": "corolla",
-  "file": "File:2018 Toyota Corolla Altis (E170) 1.8 V (front), East Surabaya.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:2018_Toyota_Corolla_Altis_(E170)_1.8_V_(front),_East_Surabaya.jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "Alex Neman"
- },
- {
   "key": "city",
   "file": "File:2019 Honda City E (Indonesia) front view.jpg",
   "page": "https://commons.wikimedia.org/wiki/File:2019_Honda_City_E_(Indonesia)_front_view.jpg",
@@ -35,129 +7,10 @@
   "author": "Andra Febrian"
  },
  {
-  "key": "civic",
-  "file": "File:2022 Honda Civic Sedan EX in Platinum White Pearl, front left.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:2022_Honda_Civic_Sedan_EX_in_Platinum_White_Pearl,_front_left.jpg",
-  "license": "CC BY-SA 3.0",
-  "author": "Mr.choppers"
- },
- {
-  "key": "brv",
-  "file": "File:2018 Honda BR-V 1.5 E CVT Prestige pre-facelift (front), West Surabaya (cropped).jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:2018_Honda_BR-V_1.5_E_CVT_Prestige_pre-facelift_(front),_West_Surabaya_(cropped).jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "Alex Neman"
- },
- {
-  "key": "fortuner",
-  "file": "File:2021 Toyota Fortuner 4.0 SRV 4x4 (Colombia) front view.png",
-  "page": "https://commons.wikimedia.org/wiki/File:2021_Toyota_Fortuner_4.0_SRV_4x4_(Colombia)_front_view.png",
-  "license": "CC BY 3.0",
-  "author": "Autosdeprimera"
- },
- {
-  "key": "prado",
-  "file": "File:Toyota LAND CRUISER PRADO TX (CBA-TRJ150W-GKTEK) front.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:Toyota_LAND_CRUISER_PRADO_TX_(CBA-TRJ150W-GKTEK)_front.jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "Tokumeigakarinoaoshima"
- },
- {
   "key": "landcruiser",
   "file": "File:2021 Toyota Land Cruiser 300 3.4 ZX (Colombia) front view 01.png",
   "page": "https://commons.wikimedia.org/wiki/File:2021_Toyota_Land_Cruiser_300_3.4_ZX_(Colombia)_front_view_01.png",
   "license": "CC BY 3.0",
   "author": "Autosdeprimera"
- },
- {
-  "key": "revo",
-  "file": "File:2015 Toyota Hilux Revo Smart Cab Prerunner 2.4 G Front.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:2015_Toyota_Hilux_Revo_Smart_Cab_Prerunner_2.4_G_Front.jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "M.rJirapat"
- },
- {
-  "key": "sportage",
-  "file": "File:2019 Kia Sportage EX in Modern Bronze, front right, 2024-03-31.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:2019_Kia_Sportage_EX_in_Modern_Bronze,_front_right,_2024-03-31.jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "Elise240SX"
- },
- {
-  "key": "tucson",
-  "file": "File:Hyundai Tucson (NX4, South Korea) front view.png",
-  "page": "https://commons.wikimedia.org/wiki/File:Hyundai_Tucson_(NX4,_South_Korea)_front_view.png",
-  "license": "CC BY 3.0",
-  "author": "융구티비YunKoo Tv"
- },
- {
-  "key": "hiace",
-  "file": "File:2019 Toyota HiAce Commuter.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:2019_Toyota_HiAce_Commuter.jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "Lawrence Ruiz"
- },
- {
-  "key": "coaster",
-  "file": "File:White Toyota Coaster Front.JPG",
-  "page": "https://commons.wikimedia.org/wiki/File:White_Toyota_Coaster_Front.JPG",
-  "license": "CC BY-SA 4.0",
-  "author": "Ominae"
- },
- {
-  "key": "elantra",
-  "file": "File:2021 Hyundai Elantra Limited in Quartz White, front right.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:2021_Hyundai_Elantra_Limited_in_Quartz_White,_front_right.jpg",
-  "license": "CC BY-SA 3.0",
-  "author": "Mr.choppers"
- },
- {
-  "key": "sclass",
-  "file": "File:Mercedes-Benz S 500 (W222) front view.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:Mercedes-Benz_S_500_(W222)_front_view.jpg",
-  "license": "CC BY 3.0",
-  "author": "Борис Ульзибат"
- },
- {
-  "key": "a6",
-  "file": "File:2019 FAW-Audi A6 L (front).jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:2019_FAW-Audi_A6_L_(front).jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "User3204"
- },
- {
-  "key": "a5",
-  "file": "File:Audi A5 Sportback 40 TFSI (F5, 2020) (52914443203).jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:Audi_A5_Sportback_40_TFSI_(F5,_2020)_(52914443203).jpg",
-  "license": "CC BY 2.0",
-  "author": "Charles from Port Chester, New York"
- },
- {
-  "key": "lx570",
-  "file": "File:2018 Lexus LX 570 (facelift), front 3.24.23.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:2018_Lexus_LX_570_(facelift),_front_3.24.23.jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "Kevauto"
- },
- {
-  "key": "cclass",
-  "file": "File:2016 Mercedes-Benz C-Class C220d SE Executive (W205) - 2.2 (170PS) diesel automatic - 2025-05-05, front right.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:2016_Mercedes-Benz_C-Class_C220d_SE_Executive_(W205)_-_2.2_(170PS)_diesel_automatic_-_2025-05-05,_front_right.jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "DieselFordMondeo"
- },
- {
-  "key": "eclass",
-  "file": "File:MERCEDES-BENZ E-CLASS (W213) China.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:MERCEDES-BENZ_E-CLASS_(W213)_China.jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "Dinkun Chen"
- },
- {
-  "key": "a4",
-  "file": "File:2018 Audi A4 Sport TDi Quattro S-A 2.0.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:2018_Audi_A4_Sport_TDi_Quattro_S-A_2.0.jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "Vauxford"
  }
 ]

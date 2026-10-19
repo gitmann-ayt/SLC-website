@@ -16,7 +16,7 @@ Upload the **contents of `dist/`** to any web host (cPanel, Netlify, Vercel, Clo
 | What | File |
 |---|---|
 | Phone, WhatsApp, email, address, hours, domain, years | `src/data/site.json` |
-| Cars (add / remove / mark `featured` for the home page) | `src/data/cars.json` + photos in `assets/img/cars/<id>-480.webp`, `-800.webp` and `-1200.webp` (16:10, background removed, black & white). Cars that share a photo set `"img"` (e.g. both Civics use `civic`). A car without a `-1200` file is shown as an ordinary cropped 4:3 photo until its cut-out is made. Credit every photo in `assets/img/credits.json` |
+| Cars (add / remove / mark `featured` for the home page) | `src/data/cars.json` + photos in `assets/img/cars/<img>-<colour>-480.webp`, `-800.webp` and `-1200.webp` (3:2), one set per colour in the car's `colors` (`"White / Black"` → `-white-`, `-black-`). `<img>` is the car id, or `"img"` when cars share photos. Keep a 480 photo under ~35 KB and an 800 under ~70 KB. Extra colours only download when someone picks that swatch. A car with no colour photos shows its old black & white cut-out (`<img>-480.webp` …), as the Honda City still does. Credit Wikimedia photos in `assets/img/credits.json` |
 | Client organisations | `src/data/clients.json` |
 | Testimonials (**drafts: replace with approved quotes**) | `src/data/testimonials.json` |
 | FAQs (home page) | `src/data/faqs.json` |

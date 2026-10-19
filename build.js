@@ -98,29 +98,60 @@ const fill = (s) =>
     return v;
   });
 
-// Car photos are assets/img/cars/<img>-480/-800.webp. A car that also has <img>-1200.webp has the
-// black & white cut-out (16:10, transparent background); the others are older 4:3 photos with a
-// background, which are cropped to fill the frame until someone makes their cut-out.
+// Car photos (3:2) are assets/img/cars/<img>-<colour>-{480,800,1200}.webp, one set per colour in the
+// car's "colors" ("White / Black" → <img>-white-*, <img>-black-*). The first colour is shown; the
+// others only download when a visitor picks that colour's swatch. A car with no colour photos falls
+// back to the older single set <img>-480/-800/-1200.webp, a black & white cut-out (the Honda City,
+// and the Land Cruiser in the home-page hero).
 const imgId = (c) => c.img || c.id;
-const isCutout = (c) => fs.existsSync(path.join(ROOT, 'assets/img/cars', `${imgId(c)}-1200.webp`));
-function carImg(c, sizes, alt, attrs = 'loading="lazy"') {
-  const base = `/assets/img/cars/${imgId(c)}`;
-  const [srcset, w, h] = isCutout(c)
-    ? [`${base}-480.webp 480w, ${base}-800.webp 800w, ${base}-1200.webp 1200w`, 1200, 750]
-    : [`${base}-480.webp 480w, ${base}-800.webp 800w`, 800, 600];
-  return `<img src="${base}-480.webp" srcset="${srcset}" sizes="${sizes}" width="${w}" height="${h}" ${attrs} decoding="async" alt="${esc(alt)}">`;
+const hasCarFile = (name) => fs.existsSync(path.join(ROOT, 'assets/img/cars', name));
+const swatchColour = { white: '#f4f3ef', black: '#1d1d1d', grey: '#a3a6aa', silver: '#c4c6c8' };
+const variants = (c) =>
+  String(c.colors || '')
+    .split('/')
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .map((label) => ({ label, key: label.toLowerCase(), base: `/assets/img/cars/${imgId(c)}-${label.toLowerCase()}` }))
+    .filter((v) => hasCarFile(`${imgId(c)}-${v.key}-480.webp`));
+const isCutout = (c) => !variants(c).length;
+const carPhoto = (c) => (isCutout(c) ? `/assets/img/cars/${imgId(c)}-800.webp` : `${variants(c)[0].base}-800.webp`);
+
+// The car's photos stacked in one frame: the first colour as a normal <img>, the rest with data-src
+// so they cost nothing until main.js swaps them in.
+function carImgs(c, sizes, alt, attrs = 'loading="lazy"') {
+  const set = (base) => `${base}-480.webp 480w, ${base}-800.webp 800w, ${base}-1200.webp 1200w`;
+  if (isCutout(c)) {
+    const base = `/assets/img/cars/${imgId(c)}`;
+    return `<img src="${base}-480.webp" srcset="${set(base)}" sizes="${sizes}" width="1200" height="750" ${attrs} decoding="async" alt="${esc(alt)}">`;
+  }
+  return variants(c)
+    .map((v, i) =>
+      i === 0
+        ? `<img src="${v.base}-480.webp" srcset="${set(v.base)}" sizes="${sizes}" width="1200" height="800" ${attrs} decoding="async" alt="${esc(alt)}" data-colour="${v.key}">`
+        : `<img class="car-alt" data-src="${v.base}-480.webp" data-srcset="${set(v.base)}" data-sizes="${sizes}" width="1200" height="800" decoding="async" alt="${esc(`${alt}, ${v.key}`)}" data-colour="${v.key}">`
+    )
+    .join('');
+}
+
+// Colour buttons that crossfade the photos (main.js); plain text when there is only one colour photo.
+function swatches(c) {
+  const vs = variants(c);
+  if (vs.length < 2) return c.colors ? `${icon('drop')}${esc(c.colors)}` : '';
+  return `<span class="swatches" role="group" aria-label="Colour">${vs
+    .map((v, i) => `<button type="button" class="swatch" data-colour="${v.key}" aria-pressed="${i === 0}" title="${esc(v.label)}" style="--sw:${swatchColour[v.key] || '#ccc'}"><span class="sr-only">${esc(v.label)}</span></button>`)
+    .join('')}</span>`;
 }
 
 /* ---------------- components ---------------- */
 
-function carCard(c, place) {
+function carCard(c, place, imgAttrs) {
   const name = carName(c);
   const msg = `Assalam o Alaikum SLC, I'd like to rent the ${name}${place ? ` ${place}` : ''}${c.rate ? ` (${money(c.rate)}/day)` : ''}. Please share availability.`;
   const alt = place ? `${name} for rent ${place}` : `${name} available for rent in ${site.city} with or without driver`;
   const href = modelByCar[c.id] && modelUrl(modelByCar[c.id].slug);
-  const media = `${carImg(c, '(min-width: 1100px) 340px, (min-width: 700px) 45vw, 92vw', alt)}
+  const media = `<span class="car-zoom">${carImgs(c, '(min-width: 1100px) 340px, (min-width: 700px) 45vw, 92vw', alt, imgAttrs)}</span>
     <span class="car-tag">${esc(catLabel(c.category))}</span>`;
-  const mediaCls = `car-media img-wrap${isCutout(c) ? '' : ' car-media--photo'}`;
+  const mediaCls = `car-media img-wrap${isCutout(c) ? ' car-media--cutout' : ''}`;
   return `
 <article class="car-card" data-cat="${c.category}">
   ${href ? `<a class="${mediaCls}" href="${href}" tabindex="-1" aria-hidden="true">${media}</a>` : `<div class="${mediaCls}">${media}</div>`}
@@ -131,7 +162,7 @@ function carCard(c, place) {
       <li>${icon('seat')}${c.seats} seats</li>
       <li>${icon('gear')}${esc(c.transmission)}</li>
       <li>${icon('fuel')}${esc(c.fuel)}</li>
-      ${c.colors ? `<li>${icon('drop')}${esc(c.colors)}</li>` : ''}
+      ${c.colors ? `<li class="car-colours">${swatches(c)}</li>` : ''}
     </ul>
     <p class="car-price">${c.rate ? `<strong>${money(c.rate)}</strong> <span>/ day</span>` : `${icon('star', 'star')} Ask for today's rate`}</p>
     <div class="car-actions">
@@ -142,6 +173,10 @@ function carCard(c, place) {
 </article>`;
 }
 
+// On /cars/ the first card is on screen at load, so its photo loads at once and is not hidden while
+// waiting for main.js (it can be the page's largest paint); every other card photo loads lazily.
+const firstRow = (arg, i) => (arg === 'all' && i === 0 ? 'fetchpriority="low"' : undefined);
+
 function fleet(arg) {
   const list = arg === 'featured' ? cars.filter((c) => c.featured) : cars;
   const tabs = [{ id: 'all', label: 'All cars' }, ...categories]
@@ -150,7 +185,7 @@ function fleet(arg) {
   return `
 <div class="fleet" data-fleet>
   <div class="tabs" role="tablist" aria-label="Filter cars by category">${tabs}</div>
-  <div class="car-grid">${list.map((c) => carCard(c)).join('')}</div>
+  <div class="car-grid">${list.map((c, i) => carCard(c, undefined, firstRow(arg, i))).join('')}</div>
   <p class="fleet-empty" hidden>More cars in this category are available on request. <a href="/cars/">See the full fleet</a> or <a href="tel:${site.phoneTel}">call us</a>.</p>
 </div>`;
 }
@@ -173,11 +208,14 @@ function carList() {
   return esc(cars.map(carName).join(', '));
 }
 
+// A scrolling strip: the list is written three times and CSS slides it left by a third, so the loop
+// has no visible seam. Screen readers get the first copy only.
 function clientsStrip() {
-  const items = clients
-    .map((c) => `<li class="client"><span class="client-name">${esc(c.name)}</span><span class="client-sector">${esc(c.sector)}</span></li>`)
-    .join('');
-  return `<ul class="clients" aria-label="Organisations we have worked with">${items}</ul>`;
+  const items = (hidden) =>
+    clients
+      .map((c) => `<li class="client"${hidden ? ' aria-hidden="true"' : ''}><span class="client-name">${esc(c.name)}</span><span class="client-sector">${esc(c.sector)}</span></li>`)
+      .join('');
+  return `<div class="marquee"><ul class="clients" aria-label="Organisations we have worked with">${items(false)}${items(true)}${items(true)}</ul></div>`;
 }
 
 function clientNames() {
@@ -296,8 +334,8 @@ function waLink(text, meta = {}) {
   return wa(text || 'Assalam o Alaikum SLC, I need a car on rent.');
 }
 
-// Main navigation. "Our Fleet" and "Areas" open dropdowns listing every car-model page and every
-// area page, so new entries in models.json / areas.json show up in the menu automatically.
+// Main navigation. "Our Fleet", "Areas" and "Services" open dropdowns listing every car-model page,
+// area page and service page, so new entries in models.json / areas.json show up in the menu automatically.
 function navMenu(arg, meta) {
   const cur = (n) => (meta.nav === n ? ' aria-current="page"' : '');
   const here = (p) => (meta.path === p ? ' aria-current="page"' : '');
@@ -316,6 +354,7 @@ function navMenu(arg, meta) {
       col(hub.name, [[pageUrl(hub.slug), `All of ${hub.name}`], ...areas.filter((a) => a.parent === hub.slug).map((a) => [pageUrl(a.slug), a.name])], 'cols-2')
     )
     .join('');
+  const serviceCol = col('Car rental services', areas.filter((a) => a.type === 'service').map((a) => [pageUrl(a.slug), a.name]));
   const dd = (id, label, href, n, cols, all) => `
         <li class="has-dd">
           <div class="dd-row"><a href="${href}"${cur(n)}>${label}</a><button type="button" class="dd-toggle" aria-expanded="false" aria-controls="dd-${id}" aria-label="Show ${label} menu">${icon('chevron')}</button></div>
@@ -323,7 +362,7 @@ function navMenu(arg, meta) {
         </li>`;
   return `<ul class="nav-list">
         <li><a href="/"${cur('home')}>Home</a></li>${dd('cars', 'Our Fleet', '/cars/', 'fleet', carCols, ['/cars/', 'Full fleet &amp; daily rates'])}${dd('places', 'Areas', '/rent-a-car-islamabad/', 'areas', placeCols, ['/#areas', 'All areas we serve'])}
-        <li><a href="/#services"${cur('services')}>Services</a></li>
+${dd('services', 'Services', '/#services', 'services', serviceCol, ['/#services', 'All our services'])}
         <li><a href="/about/"${cur('about')}>About Us</a></li>
         <li><a href="/contact/"${cur('contact')}>Contact Us</a></li>
       </ul>`;
@@ -453,7 +492,8 @@ function pageLinks(arg) {
 
 function modelPhoto(arg, meta) {
   const c = carById[meta.cars[0]];
-  return `<figure class="model-photo img-wrap${isCutout(c) ? '' : ' model-photo--photo'}">${carImg(c, '(min-width: 1100px) 680px, 92vw', `${meta.name} for rent in Islamabad`, '')}</figure>`;
+  const pick = variants(c).length > 1 ? `<p class="model-colours">Colours: ${swatches(c)}</p>` : '';
+  return `<div class="model-photo-wrap"><figure class="model-photo img-wrap${isCutout(c) ? ' model-photo--cutout' : ''}"><span class="car-zoom">${carImgs(c, '(min-width: 1100px) 680px, 92vw', `${meta.name} for rent in Islamabad`, '')}</span></figure>${pick}</div>`;
 }
 
 function specTable(arg, meta) {
@@ -745,7 +785,7 @@ for (const m of models) {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: `${carName(c)} for rent in Islamabad`,
-    image: abs(`/assets/img/cars/${c.img || c.id}-800.webp`),
+    image: abs(carPhoto(c)),
     brand: { '@type': 'Brand', name: c.make },
     description: `${carName(c)} on rent in Islamabad and Rawalpindi: ${c.seats} seats, ${c.transmission.toLowerCase()}, ${c.fuel.toLowerCase()}. ${c.use}.`,
     ...(c.rate
