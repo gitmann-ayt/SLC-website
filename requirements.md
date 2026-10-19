@@ -32,7 +32,12 @@ Build a fast, responsive, search-engine-optimised marketing website for SLC Car 
 | Our Fleet | `/fleet.html` | Full fleet, filterable by category, with an enquiry action on every car |
 | About Us | `/about.html` | Company story (SmartLink Consultants, 13 years), values, clients, photo credits |
 | Contact Us | `/contact.html` | Full contact page: booking form, phone, WhatsApp, email, address, hours, map |
+| Car detail | `/cars/<car>.html` | One page per car: large photo, specs, description, booking form pre-filled with the car, similar cars |
+| Locations | `/locations.html` | Overview of all service areas in Islamabad & Rawalpindi |
+| Location detail | `/locations/<area>.html` | One local-SEO landing page per area (e.g. F-7, Blue Area, Saddar, Bahria Town) with fleet, nearby areas and a booking form pre-filled with the area |
 | 404 | `/404.html` | Friendly not-found page with contact options |
+
+**Navigation:** the navbar has two dropdown menus. **Our Fleet** lists every car grouped by category, and **Locations** lists every area grouped by city (Islamabad / Rawalpindi). Each item links to its own page. Both lists are generated from the data files, so they update automatically. On phones they open as accordions inside the menu.
 
 ## 4. Contact & conversion (highest priority)
 
@@ -65,7 +70,15 @@ Contact must be **in the hero section** and in every other place a visitor might
 - Each car card shows: photo, make & model, category, seats, transmission, fuel, ideal use, and WhatsApp/Call buttons.
 - **Prices:** none are shown until the client supplies them. Cards say "Ask for today's rate". **[TBC]**
 - **Easy maintenance:** cars are stored in one data file (`src/data/cars.json`). Adding or removing a car means editing that file and rebuilding the site. No HTML changes are needed.
+- **Photo style:** all car photos have their backgrounds removed and are converted to **black & white** for a consistent, professional look. They sit on a plain light background with a soft floor shadow.
 - Photos are freely licensed (Wikimedia Commons) and credited on the About page. The client may replace them with photos of their own cars later, which is recommended.
+
+## 5a. Service areas
+
+- Starter list (the client will change it later):
+  - **Islamabad:** Blue Area, F-6, F-7, F-8, F-10, F-11, E-7, E-11, G-9, G-11, I-8, DHA Islamabad, Gulberg Greens, Islamabad Airport
+  - **Rawalpindi:** Saddar, Satellite Town, Bahria Town, Chaklala Scheme III, Westridge, Askari, PWD Housing Society, Gulraiz
+- All areas are stored in `src/data/locations.json`.
 
 ## 6. Experience & trust
 

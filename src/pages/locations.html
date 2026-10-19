@@ -1,0 +1,27 @@
+<!--meta {
+  "title": "Rent a Car Locations in Islamabad & Rawalpindi | SLC",
+  "description": "SLC delivers rental cars with driver or self drive across Islamabad (F-6, F-7, E-7, Blue Area, DHA) and Rawalpindi (Saddar, Bahria Town). Find your area.",
+  "nav": "locations",
+  "crumb": "Locations"
+} -->
+{{> header}}
+<main id="main">
+<section class="page-hero" aria-labelledby="page-h">
+  <div class="stripes stripes--hero" aria-hidden="true"></div>
+  <div class="container">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Locations</span></nav>
+    <h1 id="page-h">Rent a car anywhere in Islamabad &amp; Rawalpindi</h1>
+    <p class="lead">We deliver cars to homes, offices, hotels and the airport across the twin cities. Pick your area below, or <a href="/contact.html">contact us</a> if you don't see it. We probably cover it.</p>
+  </div>
+</section>
+<section class="section" aria-labelledby="isb-h">
+  <div class="container">
+    <h2 id="isb-h" class="h-mid">Islamabad</h2>
+    {{@areaChips islamabad}}
+    <h2 class="h-mid loc-gap">Rawalpindi</h2>
+    {{@areaChips rawalpindi}}
+  </div>
+</section>
+{{> contact-section}}
+</main>
+{{> footer}}

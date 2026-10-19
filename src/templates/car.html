@@ -1,0 +1,70 @@
+<!--meta {
+  "title": "{{meta.car.make}} {{meta.car.model}} on Rent in Islamabad | SLC",
+  "description": "Rent a {{meta.car.make}} {{meta.car.model}} in Islamabad & Rawalpindi with driver or self drive. {{meta.car.seats}} seats, {{meta.car.transmission}}. {{site.years}} years' experience. Call or WhatsApp to book.",
+  "nav": "fleet"
+} -->
+{{> header}}
+<main id="main">
+<section class="car-hero" aria-labelledby="page-h">
+  <div class="car-hero-sun" aria-hidden="true"></div>
+  <div class="container">
+    <nav class="crumbs crumbs--dark" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/fleet.html">Our Fleet</a><span aria-hidden="true">/</span><span aria-current="page">{{meta.car.make}} {{meta.car.model}}</span></nav>
+    <div class="car-hero-grid">
+      <div class="car-hero-media">{{@carHeroImg}}</div>
+      <div class="car-hero-copy">
+        <p class="eyebrow">★ {{meta.car.make}} · {{meta.car.seats}} seats ★</p>
+        <h1 id="page-h">{{meta.car.make}} {{meta.car.model}} on rent in Islamabad &amp; Rawalpindi</h1>
+        <p class="lead">{{meta.car.about}}</p>
+        <p class="car-rate car-rate--lg"><svg class="icon star" aria-hidden="true"><use href="#i-star"/></svg> Ask for today's rate: daily, weekly and monthly packages available.</p>
+        <div class="cta-row">
+          <a class="btn btn-wa btn-lg" href="{{@wa}}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Book on WhatsApp</a>
+          <a class="btn btn-ink btn-lg" href="tel:{{site.phoneTel}}"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call {{site.phoneDisplay}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight" aria-labelledby="specs-h">
+  <div class="container">
+    <h2 id="specs-h" class="h-mid">{{meta.car.make}} {{meta.car.model}} at a glance</h2>
+    {{@carSpecs}}
+  </div>
+</section>
+
+<section class="section section--cream" aria-labelledby="book-car-h">
+  <div class="container car-book-grid">
+    <div class="prose">
+      <p class="eyebrow">★ Book this car ★</p>
+      <h2 id="book-car-h">Rent the {{meta.car.model}} with driver or self drive</h2>
+      <p>Every {{meta.car.make}} {{meta.car.model}} in our fleet is regularly serviced and cleaned before each booking. Choose a <strong>professional driver</strong> who knows Islamabad, Rawalpindi and intercity routes, or take the wheel yourself on a <strong>self drive</strong> basis, subject to documents and a refundable deposit.</p>
+      <ul class="tick-list">
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Hourly, daily, weekly &amp; monthly rental</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Airport pick &amp; drop and outstation trips</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Corporate invoicing for companies &amp; NGOs</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Doorstep delivery across the twin cities</li>
+      </ul>
+      <h3 class="h-small">Available across Islamabad &amp; Rawalpindi</h3>
+      {{@areaChips all}}
+    </div>
+    <div class="card form-card form-card--light">
+      <h3 class="form-title">Request the {{meta.car.model}}</h3>
+      <p class="form-sub">We'll confirm availability and the rate, usually within minutes.</p>
+      {{@bookingForm car}}
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="similar-h">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">★ You may also like ★</p>
+      <h2 id="similar-h">Similar cars on rent</h2>
+    </div>
+    {{@similarCars}}
+    <div class="center more-link"><a class="btn btn-ink btn-lg" href="/fleet.html">View the full fleet<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+  </div>
+</section>
+{{@carSchema}}
+</main>
+{{> footer}}

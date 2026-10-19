@@ -26,6 +26,9 @@ const clients = readJSON('clients.json');
 const testimonials = readJSON('testimonials.json').items;
 const faqs = readJSON('faqs.json');
 const credits = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets/img/credits.json'), 'utf8'));
+const cities = readJSON('locations.json').cities;
+for (const city of cities) for (const a of city.areas) a.city = city.name;
+const areas = cities.flatMap((c) => c.areas);
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const get = (obj, p) => p.split('.').reduce((o, k) => (o == null ? o : o[k]), obj);
@@ -34,24 +37,27 @@ const wa = (text) => `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(t
 const icon = (name, cls = '') => `<svg class="icon ${cls}" aria-hidden="true"><use href="#i-${name}"/></svg>`;
 const catLabel = (id) => (categories.find((c) => c.id === id) || {}).long || id;
 const carName = (c) => `${c.make} ${c.model}`;
+const carUrl = (c) => `/cars/${c.id}.html`;
+const areaUrl = (a) => `/locations/${a.slug}.html`;
+const areaName = (a) => (a.name.includes(a.city) || a.name.startsWith('DHA') ? a.name : `${a.name}, ${a.city}`);
+const carMsg = (c) => `Assalam o Alaikum SLC, I'd like to rent the ${carName(c)}. Please share availability and rate.`;
+const carImg = (c, sizes, attrs = 'loading="lazy"') => `<img src="/assets/img/cars/${c.id}-480.webp"
+         srcset="/assets/img/cars/${c.id}-480.webp 480w, /assets/img/cars/${c.id}-800.webp 800w, /assets/img/cars/${c.id}-1200.webp 1200w"
+         sizes="${sizes}" width="1200" height="750" ${attrs} decoding="async"
+         alt="${esc(carName(c))} on rent in Islamabad and Rawalpindi, with or without driver">`;
 
 /* ---------------- components ---------------- */
 
 function carCard(c) {
   const name = carName(c);
-  const msg = `Assalam o Alaikum SLC, I'd like to rent the ${name}. Please share availability and rate.`;
   return `
 <article class="car-card" data-cat="${c.category}">
-  <div class="car-media img-wrap">
-    <img src="/assets/img/cars/${c.id}-480.webp"
-         srcset="/assets/img/cars/${c.id}-480.webp 480w, /assets/img/cars/${c.id}-800.webp 800w"
-         sizes="(min-width: 1100px) 340px, (min-width: 700px) 45vw, 92vw"
-         width="800" height="600" loading="lazy" decoding="async"
-         alt="${esc(name)} available for rent in ${esc(site.city)} with or without driver">
+  <a class="car-media img-wrap" href="${carUrl(c)}" tabindex="-1" aria-hidden="true">
+    ${carImg(c, '(min-width: 1100px) 340px, (min-width: 700px) 45vw, 92vw')}
     <span class="car-tag">${esc(catLabel(c.category))}</span>
-  </div>
+  </a>
   <div class="car-body">
-    <h3 class="car-title"><span>${esc(c.make)}</span> ${esc(c.model)}</h3>
+    <h3 class="car-title"><a href="${carUrl(c)}"><span>${esc(c.make)}</span> ${esc(c.model)}</a></h3>
     <p class="car-use">${esc(c.use)}</p>
     <ul class="car-specs" aria-label="Specifications">
       <li>${icon('seat')}${c.seats} seats</li>
@@ -60,7 +66,7 @@ function carCard(c) {
     </ul>
     <p class="car-rate">${icon('star', 'star')} Ask for today's rate · with or without driver</p>
     <div class="car-actions">
-      <a class="btn btn-wa btn-sm" href="${wa(msg)}" target="_blank" rel="noopener" aria-label="Book ${esc(name)} on WhatsApp">${icon('whatsapp')}WhatsApp</a>
+      <a class="btn btn-wa btn-sm" href="${wa(carMsg(c))}" target="_blank" rel="noopener" aria-label="Book ${esc(name)} on WhatsApp">${icon('whatsapp')}WhatsApp</a>
       <a class="btn btn-outline btn-sm" href="tel:${site.phoneTel}" aria-label="Call to book ${esc(name)}">${icon('phone')}Call</a>
     </div>
   </div>
@@ -132,10 +138,10 @@ function faq() {
   return `<div class="faq">${items}</div>\n<script type="application/ld+json">${JSON.stringify(schema)}</script>`;
 }
 
-function bookingForm(variant = 'hero') {
+function bookingForm(variant = 'hero', meta = {}) {
   const id = variant;
   const carOptions = categories
-    .map((cat) => `<optgroup label="${esc(cat.long)}">${cars.filter((c) => c.category === cat.id).map((c) => `<option>${esc(carName(c))}</option>`).join('')}</optgroup>`)
+    .map((cat) => `<optgroup label="${esc(cat.long)}">${cars.filter((c) => c.category === cat.id).map((c) => `<option${meta.car === c ? ' selected' : ''}>${esc(carName(c))}</option>`).join('')}</optgroup>`)
     .join('');
   const full = variant !== 'hero';
   return `
@@ -143,7 +149,7 @@ function bookingForm(variant = 'hero') {
   <div class="form-grid">
     <div class="field">
       <label for="${id}-pickup">Pick-up city / location</label>
-      <input id="${id}-pickup" name="pickup" type="text" autocomplete="address-level2" placeholder="e.g. Islamabad Airport" required>
+      <input id="${id}-pickup" name="pickup" type="text" autocomplete="address-level2" placeholder="e.g. Islamabad Airport"${meta.area ? ` value="${esc(areaName(meta.area))}"` : ''} required>
     </div>
     <div class="field">
       <label for="${id}-car">Preferred car</label>
@@ -184,6 +190,81 @@ function bookingForm(variant = 'hero') {
 </form>`;
 }
 
+function navMenu(_, meta) {
+  const cur = (n) => (meta.nav === n ? ' aria-current="page"' : '');
+  const carCols = categories
+    .map((cat) => `<div class="mega-col"><p class="mega-h">${esc(cat.long)}</p><ul>${cars
+      .filter((c) => c.category === cat.id)
+      .map((c) => `<li><a href="${carUrl(c)}"${meta.car === c ? ' aria-current="page"' : ''}>${esc(carName(c))}</a></li>`)
+      .join('')}</ul></div>`)
+    .join('');
+  const locCols = cities
+    .map((city) => `<div class="mega-col"><p class="mega-h">${esc(city.name)}</p><ul class="cols-2">${city.areas
+      .map((a) => `<li><a href="${areaUrl(a)}"${meta.area === a ? ' aria-current="page"' : ''}>${esc(a.name)}</a></li>`)
+      .join('')}</ul></div>`)
+    .join('');
+  const dd = (id, label, href, n, cols, allLabel) => `
+        <li class="has-dd">
+          <div class="dd-row"><a href="${href}"${cur(n)}>${label}</a><button type="button" class="dd-toggle" aria-expanded="false" aria-controls="dd-${id}" aria-label="Show ${label} menu">${icon('chevron')}</button></div>
+          <div class="dd" id="dd-${id}"><div class="dd-inner dd-${id}">${cols}</div><a class="dd-all" href="${href}">${allLabel} ${icon('arrow')}</a></div>
+        </li>`;
+  return `<ul class="nav-list">
+        <li><a href="/"${cur('home')}>Home</a></li>${dd('cars', 'Our Fleet', '/fleet.html', 'fleet', carCols, 'View the full fleet')}${dd('places', 'Locations', '/locations.html', 'locations', locCols, 'All service areas')}
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/about.html"${cur('about')}>About Us</a></li>
+        <li><a href="/contact.html"${cur('contact')}>Contact Us</a></li>
+      </ul>`;
+}
+
+function waPage(_, meta) {
+  if (meta.car) return wa(carMsg(meta.car));
+  if (meta.area) return wa(`Assalam o Alaikum SLC, I need a car on rent in ${areaName(meta.area)}.`);
+  return wa('Assalam o Alaikum SLC, I need a car on rent.');
+}
+
+function carSpecs(_, { car: c }) {
+  const rows = [
+    ['seat', 'Seats', `${c.seats} passengers`],
+    ['gear', 'Transmission', c.transmission],
+    ['fuel', 'Fuel', c.fuel],
+    ['car', 'Category', catLabel(c.category)],
+    ['driver', 'Service', 'With driver or self drive'],
+    ['star', 'Ideal for', c.use],
+  ];
+  return `<dl class="spec-grid">${rows.map(([i, k, v]) => `<div class="spec">${icon(i)}<dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`;
+}
+
+function carHeroImg(_, { car }) {
+  return carImg(car, '(min-width: 1000px) 600px, 92vw', 'fetchpriority="high"');
+}
+
+function similarCars(_, { car }) {
+  const same = cars.filter((c) => c.category === car.category && c !== car);
+  const list = (same.length >= 3 ? same : same.concat(cars.filter((c) => c.featured && c !== car && !same.includes(c)))).slice(0, 3);
+  return `<div class="car-grid">${list.map(carCard).join('')}</div>`;
+}
+
+function carSchema(_, { car: c }) {
+  return `<script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org', '@type': 'Car', name: carName(c),
+    brand: { '@type': 'Brand', name: c.make }, model: c.model, description: c.about,
+    image: abs(`/assets/img/cars/${c.id}-1200.webp`), vehicleSeatingCapacity: c.seats,
+    fuelType: c.fuel, vehicleTransmission: c.transmission, url: abs(carUrl(c)),
+    offers: { '@type': 'Offer', availability: 'https://schema.org/InStock', seller: { '@id': abs('/#business') }, areaServed: ['Islamabad', 'Rawalpindi'] },
+  })}</script>`;
+}
+
+function areaChips(arg, meta) {
+  // arg: "all" | "city" (same city as current area, excluding it) | "<cityId>"
+  const list = arg === 'city' ? areas.filter((a) => a.city === meta.area.city && a !== meta.area)
+    : arg === 'all' ? areas : (cities.find((c) => c.id === arg) || { areas: [] }).areas;
+  return `<ul class="chips">${list.map((a) => `<li><a href="${areaUrl(a)}">${icon('pin')}${esc(arg === 'all' ? areaName(a) : a.name)}</a></li>`).join('')}</ul>`;
+}
+
+function featuredCards() {
+  return `<div class="car-grid">${cars.filter((c) => c.featured).slice(0, 6).map(carCard).join('')}</div>`;
+}
+
 function contactList() {
   return `
 <ul class="contact-list">
@@ -203,10 +284,6 @@ function map() {
 </div>`;
 }
 
-function waLink(text) {
-  return wa(text || 'Assalam o Alaikum SLC, I need a car on rent.');
-}
-
 function credits_() {
   return `<ul class="credits">${credits
     .map((c) => `<li><a href="${esc(c.page)}" rel="nofollow noopener" target="_blank">${esc(c.file.replace(/^File:/, ''))}</a>, ${esc(c.author || 'Unknown')}, ${esc(c.license)}</li>`)
@@ -215,7 +292,7 @@ function credits_() {
 
 const components = {
   fleet, fleetCount, carList, clients: clientsStrip, clientNames, testimonials: testimonialCards, faq,
-  bookingForm, contactList, map, wa: waLink, credits: credits_, year: () => String(new Date().getFullYear()),
+  bookingForm, contactList, map, wa: waPage, credits: credits_, navMenu, carSpecs, carHeroImg, similarCars, carSchema, areaChips, featuredCards, year: () => String(new Date().getFullYear()),
 };
 
 /* ---------------- page shell ---------------- */
@@ -252,21 +329,20 @@ function businessSchema() {
 
 function head(meta) {
   const url = abs(meta.path);
-  const crumbs = meta.crumb
+  const trail = meta.crumbs || (meta.crumb ? [{ name: meta.crumb, path: meta.path }] : null);
+  const crumbs = trail
     ? `<script type="application/ld+json">${JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: abs('/') },
-          { '@type': 'ListItem', position: 2, name: meta.crumb, item: url },
-        ],
+        itemListElement: [{ name: 'Home', path: '/' }, ...trail].map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: abs(c.path) })),
       })}</script>`
     : '';
   const ga = site.gaId
     ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${site.gaId}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${site.gaId}');</script>`
     : '';
-  const heroPreload = meta.hero
-    ? `<link rel="preload" as="image" type="image/webp" href="/assets/img/hero/hero-1280.webp" imagesrcset="/assets/img/hero/hero-768.webp 768w, /assets/img/hero/hero-1280.webp 1280w, /assets/img/hero/hero-1920.webp 1920w" imagesizes="100vw" fetchpriority="high">`
+  const p = meta.preloadCar;
+  const heroPreload = p
+    ? `<link rel="preload" as="image" type="image/webp" href="/assets/img/cars/${p}-800.webp" imagesrcset="/assets/img/cars/${p}-480.webp 480w, /assets/img/cars/${p}-800.webp 800w, /assets/img/cars/${p}-1200.webp 1200w" imagesizes="(min-width: 1000px) 600px, 92vw" fetchpriority="high">`
     : '';
   return `<!doctype html>
 <html lang="en-PK" class="no-js">
@@ -311,7 +387,7 @@ function render(tpl, meta) {
     .replace(/\{\{>\s*([\w-]+)\s*\}\}/g, (_, name) => render(fs.readFileSync(path.join(SRC, 'partials', name + '.html'), 'utf8'), meta))
     .replace(/\{\{@(\w+)(?:\s+([^}]*))?\}\}/g, (_, name, arg) => {
       if (!components[name]) throw new Error(`Unknown component @${name}`);
-      return components[name](arg && arg.trim());
+      return components[name](arg && arg.trim(), meta);
     })
     .replace(/\{\{nav:(\w+)\}\}/g, (_, n) => (meta.nav === n ? ' aria-current="page"' : ''))
     .replace(/\{\{([\w.]+)\}\}/g, (_, p) => {
@@ -337,21 +413,41 @@ fs.mkdirSync(DIST, { recursive: true });
 copyDir(path.join(ROOT, 'assets'), path.join(DIST, 'assets'));
 copyDir(path.join(SRC, 'static'), DIST);
 
-const pages = fs.readdirSync(path.join(SRC, 'pages')).filter((f) => f.endsWith('.html'));
 const sitemap = [];
-for (const file of pages) {
-  const raw = fs.readFileSync(path.join(SRC, 'pages', file), 'utf8');
+let count = 0;
+function buildPage(srcFile, outPath, extra = {}) {
+  const raw = fs.readFileSync(srcFile, 'utf8');
   const m = raw.match(/^<!--meta\s+([\s\S]*?)-->\s*/);
-  if (!m) throw new Error(`${file}: missing meta comment`);
-  const meta = JSON.parse(m[1]);
-  meta.path = file === 'index.html' ? '/' : '/' + file;
-  for (const k of ['title', 'description']) meta[k] = render(meta[k], meta).replace(/&amp;/g, '&');
-  if (meta.title.length > 65) console.warn(`  ! ${file}: title is ${meta.title.length} chars`);
-  if (meta.description.length > 165) console.warn(`  ! ${file}: description is ${meta.description.length} chars`);
+  if (!m) throw new Error(`${srcFile}: missing meta comment`);
+  const meta = Object.assign(JSON.parse(m[1]), extra, { path: outPath });
+  for (const k of ['title', 'description']) meta[k] = render(meta[k], meta).replace(/&amp;/g, '&').replace(/&#39;/g, "'");
+  if (meta.title.length > 65) console.warn(`  ! ${outPath}: title is ${meta.title.length} chars`);
+  if (meta.description.length > 165) console.warn(`  ! ${outPath}: description is ${meta.description.length} chars`);
   const body = render(raw.slice(m[0].length), meta);
-  fs.writeFileSync(path.join(DIST, file), head(meta) + '\n' + body);
+  const file = path.join(DIST, outPath === '/' ? 'index.html' : outPath);
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  fs.writeFileSync(file, head(meta) + '\n' + body);
   if (!meta.noindex) sitemap.push(meta.path);
-  console.log(`  ✓ ${file}`);
+  count++;
+}
+
+// Hand-written pages
+for (const f of fs.readdirSync(path.join(SRC, 'pages')).filter((f) => f.endsWith('.html'))) {
+  buildPage(path.join(SRC, 'pages', f), f === 'index.html' ? '/' : '/' + f);
+}
+// One detail page per car
+for (const car of cars) {
+  buildPage(path.join(SRC, 'templates', 'car.html'), carUrl(car), {
+    car, preloadCar: car.id,
+    crumbs: [{ name: 'Our Fleet', path: '/fleet.html' }, { name: carName(car), path: carUrl(car) }],
+  });
+}
+// One landing page per service area
+for (const area of areas) {
+  buildPage(path.join(SRC, 'templates', 'location.html'), areaUrl(area), {
+    area, areaFull: areaName(area),
+    crumbs: [{ name: 'Locations', path: '/locations.html' }, { name: areaName(area), path: areaUrl(area) }],
+  });
 }
 
 const today = new Date().toISOString().slice(0, 10);
@@ -370,4 +466,4 @@ fs.writeFileSync(
     icons: [{ src: '/assets/img/icon-192.png', sizes: '192x192', type: 'image/png' }, { src: '/assets/img/icon-512.png', sizes: '512x512', type: 'image/png' }],
   })
 );
-console.log(`Built ${pages.length} pages → dist/`);
+console.log(`Built ${count} pages (${cars.length} cars, ${areas.length} locations) → dist/`);

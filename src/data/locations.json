@@ -1,0 +1,39 @@
+{
+  "_note": "Starter list of service areas. Add, remove or rename freely; each entry becomes a page at /locations/<slug>.html and appears in the navbar.",
+  "cities": [
+    {
+      "id": "islamabad",
+      "name": "Islamabad",
+      "areas": [
+        {"slug": "blue-area-islamabad", "name": "Blue Area", "near": "Jinnah Avenue's offices, banks and hotels"},
+        {"slug": "f-6-islamabad", "name": "F-6", "near": "Super Market and Kohsar Market"},
+        {"slug": "f-7-islamabad", "name": "F-7", "near": "Jinnah Super Market"},
+        {"slug": "f-8-islamabad", "name": "F-8", "near": "F-8 Markaz and the district courts"},
+        {"slug": "f-10-islamabad", "name": "F-10", "near": "F-10 Markaz"},
+        {"slug": "f-11-islamabad", "name": "F-11", "near": "F-11 Markaz"},
+        {"slug": "e-7-islamabad", "name": "E-7", "near": "the Margalla Hills foothills"},
+        {"slug": "e-11-islamabad", "name": "E-11", "near": "Golra Road and the Margalla Road"},
+        {"slug": "g-9-islamabad", "name": "G-9", "near": "Karachi Company"},
+        {"slug": "g-11-islamabad", "name": "G-11", "near": "G-11 Markaz"},
+        {"slug": "i-8-islamabad", "name": "I-8", "near": "I-8 Markaz and the Kashmir Highway"},
+        {"slug": "dha-islamabad", "name": "DHA Islamabad", "near": "the GT Road and Expressway"},
+        {"slug": "gulberg-greens-islamabad", "name": "Gulberg Greens", "near": "the Islamabad Expressway"},
+        {"slug": "islamabad-airport", "name": "Islamabad Airport", "near": "Islamabad International Airport arrivals"}
+      ]
+    },
+    {
+      "id": "rawalpindi",
+      "name": "Rawalpindi",
+      "areas": [
+        {"slug": "saddar-rawalpindi", "name": "Saddar", "near": "Bank Road and the Cantonment"},
+        {"slug": "satellite-town-rawalpindi", "name": "Satellite Town", "near": "Commercial Market"},
+        {"slug": "bahria-town-rawalpindi", "name": "Bahria Town", "near": "all phases of Bahria Town"},
+        {"slug": "chaklala-scheme-3-rawalpindi", "name": "Chaklala Scheme III", "near": "Chaklala and the Airport Road"},
+        {"slug": "westridge-rawalpindi", "name": "Westridge", "near": "Peshawar Road"},
+        {"slug": "askari-rawalpindi", "name": "Askari", "near": "the Askari housing schemes"},
+        {"slug": "pwd-rawalpindi", "name": "PWD Housing Society", "near": "the Islamabad Expressway"},
+        {"slug": "gulraiz-rawalpindi", "name": "Gulraiz", "near": "Gulraiz and Rawalpindi Bypass"}
+      ]
+    }
+  ]
+}

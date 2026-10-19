@@ -1,0 +1,57 @@
+<!--meta {
+  "title": "Rent a Car in {{meta.areaFull}} | SLC Car Rental",
+  "description": "Rent a car in {{meta.areaFull}} with driver or self drive: Corolla, Civic, Prado, Hiace & more at your door. Call or WhatsApp SLC 24/7.",
+  "nav": "locations"
+} -->
+{{> header}}
+<main id="main">
+<section class="page-hero" aria-labelledby="page-h">
+  <div class="stripes stripes--hero" aria-hidden="true"></div>
+  <div class="container">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/locations.html">Locations</a><span aria-hidden="true">/</span><span aria-current="page">{{meta.area.name}}</span></nav>
+    <p class="eyebrow eyebrow--light">★ {{meta.area.city}} ★</p>
+    <h1 id="page-h">Rent a car in {{meta.areaFull}}</h1>
+    <p class="lead">Need a car in {{meta.area.name}}? {{site.name}} delivers clean, well-maintained cars, with a professional driver or as self drive, to your door near {{meta.area.near}}. We have been serving {{meta.area.city}} for {{site.years}} years.</p>
+    <div class="cta-row">
+      <a class="btn btn-cream btn-lg" href="tel:{{site.phoneTel}}"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call {{site.phoneDisplay}}</a>
+      <a class="btn btn-wa btn-lg" href="{{@wa}}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp us</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="loc-fleet-h">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">★ Popular in {{meta.area.name}} ★</p>
+      <h2 id="loc-fleet-h">Cars on rent in {{meta.area.name}}</h2>
+      <p>From economy hatchbacks to 4x4s and coasters, any car in our fleet can be delivered to {{meta.areaFull}}.</p>
+    </div>
+    {{@featuredCards}}
+    <div class="center more-link"><a class="btn btn-ink btn-lg" href="/fleet.html">See all cars<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+  </div>
+</section>
+
+<section class="section section--cream" aria-labelledby="loc-why-h">
+  <div class="container car-book-grid">
+    <div class="prose">
+      <p class="eyebrow">★ Why SLC in {{meta.area.name}} ★</p>
+      <h2 id="loc-why-h">Your local car rental service in {{meta.area.name}}</h2>
+      <p>Whether you need an airport transfer, a car for a wedding, a 4x4 for the northern areas or a monthly car for your office, our team in the twin cities can have a vehicle and driver with you in {{meta.area.name}} quickly.</p>
+      <ul class="tick-list">
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Doorstep pick-up &amp; drop in {{meta.area.name}}</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Rent a car with driver or self drive</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Daily, weekly &amp; monthly packages</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>{{site.years}} years of trusted service</li>
+      </ul>
+      <h3 class="h-small">Nearby areas we serve</h3>
+      {{@areaChips city}}
+    </div>
+    <div class="card form-card form-card--light">
+      <h3 class="form-title">Book a car in {{meta.area.name}}</h3>
+      <p class="form-sub">Send your details and we'll reply within minutes.</p>
+      {{@bookingForm loc}}
+    </div>
+  </div>
+</section>
+</main>
+{{> footer}}
