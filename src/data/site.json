@@ -1,5 +1,5 @@
 {
-  "_note": "Contact details confirmed 18 Oct 2026. Still TBC before launch: office number (address.officeNo), domain, geo, mapsUrl. Everything on the site reads from this file.",
+  "_note": "Contact details confirmed 18 Oct 2026. Office location (geo, Plus Code M2XX+39) confirmed 19 Oct 2026. Still TBC before launch: office number (address.officeNo), domain, mapsUrl (the Google Business Profile share link). Everything on the site reads from this file.",
   "name": "SLC Car Rental Services",
   "legalName": "SmartLink Consultants",
   "shortName": "SLC",
@@ -32,14 +32,14 @@
   },
   "hours": "Mon–Sun, 24 hours",
   "hoursSchema": "Mo-Su 00:00-23:59",
-  "mapQuery": "Kashif Bell Air Plaza, G-8 Markaz, Islamabad",
+  "mapQuery": "33.697784,73.04843",
   "social": {
     "facebook": "",
     "instagram": "",
     "linkedin": ""
   },
   "gaId": "",
-  "geo": null,
+  "geo": { "lat": 33.697784, "lng": 73.04843 },
   "mapsUrl": "",
   "ratesUpdated": "2026-10-18",
   "_ratesNote": "ratesUpdated: the date the rates in cars.json were last checked. Change it whenever you change a rate."
