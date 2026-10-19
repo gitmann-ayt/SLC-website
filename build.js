@@ -98,25 +98,34 @@ const fill = (s) =>
     return v;
   });
 
+// Car photos are assets/img/cars/<img>-480/-800.webp. A car that also has <img>-1200.webp has the
+// black & white cut-out (16:10, transparent background); the others are older 4:3 photos with a
+// background, which are cropped to fill the frame until someone makes their cut-out.
+const imgId = (c) => c.img || c.id;
+const isCutout = (c) => fs.existsSync(path.join(ROOT, 'assets/img/cars', `${imgId(c)}-1200.webp`));
+function carImg(c, sizes, alt, attrs = 'loading="lazy"') {
+  const base = `/assets/img/cars/${imgId(c)}`;
+  const [srcset, w, h] = isCutout(c)
+    ? [`${base}-480.webp 480w, ${base}-800.webp 800w, ${base}-1200.webp 1200w`, 1200, 750]
+    : [`${base}-480.webp 480w, ${base}-800.webp 800w`, 800, 600];
+  return `<img src="${base}-480.webp" srcset="${srcset}" sizes="${sizes}" width="${w}" height="${h}" ${attrs} decoding="async" alt="${esc(alt)}">`;
+}
+
 /* ---------------- components ---------------- */
 
 function carCard(c, place) {
   const name = carName(c);
   const msg = `Assalam o Alaikum SLC, I'd like to rent the ${name}${place ? ` ${place}` : ''}${c.rate ? ` (${money(c.rate)}/day)` : ''}. Please share availability.`;
   const alt = place ? `${name} for rent ${place}` : `${name} available for rent in ${site.city} with or without driver`;
-  const img = c.img || c.id;
+  const href = modelByCar[c.id] && modelUrl(modelByCar[c.id].slug);
+  const media = `${carImg(c, '(min-width: 1100px) 340px, (min-width: 700px) 45vw, 92vw', alt)}
+    <span class="car-tag">${esc(catLabel(c.category))}</span>`;
+  const mediaCls = `car-media img-wrap${isCutout(c) ? '' : ' car-media--photo'}`;
   return `
 <article class="car-card" data-cat="${c.category}">
-  <div class="car-media img-wrap">
-    <img src="/assets/img/cars/${img}-480.webp"
-         srcset="/assets/img/cars/${img}-480.webp 480w, /assets/img/cars/${img}-800.webp 800w"
-         sizes="(min-width: 1100px) 340px, (min-width: 700px) 45vw, 92vw"
-         width="800" height="600" loading="lazy" decoding="async"
-         alt="${esc(alt)}">
-    <span class="car-tag">${esc(catLabel(c.category))}</span>
-  </div>
+  ${href ? `<a class="${mediaCls}" href="${href}" tabindex="-1" aria-hidden="true">${media}</a>` : `<div class="${mediaCls}">${media}</div>`}
   <div class="car-body">
-    <h3 class="car-title">${modelByCar[c.id] ? `<a href="${modelUrl(modelByCar[c.id].slug)}">` : ''}<span>${esc(c.make)}</span> ${esc(c.model)}${modelByCar[c.id] ? '</a>' : ''}</h3>
+    <h3 class="car-title">${href ? `<a href="${href}">` : ''}<span>${esc(c.make)}</span> ${esc(c.model)}${href ? '</a>' : ''}</h3>
     <p class="car-use">${esc(c.use)}</p>
     <ul class="car-specs" aria-label="Specifications">
       <li>${icon('seat')}${c.seats} seats</li>
@@ -281,8 +290,43 @@ function map() {
 </div>`;
 }
 
-function waLink(text) {
+// {{@wa}}: the page's own WhatsApp message on generated pages (which car / which area), else a general one.
+function waLink(text, meta = {}) {
+  if (meta.waText || meta.in) return waPage(null, meta);
   return wa(text || 'Assalam o Alaikum SLC, I need a car on rent.');
+}
+
+// Main navigation. "Our Fleet" and "Areas" open dropdowns listing every car-model page and every
+// area page, so new entries in models.json / areas.json show up in the menu automatically.
+function navMenu(arg, meta) {
+  const cur = (n) => (meta.nav === n ? ' aria-current="page"' : '');
+  const here = (p) => (meta.path === p ? ' aria-current="page"' : '');
+  const col = (heading, links, cls = '') =>
+    `<div class="mega-col"><p class="mega-h">${esc(heading)}</p><ul${cls ? ` class="${cls}"` : ''}>${links
+      .map(([href, label]) => `<li><a href="${href}"${here(href)}>${esc(label)}</a></li>`)
+      .join('')}</ul></div>`;
+  const carCols = categories
+    .map((cat) => [cat, models.filter((m) => carById[m.cars[0]].category === cat.id)])
+    .filter(([, list]) => list.length)
+    .map(([cat, list]) => col(cat.long, list.map((m) => [modelUrl(m.slug), m.name])))
+    .join('');
+  const placeCols = areas
+    .filter((hub) => hub.type === 'city')
+    .map((hub) =>
+      col(hub.name, [[pageUrl(hub.slug), `All of ${hub.name}`], ...areas.filter((a) => a.parent === hub.slug).map((a) => [pageUrl(a.slug), a.name])], 'cols-2')
+    )
+    .join('');
+  const dd = (id, label, href, n, cols, all) => `
+        <li class="has-dd">
+          <div class="dd-row"><a href="${href}"${cur(n)}>${label}</a><button type="button" class="dd-toggle" aria-expanded="false" aria-controls="dd-${id}" aria-label="Show ${label} menu">${icon('chevron')}</button></div>
+          <div class="dd" id="dd-${id}"><div class="dd-inner dd-${id}">${cols}</div><a class="dd-all" href="${all[0]}">${all[1]} ${icon('arrow')}</a></div>
+        </li>`;
+  return `<ul class="nav-list">
+        <li><a href="/"${cur('home')}>Home</a></li>${dd('cars', 'Our Fleet', '/cars/', 'fleet', carCols, ['/cars/', 'Full fleet &amp; daily rates'])}${dd('places', 'Areas', '/rent-a-car-islamabad/', 'areas', placeCols, ['/#areas', 'All areas we serve'])}
+        <li><a href="/#services"${cur('services')}>Services</a></li>
+        <li><a href="/about/"${cur('about')}>About Us</a></li>
+        <li><a href="/contact/"${cur('contact')}>Contact Us</a></li>
+      </ul>`;
 }
 
 function credits_() {
@@ -409,8 +453,7 @@ function pageLinks(arg) {
 
 function modelPhoto(arg, meta) {
   const c = carById[meta.cars[0]];
-  const img = c.img || c.id;
-  return `<figure class="model-photo img-wrap"><img src="/assets/img/cars/${img}-800.webp" srcset="/assets/img/cars/${img}-480.webp 480w, /assets/img/cars/${img}-800.webp 800w" sizes="(min-width: 1100px) 680px, 92vw" width="800" height="600" decoding="async" alt="${esc(`${meta.name} for rent in Islamabad`)}"></figure>`;
+  return `<figure class="model-photo img-wrap${isCutout(c) ? '' : ' model-photo--photo'}">${carImg(c, '(min-width: 1100px) 680px, 92vw', `${meta.name} for rent in Islamabad`, '')}</figure>`;
 }
 
 function specTable(arg, meta) {
@@ -470,7 +513,7 @@ function postList(arg, meta) {
 
 const components = {
   fleet, pageCars, fleetCount, carList, clients: clientsStrip, clientNames, testimonials: testimonialCards, faq,
-  bookingForm, contactList, map, wa: waLink, credits: credits_, year: () => String(new Date().getFullYear()),
+  bookingForm, contactList, map, wa: waLink, credits: credits_, navMenu, year: () => String(new Date().getFullYear()),
   crumbs, lead, napLine, waPage, sections, rates, priceList, modelPhoto, specTable, relatedCars, postMeta, postBody, postList, ratesHeading, carsHeading, faqHeading, nearbyHeading, nearby, areaGrid, pageLinks,
 };
 
@@ -537,8 +580,10 @@ function head(meta) {
   const ga = site.gaId
     ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${site.gaId}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${site.gaId}');</script>`
     : '';
-  const heroPreload = meta.hero
-    ? `<link rel="preload" as="image" type="image/webp" href="/assets/img/hero/hero-1280.webp" imagesrcset="/assets/img/hero/hero-768.webp 768w, /assets/img/hero/hero-1280.webp 1280w, /assets/img/hero/hero-1920.webp 1920w" imagesizes="100vw" fetchpriority="high">`
+  // "preloadCar": "<img id>" in a page's meta preloads that car's cut-out (the home hero).
+  const p = meta.preloadCar;
+  const heroPreload = p
+    ? `<link rel="preload" as="image" type="image/webp" href="/assets/img/cars/${p}-800.webp" imagesrcset="/assets/img/cars/${p}-480.webp 480w, /assets/img/cars/${p}-800.webp 800w, /assets/img/cars/${p}-1200.webp 1200w" imagesizes="(min-width: 1000px) 600px, 92vw" fetchpriority="high">`
     : '';
   return `<!doctype html>
 <html lang="en-PK" class="no-js">
@@ -621,7 +666,7 @@ const built = []; // { meta } of every page, in sitemap order
 const titles = new Map();
 
 function emit(meta, body) {
-  for (const k of ['title', 'description']) meta[k] = render(meta[k], meta).replace(/&amp;/g, '&');
+  for (const k of ['title', 'description']) meta[k] = render(meta[k], meta).replace(/&amp;/g, '&').replace(/&#39;/g, "'");
   if (meta.title.length > 60) console.warn(`  ! ${meta.path}: title is ${meta.title.length} chars (max 60)`);
   if (meta.description.length > 155) console.warn(`  ! ${meta.path}: description is ${meta.description.length} chars (max 155)`);
   if (titles.has(meta.title)) console.warn(`  ! ${meta.path}: same title as ${titles.get(meta.title)}`);

@@ -39,6 +39,8 @@ Build a fast, responsive, search-engine-optimised marketing website for SLC Car 
 | Car-model pages | `/cars/<model>-rent-islamabad/` (Corolla, Civic, City, Alto & Wagon R, Prado, Land Cruiser V8, Fortuner, Revo, Grand Cabin, Coaster, Mercedes, Audi, Lexus LX 570) | One page per model family: specs, daily rates, FAQs, `Product` schema |
 | Blog | `/blog/` and `/blog/<slug>/` | Guides for long-tail and AI-answer searches (prices, self-drive requirements, mileage limits) |
 
+**Navigation:** the navbar has two dropdown menus. **Our Fleet** lists every car-model page grouped by car type, and **Areas** lists every area page grouped by city (Islamabad / Rawalpindi). Both lists are generated from `models.json` and `areas.json`, so they update automatically. On phones they open as accordions inside the menu.
+
 ## 4. Contact & conversion (highest priority)
 
 Contact must be **in the hero section** and in every other place a visitor might decide to book:
@@ -71,7 +73,13 @@ Contact must be **in the hero section** and in every other place a visitor might
 - Each car card shows: photo, make & model, category, seats, transmission, fuel, ideal use, and WhatsApp/Call buttons.
 - **Prices:** daily rates per car supplied by the client on 18 Oct 2026, from PKR 4,000 (Alto) to PKR 150,000 (Lexus LX 570). They live in `src/data/cars.json` (`rate`). Whether a rate includes driver and fuel is confirmed per booking. **[TBC]**
 - **Easy maintenance:** cars are stored in one data file (`src/data/cars.json`). Adding or removing a car means editing that file and rebuilding the site. No HTML changes are needed.
+- **Photo style:** car photos have their backgrounds removed and are converted to **black & white** for a consistent, professional look. They sit on a plain light background with a soft floor shadow. **[TODO]** the luxury cars and the Elantra (Mercedes S/E/C-Class, Audi A4/A5/A6, Lexus LX 570) still have ordinary colour photos and need the same treatment (add `<img>-1200.webp` and replace the 480/800 files).
 - Photos are freely licensed (Wikimedia Commons) and credited on the About page. The client may replace them with photos of their own cars later, which is recommended.
+
+## 5a. Service areas
+
+- Every area page is an entry in `src/data/areas.json` with its own copy (see §3 and `smartlink-seo-aeo-spec.md` §7.3). Pages that only swap the area name are doorway pages, so a new area gets a page only once someone writes its local text.
+- Candidates for the next area pages: **Islamabad:** E-7, E-11, Gulberg Greens. **Rawalpindi:** Saddar, Satellite Town, Chaklala Scheme III, Westridge, Askari, PWD Housing Society, Gulraiz.
 
 ## 6. Experience & trust
 

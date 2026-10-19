@@ -39,6 +39,41 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && nav.classList.contains('is-open')) { setMenu(false); toggle.focus(); } });
   }
 
+  /* ---------- navbar dropdowns (fleet / areas) ---------- */
+  var dds = $$('.has-dd');
+  function closeDropdowns(except) {
+    dds.forEach(function (li) {
+      if (li === except) return;
+      li.classList.remove('is-open');
+      $('.dd-toggle', li).setAttribute('aria-expanded', 'false');
+    });
+  }
+  dds.forEach(function (li) {
+    var btn = $('.dd-toggle', li);
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = !li.classList.contains('is-open');
+      closeDropdowns(li);
+      li.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  });
+  document.addEventListener('click', function (e) { if (!e.target.closest('.has-dd')) closeDropdowns(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    var li = $('.has-dd.is-open') || (document.activeElement && document.activeElement.closest('.has-dd')) || $('.has-dd:hover');
+    if (!li) return;
+    closeDropdowns();
+    li.classList.add('dd-suppress'); // keep it shut even while hovered/focused
+    $('.dd-toggle', li).focus();
+  });
+  dds.forEach(function (li) {
+    function release() { li.classList.remove('dd-suppress'); }
+    li.addEventListener('mouseleave', release);
+    li.addEventListener('focusout', function (e) { if (!li.contains(e.relatedTarget)) release(); });
+    $('.dd-toggle', li).addEventListener('click', release);
+  });
+
   /* ---------- fleet filter ---------- */
   $$('[data-fleet]').forEach(function (fleet) {
     var tabs = $$('.tab', fleet), cards = $$('.car-card', fleet), empty = $('.fleet-empty', fleet);

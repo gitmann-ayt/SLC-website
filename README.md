@@ -16,7 +16,7 @@ Upload the **contents of `dist/`** to any web host (cPanel, Netlify, Vercel, Clo
 | What | File |
 |---|---|
 | Phone, WhatsApp, email, address, hours, domain, years | `src/data/site.json` |
-| Cars (add / remove / mark `featured` for the home page) | `src/data/cars.json` + photos in `assets/img/cars/<id>-480.webp` and `<id>-800.webp` (4:3). Cars that share a photo set `"img"` (e.g. both Civics use `civic`). Credit every photo in `assets/img/credits.json` |
+| Cars (add / remove / mark `featured` for the home page) | `src/data/cars.json` + photos in `assets/img/cars/<id>-480.webp`, `-800.webp` and `-1200.webp` (16:10, background removed, black & white). Cars that share a photo set `"img"` (e.g. both Civics use `civic`). A car without a `-1200` file is shown as an ordinary cropped 4:3 photo until its cut-out is made. Credit every photo in `assets/img/credits.json` |
 | Client organisations | `src/data/clients.json` |
 | Testimonials (**drafts: replace with approved quotes**) | `src/data/testimonials.json` |
 | FAQs (home page) | `src/data/faqs.json` |
