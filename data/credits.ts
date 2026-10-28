@@ -7,11 +7,11 @@
  */
 export const credits: { what: string; file: string; author: string; license: string; source: string }[] = [
  {
-  "what": "Home page hero: black Toyota Corolla Altis (cut out, converted to black and white, placed in a studio scene)",
-  "file": "Toyota_Corolla_Altis_ZRE211_1.6_V_Attitude_Black_Mica.jpg",
-  "author": "Ethan Llamas",
-  "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Toyota_Corolla_Altis_ZRE211_1.6_V_Attitude_Black_Mica.jpg"
+  "what": "Home page hero: black Tesla Model S on a highway at dusk (mirrored, colour toned down, background extended)",
+  "file": "photo-1536700503339-1e4b06520771",
+  "author": "Jp Valery",
+  "license": "Unsplash License",
+  "source": "https://unsplash.com/photos/time-lapse-photography-of-black-sedan-on-road-Qm_n6aoYzDs"
  },
  {
   "what": "Car photo: suzuki alto",

@@ -37,20 +37,26 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Home page: transparent header over the hero until the page scrolls.
+  const overlay = pathname === "/" && !scrolled && !open;
+  // Black header once the page has scrolled (or the mobile menu is open).
+  // White text on the transparent home header too.
+  const dark = (scrolled && !open) || overlay;
+
   // Close the mobile menu after navigating.
   useEffect(() => setOpen(false), [pathname]);
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 border-b transition-colors ${scrolled ? "border-edge bg-white/95 shadow-[0_6px_24px_-12px_rgb(0_0_0/0.25)] backdrop-blur" : "border-edge bg-white"}`}>
+    <header className={`fixed inset-x-0 top-0 z-50 border-b transition-colors ${overlay ? "border-transparent bg-origin-border bg-[linear-gradient(180deg,rgb(0_0_0/0.7),rgb(0_0_0/0.35)_70%,transparent)] [text-shadow:0_1px_8px_rgb(0_0_0/0.6)]" : dark ? "border-white/10 bg-[#0e0e10]/95 shadow-[0_8px_30px_-12px_rgb(0_0_0/0.6)] backdrop-blur" : "border-edge bg-white"}`}>
       <div className="container-x flex h-[76px] items-center justify-between gap-6">
-        <Logo />
+        <Logo dark={dark} />
 
         <nav className="hidden items-stretch xl:flex" aria-label="Main">
           {nav.map((item) => (
             <div key={item.label} className="group relative flex items-center">
               <Link
                 href={item.href}
-                className={`flex h-[76px] items-center gap-1 px-3.5 text-[14px] font-medium text-ink/80 hover:text-ink ${isActive(item.href) ? "border-b-2 border-ink text-ink" : "border-b-2 border-transparent"}`}
+                className={`flex h-[76px] items-center gap-1 px-3.5 text-[14px] font-medium transition-colors ${overlay ? "text-white hover:text-white/80" : dark ? "text-white/75 hover:text-white" : "text-ink/75 hover:text-ink"} ${isActive(item.href) ? (dark ? "border-b-2 border-white text-white" : "border-b-2 border-ink text-ink") : "border-b-2 border-transparent"}`}
               >
                 {item.label}
                 {item.groups && <ChevronDown className="size-3.5 transition group-hover:rotate-180" />}
@@ -84,16 +90,16 @@ export default function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 xl:flex">
-          <a href={brand.phoneHref} className="flex h-11 items-center gap-2 rounded-xl border border-edge px-4 text-[13px] font-semibold text-ink hover:border-ink">
+          <a href={brand.phoneHref} className={`${overlay ? "hidden" : "flex"} h-11 items-center gap-2 rounded-xl border px-4 text-[13px] font-semibold transition-colors ${dark ? "border-white/25 text-white hover:border-white" : "border-edge text-ink hover:border-ink"}`}>
             <Phone className="size-4" /> {brand.phoneDisplay}
           </a>
-          <Link href="/contact/" className="flex h-11 items-center rounded-xl bg-ink px-5 text-[13px] font-semibold text-white hover:bg-neutral-800">
+          <Link href="/contact/" className={`flex h-11 items-center rounded-xl px-5 text-[13px] font-semibold transition-colors ${overlay ? "border border-white/70 bg-black/35 text-white backdrop-blur-md hover:border-white hover:bg-black/50" : dark ? "bg-white text-ink hover:bg-neutral-200" : "bg-ink text-white hover:bg-neutral-800"}`}>
             Book your car
           </Link>
         </div>
 
         <button
-          className="grid size-11 place-items-center rounded-lg text-ink xl:hidden"
+          className={`grid size-11 place-items-center rounded-lg xl:hidden ${dark ? "text-white" : "text-ink"}`}
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label={open ? "Close menu" : "Open menu"}

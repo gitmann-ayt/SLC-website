@@ -40,9 +40,12 @@ export function PageHero({
   blurb,
   crumbs,
   image = "/images/cities/islamabad.webp",
+  color = false,
   children,
 }: {
   image?: string;
+  /** Show the photo in colour (location pages); otherwise black and white */
+  color?: boolean;
   eyebrow?: string;
   title: ReactNode;
   blurb?: string;
@@ -51,8 +54,8 @@ export function PageHero({
 }) {
   return (
     <section className="relative isolate mt-[76px] overflow-hidden bg-ink">
-      <Image src={image} alt="" fill priority sizes="100vw" className="-z-20 object-cover opacity-40 grayscale" />
-      <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-ink via-ink/85 to-ink/40" />
+      <Image src={image} alt="" fill priority sizes="100vw" className={`-z-20 object-cover ${color ? "opacity-100" : "opacity-40 grayscale"}`} />
+      <div aria-hidden className={`absolute inset-0 -z-10 bg-gradient-to-r ${color ? "from-ink/90 via-ink/55 to-ink/5" : "from-ink via-ink/85 to-ink/40"}`} />
       <div className="container-x py-14 md:py-20">
         <Breadcrumbs items={crumbs} />
         {eyebrow && (

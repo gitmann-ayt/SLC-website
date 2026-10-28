@@ -20,7 +20,7 @@ export default function CarsPage() {
         crumbs={[{ name: "Our fleet", path: "/cars/" }]}
         image="/images/cities/lahore.webp"
       />
-      <section className="bg-surface py-12 md:py-16">
+      <section className="bg-stone py-12 md:py-16">
         <div className="container-x"><FleetFilter /></div>
       </section>
       <section className="bg-mist py-14">

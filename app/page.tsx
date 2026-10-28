@@ -16,7 +16,7 @@ export default function Home() {
       <Hero />
       <AreasWeServe showAll={false} />
 
-      <section id="fleet" className="scroll-mt-24 bg-white py-16 md:py-24">
+      <section id="fleet" className="scroll-mt-24 bg-stone py-16 md:py-24">
         <div className="container-x">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <SectionHead align="left" eyebrow="Popular vehicles" title="From everyday hatchbacks to SUVs and luxury" blurb="Every car is available with a driver, and most are available for self drive." />

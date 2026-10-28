@@ -20,6 +20,8 @@ export default function LocationsHub() {
         title="Rent a car in 10 cities across Pakistan"
         blurb="Pick your area to see local pickup details, popular trips, drive times and the cars people there book most."
         crumbs={[{ name: "Locations", path: "/rent-a-car/" }]}
+        image="/images/cities/lahore.webp"
+        color
       />
 
       <section className="bg-white py-14 md:py-20">
@@ -28,7 +30,7 @@ export default function LocationsHub() {
           <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
             {cityList.map((l, i) => (
               <Link key={l.slug} href={`/rent-a-car/${l.slug}/`} className={`group relative isolate overflow-hidden rounded-[22px] border border-white/10 ${i === 0 ? "col-span-2 row-span-2 min-h-[22rem]" : "min-h-[11rem] md:min-h-[13rem]"}`}>
-                <Image src={locationImage(l.slug)} alt={`Rent a car in ${l.name}`} fill sizes={i === 0 ? "(min-width:1024px) 40vw, 100vw" : "(min-width:1024px) 20vw, 50vw"} className="-z-10 object-cover grayscale transition duration-700 group-hover:scale-110 group-hover:grayscale-0" />
+                <Image src={locationImage(l.slug)} alt={`Rent a car in ${l.name}`} fill sizes={i === 0 ? "(min-width:1024px) 40vw, 100vw" : "(min-width:1024px) 20vw, 50vw"} className="-z-10 object-cover transition duration-700 group-hover:scale-110" />
                 <span className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
                 <span className="absolute top-3 right-3 grid size-9 place-items-center rounded-full bg-white/10 text-white transition group-hover:rotate-45 group-hover:bg-white group-hover:text-ink">
                   <ArrowUpRight className="size-4" />
@@ -45,7 +47,7 @@ export default function LocationsHub() {
       </section>
 
       {locationGroups.filter((g) => g.kind !== "city").map((g, gi) => (
-        <section key={g.kind} className={`py-12 md:py-14 ${gi % 2 ? "bg-white" : "bg-mist"}`}>
+        <section key={g.kind} className={`py-12 md:py-14 ${gi % 2 ? "bg-white" : "bg-stone"}`}>
           <div className="container-x">
             <h2 className="text-[22px] font-semibold md:text-[26px]">{g.title}</h2>
             <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

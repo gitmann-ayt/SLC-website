@@ -59,6 +59,7 @@ export default async function LocationPage({ params }: Props) {
         title={`Rent a car in ${loc.place}`}
         blurb={`Self-drive cars and cars with drivers in ${loc.name}: hatchbacks, sedans, SUVs and vans, with doorstep delivery, fixed quotes and 24/7 support from ${brand.fullName}.`}
         image={locationImage(loc.slug)}
+        color
         crumbs={[{ name: "Locations", path: "/rent-a-car/" }, { name: loc.place, path }]}
       />
 
