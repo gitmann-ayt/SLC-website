@@ -2,17 +2,17 @@
  * About page content: CEO profile, company story, fleet standards.
  * The CEO appears on the About page only.
  *
- * PLACEHOLDER: set the CEO's real name, the founding year, and check every
- * sentence of the bio with the CEO before launch. While `isPlaceholder` is
- * true the About page shows a reminder banner and no Person schema is emitted
- * with a fake name.
+ * PLACEHOLDER: set the founding year and check every sentence of the bio
+ * with the CEO before launch. While `isPlaceholder` is true the About page
+ * shows a reminder banner and no Person schema is emitted with unconfirmed
+ * details.
  */
 
 export const about = {
   isPlaceholder: true,
 
   ceo: {
-    name: "CEO Name", // PLACEHOLDER: full name
+    name: "Raja Qasim",
     role: "Founder & Chief Executive Officer",
     photo: "/images/team/ceo.jpg",
     photoWidth: 720,

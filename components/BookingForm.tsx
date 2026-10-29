@@ -6,16 +6,18 @@ import { cities } from "@/data/locations";
 import { waLink } from "@/data/site";
 import { WhatsAppIcon } from "./ui";
 
-function Field({ label, children, className = "" }: { label: string; children: ReactNode; className?: string }) {
+function Field({ label, children, big = false }: { label: string; children: ReactNode; big?: boolean }) {
   return (
-    <label className={`block rounded-xl border border-edge bg-white px-4 py-2.5 transition focus-within:border-ink ${className}`}>
-      <span className="block text-[11px] font-semibold tracking-[0.12em] text-muted uppercase">{label}</span>
+    <label className={`block rounded-xl border bg-white transition focus-within:border-ink ${big ? "border-neutral-300 px-4 py-3.5" : "border-edge px-4 py-2.5"}`}>
+      <span className={`block tracking-[0.12em] uppercase ${big ? "text-[12px] font-bold text-ink/70" : "text-[11px] font-semibold text-muted"}`}>{label}</span>
       {children}
     </label>
   );
 }
 
 const control = "mt-0.5 w-full min-w-0 bg-transparent text-[15px] font-semibold text-ink outline-none placeholder:font-normal placeholder:text-muted/70";
+/** Bigger, bolder text for the hero bar. */
+const controlBig = "mt-1 w-full min-w-0 bg-transparent text-[16px] font-bold text-ink outline-none";
 
 /**
  * Quote form. Builds a WhatsApp message from the details; no sign-up or SMS
@@ -56,44 +58,47 @@ export default function BookingForm({
     window.open(waLink(msg), "_blank", "noopener");
   }
 
+  const big = layout === "bar";
+  const ctl = big ? controlBig : control;
+
   const fields = (
     <>
-      <Field label="Rental type">
-        <select name="type" defaultValue={defaultType} className={control}>
+      <Field big={big} label="Rental type">
+        <select name="type" defaultValue={defaultType} className={ctl}>
           <option>With driver</option>
           <option>Self drive</option>
         </select>
       </Field>
-      <Field label="Vehicle">
-        <select name="car" defaultValue={defaultCar} className={control}>
+      <Field big={big} label="Vehicle">
+        <select name="car" defaultValue={defaultCar} className={ctl}>
           <option value="">Any car</option>
           {cars.map((c) => <option key={c.slug}>{carName(c)}</option>)}
         </select>
       </Field>
-      <Field label="Pickup city">
-        <select name="city" defaultValue={defaultCity} className={control}>
+      <Field big={big} label="Pickup city">
+        <select name="city" defaultValue={defaultCity} className={ctl}>
           <option value="">Select city</option>
           {cities().map((c) => <option key={c.slug}>{c.name}</option>)}
         </select>
       </Field>
-      <Field label="Pickup date">
-        <input name="start" type="date" className={control} />
+      <Field big={big} label="Pickup date">
+        <input name="start" type="date" className={ctl} />
       </Field>
-      <Field label="Return date">
-        <input name="end" type="date" className={control} />
+      <Field big={big} label="Return date">
+        <input name="end" type="date" className={ctl} />
       </Field>
     </>
   );
 
   const button = (
-    <button type="submit" className="flex min-h-14 items-center justify-center gap-2 rounded-xl bg-ink px-6 text-[15px] font-semibold text-white transition hover:bg-neutral-800">
-      <WhatsAppIcon className="size-5 text-[#25d366]" /> Get a quote
+    <button type="submit" className={`flex items-center justify-center gap-2.5 rounded-xl bg-ink text-white transition hover:bg-neutral-800 ${big ? "min-h-[72px] px-8 text-[17px] font-bold" : "min-h-14 px-6 text-[15px] font-semibold"}`}>
+      <WhatsAppIcon className={`${big ? "size-6" : "size-5"} text-[#25d366]`} /> Get a quote
     </button>
   );
 
   if (layout === "bar") {
     return (
-      <form id={id} onSubmit={submit} className={`scroll-mt-28 rounded-2xl border border-edge bg-white p-3 shadow-[0_24px_60px_-28px_rgb(0_0_0/0.35)] ${className}`}>
+      <form id={id} onSubmit={submit} className={`scroll-mt-28 rounded-2xl border border-white/20 bg-white p-3 shadow-[0_30px_80px_-20px_rgb(0_0_0/0.8)] md:p-3.5 ${className}`}>
         <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-[repeat(5,minmax(0,1fr))_auto]">
           {fields}
           {button}
@@ -106,12 +111,12 @@ export default function BookingForm({
     <form id={id} onSubmit={submit} className={`scroll-mt-28 rounded-2xl border border-edge bg-mist p-5 md:p-6 ${className}`}>
       <h2 className="mb-4 text-[20px] font-semibold text-ink">{title}</h2>
       <div className="grid gap-3">
-        <Field label="Your name">
-          <input name="name" autoComplete="name" placeholder="Full name" className={control} />
+        <Field big={big} label="Your name">
+          <input name="name" autoComplete="name" placeholder="Full name" className={ctl} />
         </Field>
         {fields}
-        <Field label="Destination">
-          <input name="destination" placeholder="Where are you going?" className={control} />
+        <Field big={big} label="Destination">
+          <input name="destination" placeholder="Where are you going?" className={ctl} />
         </Field>
         {button}
       </div>

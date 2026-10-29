@@ -48,7 +48,7 @@ export default function AboutPage() {
         <div className="container-x">
           {about.isPlaceholder && (
             <p className="mb-8 inline-block rounded-lg border border-dashed border-star bg-star/10 px-3 py-2 text-[12px] text-fg">
-              Draft: add the CEO&apos;s name and founding year, and confirm the bio in <code>data/about.ts</code> before launch.
+              Draft: add the founding year and confirm the CEO&apos;s bio in <code>data/about.ts</code> before launch.
             </p>
           )}
           <div className="grid items-center gap-12 md:grid-cols-[1.15fr_0.85fr] lg:gap-16">

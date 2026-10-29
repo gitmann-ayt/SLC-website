@@ -16,8 +16,8 @@ export function Logo({ className = "", size = 52, dark = false }: { className?: 
     <Link href="/" className={`flex items-center gap-3 ${className}`} aria-label={`${brand.fullName} home`}>
       <Image src={brand.logo} alt={`${brand.fullName} logo`} width={size} height={size} priority className="h-auto" style={{ width: size }} />
       <span className="flex flex-col leading-none">
-        <span className={`font-heading text-[21px] font-bold tracking-[0.04em] ${dark ? "text-white" : "text-ink"}`}>SLC</span>
-        <span className={`mt-1.5 border-t pt-1 font-sans text-[10px] font-medium tracking-[0.42em] uppercase ${dark ? "border-white/20 text-white/60" : "border-ink/15 text-muted"}`}>Car Rental</span>
+        <span className={`font-heading text-[21px] font-bold tracking-[0.04em] ${dark ? "text-white [text-shadow:0_1px_10px_rgb(0_0_0/0.7)]" : "text-ink"}`}>SLC</span>
+        <span className={`mt-1.5 border-t pt-1 font-sans text-[10px] tracking-[0.42em] uppercase ${dark ? "border-white/45 font-semibold text-white/90 [text-shadow:0_1px_8px_rgb(0_0_0/0.8)]" : "border-ink/15 font-medium text-muted"}`}>Car Rental</span>
       </span>
     </Link>
   );

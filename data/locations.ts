@@ -125,7 +125,7 @@ export const locations: Location[] = [
       { q: "Can I book an SUV from G-10 for a Murree trip?", a: "Yes. The Prado and Fortuner are the most popular choices. The quote covers the driver; fuel and tolls are listed separately." },
     ],
     mapQuery: "G-10 Markaz, Islamabad",
-    carSlugs: ["toyota-corolla-cross", "toyota-corolla", "toyota-fortuner"],
+    carSlugs: ["toyota-corolla-grande", "toyota-corolla", "toyota-fortuner"],
     nearby: ["g-9-islamabad", "g-11-islamabad", "islamabad-airport"],
   },
   {

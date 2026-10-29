@@ -15,7 +15,7 @@ export { CarCard, CarGrid } from "./CarCard";
 
 /* ---------- Car types strip (under the hero) ---------- */
 const categoryImages: Record<CategorySlug, string> = {
-  hatchback: "/images/cars/suzuki-swift.webp",
+  hatchback: "/images/cars/suzuki-alto.webp",
   sedan: "/images/cars/toyota-corolla.webp",
   suv: "/images/cars/kia-sportage.webp",
   luxury: "/images/cars/mercedes-benz-s-class.webp",
@@ -82,7 +82,7 @@ export function BrandBox() {
             <p className="eyebrow inline-flex items-center gap-2 text-white/55"><span className="h-px w-6 bg-current" />Brands we offer</p>
             <h2 className="mt-4 text-[30px] leading-[1.12] font-semibold text-white md:text-[42px]">Pakistan&apos;s favourite car brands, in one fleet</h2>
             <p className="mt-4 text-[16px] leading-relaxed text-white/65">
-              Toyota, Honda and Suzuki for everyday driving, Hyundai, Kia, Changan and Haval for modern SUVs, and Mercedes-Benz and Audi when the occasion calls for it.
+              Toyota, Honda and Suzuki for everyday driving, Hyundai and Kia for modern SUVs, and Mercedes-Benz, Audi and Lexus when the occasion calls for it.
             </p>
             <div className="mt-8 flex gap-8 border-t border-white/10 pt-6">
               <div><p className="font-heading text-[28px] font-semibold text-white">{carMakes.length}</p><p className="text-[13px] text-white/50">Brands</p></div>
@@ -178,7 +178,7 @@ export function AreasWeServe({ showAll = true }: { showAll?: boolean }) {
     <section id="areas" className="scroll-mt-24 bg-white py-16 md:py-24">
       <div className="container-x">
         <div className="flex flex-wrap items-end justify-between gap-4">
-          <SectionHead align="left" eyebrow="Areas we serve" title={`Car rental in ${cityList.length} cities across Pakistan`} blurb="Local pickup and delivery in every city below, and trips anywhere in the country." />
+          <SectionHead align="left" eyebrow="Areas we serve" title="Car rental across Pakistan" blurb="Local pickup and delivery in every city below, and trips anywhere in the country." />
           <Button href="/rent-a-car/" variant="ghost-light">All locations <ChevronRight className="size-4" /></Button>
         </div>
         <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">

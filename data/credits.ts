@@ -14,6 +14,34 @@ export const credits: { what: string; file: string; author: string; license: str
   "source": "https://unsplash.com/photos/time-lapse-photography-of-black-sedan-on-road-Qm_n6aoYzDs"
  },
  {
+  "what": "Car photo: Mercedes C180 (cut out from its background)",
+  "file": "photo-1605556816125-d752c226247b",
+  "author": "Cian Leach",
+  "license": "Unsplash License",
+  "source": "https://unsplash.com/photos/white-mercedes-benz-car-on-road-during-daytime-JmLv6wDusD0"
+ },
+ {
+  "what": "Car photo: Audi A5 (cut out from its background, number plate blanked)",
+  "file": "photo-1542282088-72c9c27ed0cd",
+  "author": "Olav Tvedt",
+  "license": "Unsplash License",
+  "source": "https://unsplash.com/photos/yq-efMJMuPg"
+ },
+ {
+  "what": "Car photo: Audi A4 (cut out from its background)",
+  "file": "photo-1726003536800-b9ec0888cf36",
+  "author": "Brian Kungu",
+  "license": "Unsplash License",
+  "source": "https://unsplash.com/photos/a-white-car-parked-on-a-dirt-road-R0su4p5Vx-8"
+ },
+ {
+  "what": "Car photo: Lexus LX 570 (cut out from its background, number plate blanked)",
+  "file": "photo-1592857723369-03e2e792626d",
+  "author": "Daniil Lyusov",
+  "license": "Unsplash License",
+  "source": "https://unsplash.com/photos/H-spSeBgiXc"
+ },
+ {
   "what": "Car photo: suzuki alto",
   "file": "Suzuki Alto CN facelift China 2014-04-30.jpg",
   "author": "Navigator84",
@@ -273,7 +301,7 @@ export const credits: { what: string; file: string; author: string; license: str
   "source": "https://commons.wikimedia.org/wiki/File:Islamabad_International_Airport_2022.jpg"
  },
  {
-  "what": "Brand logos: Toyota, Honda, Suzuki, Hyundai, Kia, Audi, MG",
+  "what": "Brand logos: Toyota, Honda, Suzuki, Hyundai, Kia, Audi",
   "file": "Simple Icons",
   "author": "Simple Icons contributors",
   "license": "CC0 1.0",

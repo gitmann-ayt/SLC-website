@@ -86,7 +86,7 @@ export const servicePages: Service[] = [
       { q: "Do you sign written contracts with companies?", a: "Yes. We offer written monthly and annual agreements with fixed rates." },
       { q: "Can one contract cover several cities?", a: "Yes. Cars can be placed in any of the cities we serve under one agreement." },
     ],
-    carSlugs: ["toyota-corolla-cross", "mercedes-benz-e-class", "toyota-coaster"],
+    carSlugs: ["toyota-corolla-grande", "mercedes-benz-e-class", "toyota-coaster"],
   },
   {
     slug: "monthly-car-rental",
@@ -104,7 +104,7 @@ export const servicePages: Service[] = [
       { q: "What hours does a monthly booking with driver cover?", a: "Usually 10 hours a day, six days a week. Other schedules can be agreed." },
       { q: "Is fuel included in the monthly price?", a: "For self drive, you pay for your own fuel. With driver, city fuel up to an agreed monthly distance is included." },
     ],
-    carSlugs: ["suzuki-cultus", "honda-city", "toyota-corolla-cross"],
+    carSlugs: ["suzuki-wagon-r", "honda-city", "toyota-corolla-grande"],
   },
   {
     slug: "wedding-car-rental",

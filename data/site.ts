@@ -185,8 +185,7 @@ export const carMakes: { name: string; logo: string }[] = [
   { name: "Kia", logo: "kia" },
   { name: "Mercedes-Benz", logo: "mercedes-benz" },
   { name: "Audi", logo: "audi" },
-  { name: "Changan", logo: "changan" },
-  { name: "Haval", logo: "haval" },
+  { name: "Lexus", logo: "lexus" },
 ];
 
 export const steps = [
