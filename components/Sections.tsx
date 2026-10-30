@@ -304,6 +304,7 @@ export function Footer() {
           <p className="mt-5 max-w-xs text-[14px] leading-relaxed text-white/60">{brand.tagline}</p>
           <p className="mt-2 text-[14px] font-semibold text-white">{brand.slogan}</p>
           <p className="mt-5 flex items-center gap-2 text-[14px]"><Phone className="size-4 text-gold" /><a href={brand.phoneHref} className="hover:underline">{brand.phoneDisplay}</a></p>
+          <p className="mt-1 flex items-center gap-2 text-[14px]"><Phone className="size-4 text-gold" /><a href={brand.landlineHref} className="hover:underline">{brand.landlineDisplay}</a></p>
           <p className="mt-1 text-[14px]"><a href={`mailto:${brand.email}`} className="hover:underline">{brand.email}</a></p>
           <p className="mt-1 text-[14px] text-white/60">{brand.address.street}, {brand.address.locality}</p>
         </div>
