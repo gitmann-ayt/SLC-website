@@ -18,16 +18,16 @@
   --color-edge: #e7e5e4;         /* card borders on light */
   --color-fg: #0a0a0a;           /* main text */
   --color-muted: #57534e;        /* secondary text */
-  --color-gold: #c9a06a;         /* champagne gold: buttons, icons on dark */
-  --color-gold-light: #ddbb8a;   /* highlights and eyebrow text on dark */
-  --color-gold-deep: #a47f51;    /* gradient end, focus ring (3.4:1 on white) */
-  --color-gold-ink: #8a6a3d;     /* gold text/icons on light backgrounds (~4.9:1 on white) */
-  --color-gold-soft: rgb(201 160 106 / 0.12);
+  --color-gold: #f5c211;         /* bright brand gold: buttons, icons on dark */
+  --color-gold-light: #ffe07a;   /* highlights and eyebrow text on dark */
+  --color-gold-deep: #c8920a;    /* gradient end, focus ring (~3.3:1 on white) */
+  --color-gold-ink: #8b6508;     /* gold text/icons on light backgrounds (~5.3:1 on white) */
+  --color-gold-soft: rgb(245 194 17 / 0.12);
   --color-accent: var(--color-gold); /* primary accent (gold) */
-  --color-accent-soft: rgb(201 160 106 / 0.12);
+  --color-accent-soft: rgb(245 194 17 / 0.12);
   --color-silver: #a8a29e;       /* secondary highlights */
   --color-silver-soft: rgb(168 162 158 / 0.15);
-  --color-star: #c9a06a;
+  --color-star: #f5c211;
 
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-display), ui-sans-serif, system-ui, sans-serif;
@@ -35,11 +35,11 @@
   --radius-card: 1rem;
 
   /* Gold glows. Visible on dark; on light sections use shadow-glow-warm only. */
-  --shadow-glow-sm: 0 6px 18px -8px rgb(201 160 106 / 0.55);   /* chips, badges, icon tiles */
-  --shadow-glow: 0 10px 30px -12px rgb(201 160 106 / 0.6);     /* gold buttons at rest */
-  --shadow-glow-lg: 0 16px 44px -12px rgb(201 160 106 / 0.75), 0 0 0 1px rgb(221 187 138 / 0.25); /* hover on dark */
-  --shadow-glow-warm: 0 26px 50px -28px rgb(164 127 81 / 0.55); /* card hover on light: warm, not yellow */
-  --drop-shadow-glow: 0 0 22px rgb(201 160 106 / 0.35);        /* gradient text, masked logos */
+  --shadow-glow-sm: 0 6px 18px -8px rgb(245 194 17 / 0.3);     /* chips, badges, icon tiles */
+  --shadow-glow: 0 10px 30px -12px rgb(245 194 17 / 0.35);     /* gold buttons at rest */
+  --shadow-glow-lg: 0 16px 44px -12px rgb(245 194 17 / 0.45), 0 0 0 1px rgb(255 224 122 / 0.25); /* hover on dark */
+  --shadow-glow-warm: 0 26px 50px -28px rgb(200 146 10 / 0.5); /* card hover on light: warm, not yellow */
+  --drop-shadow-glow: 0 0 22px rgb(245 194 17 / 0.35);         /* gradient text, masked logos */
 
   /* Hero scroll hint */
   --animate-scroll-dot: scroll-dot 1.8s ease-in-out infinite;
@@ -71,7 +71,7 @@ h1, h2, h3, .font-heading {
 
 /* Gold gradient text for highlighted words (use on dark backgrounds) */
 .text-gradient-accent {
-  background: linear-gradient(180deg, #f1ddb8 0%, #c9a06a 55%, #a47f51 100%);
+  background: linear-gradient(180deg, #fff3b0 0%, #ffd54a 30%, #f5c211 60%, #c8920a 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -79,12 +79,12 @@ h1, h2, h3, .font-heading {
 
 /* Gold metallic fill for brand logos (used with BrandLogo's mask) */
 .logo-gold {
-  background: linear-gradient(160deg, #f1ddb8 0%, #c9a06a 40%, #8a6a3d 60%, #ddbb8a 100%);
+  background: linear-gradient(160deg, #fff3b0 0%, #f5c211 40%, #8b6508 60%, #ffe07a 100%);
 }
 
-/* Brushed gold fill for primary buttons, as in the reference mockup */
+/* Gold fill for primary buttons: lit top edge, no side-to-side fade (a wide horizontal ramp looks muddy on saturated gold) */
 @utility bg-gold-sheen {
-  background-image: linear-gradient(90deg, var(--color-gold-light) 0%, var(--color-gold) 55%, var(--color-gold-deep) 100%);
+  background-image: linear-gradient(180deg, var(--color-gold-light) 0%, var(--color-gold) 50%, #e0a90c 100%);
 }
 
 /* Outlined giant text behind hero cars */

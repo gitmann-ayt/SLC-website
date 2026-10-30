@@ -11,7 +11,7 @@ Everything marked `PLACEHOLDER` in `data/` must be real before going live. Searc
 
 ## 2. Brand, contact and domain (`data/site.ts`)
 - `NEXT_PUBLIC_SITE_URL` (set when running `deploy.sh`): the exact live domain. Until it is set, builds are previews that search engines are told not to index. Every canonical tag, the sitemap and robots.txt use it. A wrong domain here is the most damaging SEO mistake.
-- `phoneDisplay`, `phoneHref`, `phoneE164`, `whatsapp`, `email`, `address.street`.
+- `phoneDisplay`, `phoneHref`, `phoneE164`, `whatsapp`, `landlineDisplay`, `landlineHref`, `email`, `address.street`.
 - `geo`: the pin from your Google Business Profile. `googleMapsUrl`: your Business Profile link.
 - `social`: Facebook, Instagram, TikTok, YouTube URLs.
 

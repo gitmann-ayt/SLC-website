@@ -7,7 +7,7 @@ import { WhatsAppIcon } from "@/components/ui";
 
 export const metadata = pageMeta({
   title: "Contact & Book a Car in Islamabad",
-  description: `Book a car with driver in Islamabad and Rawalpindi. WhatsApp or call ${brand.fullName} on ${brand.phoneDisplay}, 24 hours a day, or send your trip details with the booking form.`,
+  description: `Book a car with driver in Islamabad and Rawalpindi. WhatsApp or call ${brand.fullName} on ${brand.phoneDisplay} or ${brand.landlineDisplay}, 24 hours a day, or send your trip details with the booking form.`,
   path: "/contact/",
 });
 
@@ -16,6 +16,7 @@ export default function ContactPage() {
   const rows = [
     { icon: WhatsAppIcon, label: "WhatsApp", value: "Chat with us", href: waLink() },
     { icon: Phone, label: "Phone", value: brand.phoneDisplay, href: brand.phoneHref },
+    { icon: Phone, label: "Landline", value: brand.landlineDisplay, href: brand.landlineHref },
     { icon: Mail, label: "Email", value: brand.email, href: `mailto:${brand.email}` },
     { icon: MapPin, label: "Office", value: `${a.street}, ${a.locality}`, href: mapLink || undefined },
     { icon: Clock, label: "Hours", value: "Open 24 hours, 7 days a week" },

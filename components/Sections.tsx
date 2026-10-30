@@ -107,7 +107,7 @@ export function Services() {
   return (
     <section id="services" className="scroll-mt-24 bg-charcoal py-16 md:py-24">
       <div className="container-x">
-        <SectionHead dark eyebrow="Our services" title="One company for every kind of trip" blurb="Self drive or with driver, for an hour, a wedding or a whole year." />
+        <SectionHead dark eyebrow="Our services" title="Your Journey, Our Commitment" blurb="Self drive or with driver, for an hour, a wedding or a whole year." />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => {
             const Icon = serviceIcons[s.icon];
@@ -278,7 +278,7 @@ export function ClosingCTA() {
       <div className="container-x">
         <div className="relative isolate grid items-center gap-8 overflow-hidden rounded-[28px] bg-[linear-gradient(135deg,#27272a_0%,#0e0e10_70%)] px-6 py-12 md:grid-cols-[1.2fr_0.8fr] md:px-12">
           {/* Soft gold glow behind the car */}
-          <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_45%_60%_at_80%_55%,rgb(201_160_106/0.22),transparent_70%)]" />
+          <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_45%_60%_at_80%_55%,rgb(245_194_17/0.14),transparent_70%)]" />
           <div>
             <h2 className="text-[28px] leading-tight font-bold text-white md:text-[38px]">Ready for your next journey?</h2>
             <p className="mt-3 max-w-xl text-[16px] text-white/65">Tell us the city, dates and car, and we will send a fixed price in minutes.</p>
@@ -287,7 +287,7 @@ export function ClosingCTA() {
               <Button href={waLink()} target="_blank" variant="ghost-dark"><WhatsAppIcon className="size-4 text-[#25d366]" /> Chat on WhatsApp</Button>
             </div>
           </div>
-          <Image src="/images/cutouts/mercedes-s500-black.webp" alt="Mercedes S500 from the SLC fleet" width={1341} height={633} sizes="(min-width:768px) 35vw, 90vw" className="h-auto w-full [filter:drop-shadow(0_25px_30px_rgb(0_0_0/0.6))_drop-shadow(0_10px_40px_rgb(201_160_106/0.35))]" />
+          <Image src="/images/cutouts/mercedes-s500-black.webp" alt="Mercedes S500 from the SLC fleet" width={1341} height={633} sizes="(min-width:768px) 35vw, 90vw" className="h-auto w-full [filter:drop-shadow(0_25px_30px_rgb(0_0_0/0.6))_drop-shadow(0_10px_40px_rgb(245_194_17/0.22))]" />
         </div>
       </div>
     </section>

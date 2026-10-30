@@ -1,17 +1,44 @@
 "use client";
 
-import type { FormEvent, ReactNode } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
 import { cars, carName } from "@/data/cars";
 import { cities } from "@/data/locations";
 import { waLink } from "@/data/site";
 import { WhatsAppIcon } from "./ui";
 
+/** Bar fields: boxed when stacked; on desktop one continuous bar split by short dividers. */
+const fieldBar =
+  "relative border-neutral-200 px-4 py-3.5 hover:bg-neutral-50 lg:border-transparent lg:before:absolute lg:before:inset-y-4 lg:before:-left-px lg:before:w-px lg:before:bg-neutral-200 lg:first:before:hidden";
+
 function Field({ label, children, big = false }: { label: string; children: ReactNode; big?: boolean }) {
   return (
-    <label className={`block rounded-xl border bg-white transition focus-within:border-gold-deep ${big ? "border-neutral-300 px-4 py-3.5" : "border-edge px-4 py-2.5"}`}>
+    <label className={`block rounded-xl border bg-white transition focus-within:border-gold-deep ${big ? fieldBar : "border-edge px-4 py-2.5"}`}>
       <span className={`block tracking-[0.12em] uppercase ${big ? "text-[12px] font-bold text-ink/70" : "text-[11px] font-semibold text-muted"}`}>{label}</span>
       {children}
     </label>
+  );
+}
+
+/** Date input that shows "Add date" while empty instead of the browser's mm/dd/yyyy. */
+function DateInput({ name, className, big }: { name: string; className: string; big: boolean }) {
+  const [value, setValue] = useState("");
+  const [focused, setFocused] = useState(false);
+  const empty = !value && !focused;
+  // The margin moves to the wrapper so the overlay centres on the input itself
+  return (
+    <span className={`relative block ${big ? "mt-1" : "mt-0.5"}`}>
+      <input
+        name={name}
+        type="date"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
+        onClick={(e) => { try { e.currentTarget.showPicker(); } catch {} }}
+        className={`${className} mt-0! ${empty ? "text-transparent" : ""}`}
+      />
+      {empty && <span aria-hidden className={`pointer-events-none absolute inset-y-0 left-0 flex items-center font-medium text-ink/45 ${big ? "text-[16px]" : "text-[15px]"}`}>Add date</span>}
+    </span>
   );
 }
 
@@ -82,24 +109,24 @@ export default function BookingForm({
         </select>
       </Field>
       <Field big={big} label="Pickup date">
-        <input name="start" type="date" className={ctl} />
+        <DateInput name="start" big={big} className={ctl} />
       </Field>
       <Field big={big} label="Return date">
-        <input name="end" type="date" className={ctl} />
+        <DateInput name="end" big={big} className={ctl} />
       </Field>
     </>
   );
 
   const button = (
-    <button type="submit" className={`flex items-center justify-center gap-2.5 rounded-xl bg-gold-sheen text-ink shadow-glow transition hover:shadow-glow-lg hover:brightness-110 ${big ? "min-h-[72px] px-8 text-[17px] font-bold" : "min-h-14 px-6 text-[15px] font-semibold"}`}>
+    <button type="submit" className={`flex items-center justify-center gap-2.5 rounded-xl bg-gold-sheen text-ink shadow-glow transition hover:shadow-glow-lg hover:brightness-110 ${big ? "min-h-[72px] px-8 text-[17px] font-bold lg:ml-2" : "min-h-14 px-6 text-[15px] font-semibold"}`}>
       <WhatsAppIcon className={big ? "size-6" : "size-5"} /> Get a quote
     </button>
   );
 
   if (layout === "bar") {
     return (
-      <form id={id} onSubmit={submit} className={`scroll-mt-28 rounded-2xl border border-white/20 bg-white p-3 shadow-[0_30px_80px_-20px_rgb(0_0_0/0.8),0_0_0_1px_rgb(201_160_106/0.35),0_40px_90px_-40px_rgb(201_160_106/0.45)] md:p-3.5 ${className}`}>
-        <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-[repeat(5,minmax(0,1fr))_auto]">
+      <form id={id} onSubmit={submit} className={`scroll-mt-28 rounded-2xl border border-white/20 bg-white p-3 shadow-[0_30px_80px_-20px_rgb(0_0_0/0.8),0_0_0_1px_rgb(245_194_17/0.35),0_40px_90px_-40px_rgb(245_194_17/0.3)] lg:p-2 ${className}`}>
+        <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-[repeat(5,minmax(0,1fr))_auto] lg:gap-0">
           {fields}
           {button}
         </div>

@@ -14,7 +14,7 @@ export function GET() {
     "",
     `> ${about.company.intro} ${brand.tagline}`,
     "",
-    `Phone/WhatsApp: ${brand.phoneDisplay}. Email: ${brand.email}. Open 24/7. Self drive or with a professional driver.`,
+    `Phone/WhatsApp: ${brand.phoneDisplay}. Landline: ${brand.landlineDisplay}. Email: ${brand.email}. Open 24/7. Self drive or with a professional driver.`,
     "",
     "## Key pages",
     `- [About us and our CEO](${abs("/about/")})`,
