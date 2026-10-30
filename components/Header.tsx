@@ -27,6 +27,9 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [openSub, setOpenSub] = useState<string | null>(null);
+  // Desktop dropdown that is open, if any. Driven by state (not CSS :focus-within)
+  // so a clicked link can't hold its menu open after client-side navigation.
+  const [menu, setMenu] = useState<string | null>(null);
   const pathname = usePathname() || "/";
   const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href.split(/[?#]/)[0]));
 
@@ -43,8 +46,29 @@ export default function Header() {
   // White text on the transparent home header too.
   const dark = (scrolled && !open) || overlay;
 
-  // Close the mobile menu after navigating.
-  useEffect(() => setOpen(false), [pathname]);
+  // Close every menu after navigating.
+  useEffect(() => {
+    setOpen(false);
+    setOpenSub(null);
+    setMenu(null);
+  }, [pathname]);
+
+  // Escape closes whichever menu is open.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setMenu(null);
+      setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  /** Close the dropdown when one of its links is clicked (also covers same-page links). */
+  const closeMenu = (e: React.MouseEvent<HTMLElement>) => {
+    setMenu(null);
+    e.currentTarget.blur();
+  };
 
   return (
     <header className={`fixed inset-x-0 top-0 z-50 border-b transition-colors ${overlay ? "border-transparent bg-origin-border bg-[linear-gradient(180deg,rgb(0_0_0/0.7),rgb(0_0_0/0.35)_70%,transparent)] [text-shadow:0_1px_8px_rgb(0_0_0/0.6)]" : dark ? "border-white/10 bg-[#0e0e10]/95 shadow-[0_8px_30px_-12px_rgb(0_0_0/0.6)] backdrop-blur" : "border-edge bg-white"}`}>
@@ -52,41 +76,55 @@ export default function Header() {
         <Logo dark={dark} />
 
         <nav className="hidden items-stretch xl:flex" aria-label="Main">
-          {nav.map((item) => (
-            <div key={item.label} className="group relative flex items-center">
-              <Link
-                href={item.href}
-                className={`flex h-[76px] items-center gap-1 px-3.5 text-[14px] font-medium transition-colors ${overlay ? "text-white hover:text-white/80" : dark ? "text-white/75 hover:text-white" : "text-ink/75 hover:text-ink"} ${isActive(item.href) ? (dark ? "border-b-2 border-gold text-white" : "border-b-2 border-gold-deep text-ink") : "border-b-2 border-transparent"}`}
+          {nav.map((item) => {
+            const isOpen = menu === item.label;
+            const close = () => setMenu((m) => (m === item.label ? null : m));
+            return (
+              <div
+                key={item.label}
+                className="relative flex items-center"
+                onMouseEnter={() => item.groups && setMenu(item.label)}
+                onMouseLeave={close}
+                onFocus={() => setMenu(item.groups ? item.label : null)}
+                onBlur={(e) => !e.currentTarget.contains(e.relatedTarget as Node | null) && close()}
               >
-                {item.label}
-                {item.groups && <ChevronDown className="size-3.5 transition group-hover:rotate-180" />}
-              </Link>
-              {item.groups && (
-                <div
-                  className={`invisible absolute top-full left-1/2 -translate-x-1/2 translate-y-1 rounded-2xl border border-edge bg-white p-5 opacity-0 shadow-[0_24px_60px_-20px_rgb(0_0_0/0.3)] transition group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100`}
-                  style={{ width: `${item.groups.reduce((n, g) => n + span(g.links.length), 0) * 12 + 2.5}rem` }}
+                <Link
+                  href={item.href}
+                  onClick={closeMenu}
+                  aria-haspopup={item.groups ? "true" : undefined}
+                  aria-expanded={item.groups ? isOpen : undefined}
+                  className={`flex h-[76px] items-center gap-1 px-3.5 text-[14px] font-medium transition-colors ${overlay ? "text-white hover:text-white/80" : dark ? "text-white/75 hover:text-white" : "text-ink/75 hover:text-ink"} ${isActive(item.href) ? (dark ? "border-b-2 border-gold text-white" : "border-b-2 border-gold-deep text-ink") : "border-b-2 border-transparent"}`}
                 >
-                  <div className="grid gap-6" style={{ gridTemplateColumns: item.groups.map((g) => `${span(g.links.length)}fr`).join(" ") }}>
-                    {item.groups.map((g) => (
-                      <div key={g.title}>
-                        <p className="mb-2 px-2 text-[11px] font-semibold tracking-[0.16em] text-muted uppercase">{g.title}</p>
-                        <ul className={g.links.length > 7 ? "grid grid-cols-2 gap-x-2" : ""}>
-                          {g.links.map((l) => (
-                            <li key={l.href}>
-                              <Link href={l.href} className="flex items-center gap-2.5 rounded-lg px-2 py-2 text-[13.5px] text-ink/80 hover:bg-mist hover:text-ink">
-                                {l.logo && <BrandLogo logo={l.logo} name={l.label.split(" ")[0]} className="size-4 text-ink/70" />}
-                                {l.label}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
+                  {item.label}
+                  {item.groups && <ChevronDown className={`size-3.5 transition ${isOpen ? "rotate-180" : ""}`} />}
+                </Link>
+                {item.groups && (
+                  <div
+                    className={`absolute top-full left-1/2 -translate-x-1/2 rounded-2xl border border-edge bg-white p-5 shadow-[0_24px_60px_-20px_rgb(0_0_0/0.3)] transition ${isOpen ? "visible translate-y-0 opacity-100" : "invisible translate-y-1 opacity-0"}`}
+                    style={{ width: `${item.groups.reduce((n, g) => n + span(g.links.length), 0) * 12 + 2.5}rem` }}
+                  >
+                    <div className="grid gap-6" style={{ gridTemplateColumns: item.groups.map((g) => `${span(g.links.length)}fr`).join(" ") }}>
+                      {item.groups.map((g) => (
+                        <div key={g.title}>
+                          <p className="mb-2 px-2 text-[11px] font-semibold tracking-[0.16em] text-muted uppercase">{g.title}</p>
+                          <ul className={g.links.length > 7 ? "grid grid-cols-2 gap-x-2" : ""}>
+                            {g.links.map((l) => (
+                              <li key={l.href}>
+                                <Link href={l.href} onClick={closeMenu} className="flex items-center gap-2.5 rounded-lg px-2 py-2 text-[13.5px] text-ink/80 hover:bg-mist hover:text-ink">
+                                  {l.logo && <BrandLogo logo={l.logo} name={l.label.split(" ")[0]} className="size-4 text-ink/70" />}
+                                  {l.label}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
-          ))}
+                )}
+              </div>
+            );
+          })}
         </nav>
 
         <div className="hidden items-center gap-3 xl:flex">
@@ -100,7 +138,10 @@ export default function Header() {
 
         <button
           className={`grid size-11 place-items-center rounded-lg xl:hidden ${dark ? "text-white" : "text-ink"}`}
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => {
+            setOpen((v) => !v);
+            setOpenSub(null);
+          }}
           aria-expanded={open}
           aria-label={open ? "Close menu" : "Open menu"}
         >
