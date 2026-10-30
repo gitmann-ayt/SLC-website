@@ -50,7 +50,7 @@ export default function AboutPage() {
               Draft: add the founding year and confirm the CEO&apos;s bio in <code>data/about.ts</code> before launch.
             </p>
           )}
-          <div className="grid items-center gap-12 md:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+          <div className="grid items-start gap-12 md:grid-cols-[1fr_280px] lg:grid-cols-[1fr_320px] lg:gap-16">
             <div>
               <p className="eyebrow text-muted">Meet our CEO</p>
               <h2 className="mt-3 text-[32px] leading-tight font-bold md:text-[44px]">{ceo.name}</h2>
@@ -70,10 +70,10 @@ export default function AboutPage() {
               </ul>
             </div>
 
-            <figure className="relative order-first mx-auto w-full max-w-sm md:order-last md:max-w-none">
-              <div aria-hidden className="absolute -inset-3 translate-x-4 translate-y-4 rounded-3xl bg-accent md:-inset-4" />
+            <figure className="relative order-first mx-auto w-full max-w-[260px] md:order-last md:mt-2 md:max-w-none">
+              <div aria-hidden className="absolute -inset-2 translate-x-3 translate-y-3 rounded-3xl bg-accent" />
               <div className="relative overflow-hidden rounded-3xl border border-edge bg-mist shadow-xl">
-                <Image src={ceo.photo} alt={`${ceo.name}, ${ceo.role} of ${brand.fullName}`} width={ceo.photoWidth} height={ceo.photoHeight} sizes="(min-width: 768px) 40vw, 90vw" priority className="aspect-[4/5] w-full object-cover object-top" />
+                <Image src={ceo.photo} alt={`${ceo.name}, ${ceo.role} of ${brand.fullName}`} width={ceo.photoWidth} height={ceo.photoHeight} sizes="(min-width: 1024px) 320px, (min-width: 768px) 280px, 260px" priority className="aspect-[4/5] w-full object-cover object-top" />
                 <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/90 to-transparent p-5 pt-16 text-white">
                   <span className="font-heading block text-[17px] font-bold">{ceo.name}</span>
                   <span className="text-[13px] text-white/75">{ceo.role}</span>
