@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Phone } from "lucide-react";
-import { carName, type Car } from "@/data/cars";
+import { carName, isStudioPhoto, type Car } from "@/data/cars";
 import { brand, pkr, waLink } from "@/data/site";
 import { BrandLogo, WhatsAppIcon } from "./ui";
 
@@ -17,17 +17,17 @@ export function CarCard({ car }: { car: Car }) {
   const btn = "flex h-11 min-w-0 items-center justify-center gap-1 rounded-xl px-1.5 text-[13px] font-bold whitespace-nowrap transition";
 
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border border-edge bg-white shadow-[0_10px_30px_-22px_rgb(0_0_0/0.35)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgb(0_0_0/0.45)]">
+    <article className="group flex flex-col overflow-hidden rounded-2xl border border-edge bg-white shadow-[0_10px_30px_-22px_rgb(0_0_0/0.35)] transition duration-300 hover:-translate-y-1 hover:border-gold/40 hover:shadow-glow-warm">
       <Link href={href} aria-label={`${name} details`} className="relative block aspect-[16/11] overflow-hidden bg-[linear-gradient(180deg,#f3f3f2_0%,#e4e4e2_100%)]">
         <Image
           src={car.images[0]}
           alt={`${name} for rent`}
           fill
           sizes="(min-width:1280px) 22vw, (min-width:1024px) 30vw, (min-width:640px) 46vw, 92vw"
-          className="object-contain px-4 pt-7 pb-9 transition duration-500 ease-out group-hover:scale-105"
+          className={`${isStudioPhoto(car.images[0]) ? "object-cover" : "object-contain px-4 pt-7 pb-9"} transition duration-500 ease-out group-hover:scale-105`}
         />
         {car.badge && (
-          <span className="absolute top-3 left-3 rounded-full bg-ink px-3 py-1 text-[12px] font-bold text-white">{car.badge}</span>
+          <span className="absolute top-3 left-3 rounded-full bg-gold-sheen px-3 py-1 text-[12px] font-bold text-ink shadow-glow-sm">{car.badge}</span>
         )}
         <span className="absolute bottom-3 left-3 rounded-full bg-white px-3 py-1 text-[12.5px] text-muted shadow-[0_4px_14px_-6px_rgb(0_0_0/0.35)]">
           <span className="font-bold text-ink">{price}</span> / day
@@ -57,7 +57,7 @@ export function CarCard({ car }: { car: Car }) {
           <a href={brand.phoneHref} aria-label={`Call about the ${name}`} className={`${btn} border border-edge bg-mist text-ink hover:border-ink`}>
             <Phone className="size-4 shrink-0" /> Call
           </a>
-          <Link href={`${href}#book`} aria-label={`Send an inquiry about the ${name}`} className={`${btn} bg-ink text-white hover:bg-neutral-800`}>
+          <Link href={`${href}#book`} aria-label={`Send an inquiry about the ${name}`} className={`${btn} bg-ink text-white hover:bg-gold hover:text-ink`}>
             Inquiry
           </Link>
         </div>

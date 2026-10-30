@@ -60,14 +60,14 @@ export function PageHero({
         <Breadcrumbs items={crumbs} />
         {eyebrow && (
           <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1 text-[11px] font-semibold tracking-[0.18em] text-white/75 uppercase">
-            <span className="size-1.5 rounded-full bg-white" /> {eyebrow}
+            <span className="size-1.5 rounded-full bg-gold" /> {eyebrow}
           </p>
         )}
         <h1 className="mt-4 max-w-3xl text-[34px] leading-[1.1] font-bold text-white md:text-[50px]">{title}</h1>
         {blurb && <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-white/75 md:text-[16px]">{blurb}</p>}
         {children ?? (
           <div className="mt-7 flex flex-wrap gap-3">
-            <Button href={waLink()} target="_blank" variant="light"><WhatsAppIcon className="size-4 text-[#25d366]" /> Book on WhatsApp</Button>
+            <Button href={waLink()} target="_blank" variant="gold"><WhatsAppIcon className="size-4" /> Book on WhatsApp</Button>
             <a href={brand.phoneHref} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-white/70 px-6 text-[13px] font-semibold text-white hover:bg-white/10">
               <Phone className="size-4" /> Call {brand.phoneDisplay}
             </a>
@@ -88,7 +88,7 @@ export function FaqList({ items, title = "Frequently asked questions" }: { items
           <details key={f.q} open={i === 0} className="group rounded-xl border border-edge bg-white px-5 open:pb-5">
             <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 text-[15px] font-semibold [&::-webkit-details-marker]:hidden">
               <h3>{f.q}</h3>
-              <span className="grid size-7 shrink-0 place-items-center rounded-full bg-ink text-white transition group-open:rotate-45">+</span>
+              <span className="grid size-7 shrink-0 place-items-center rounded-full bg-ink text-gold transition group-open:rotate-45">+</span>
             </summary>
             <p className="text-[14px] leading-relaxed text-muted">{f.a}</p>
           </details>
@@ -124,7 +124,7 @@ export function CtaBand({ title, body }: { title: string; body: string }) {
             <p className="mt-2 max-w-xl text-[15px] text-white/70">{body}</p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Button href={waLink()} target="_blank" variant="light"><WhatsAppIcon className="size-4 text-[#25d366]" /> WhatsApp</Button>
+            <Button href={waLink()} target="_blank" variant="gold"><WhatsAppIcon className="size-4" /> WhatsApp</Button>
             <Button href="/contact/" variant="ghost-dark" >Booking form</Button>
           </div>
         </div>
@@ -138,7 +138,7 @@ export function Checklist({ items }: { items: string[] }) {
     <ul className="space-y-2.5">
       {items.map((t) => (
         <li key={t} className="flex gap-2.5 text-[14.5px] text-muted">
-          <span className="mt-1.5 size-2 shrink-0 rounded-full bg-ink" /> {t}
+          <span className="mt-1.5 size-2 shrink-0 rounded-full bg-gold" /> {t}
         </li>
       ))}
     </ul>

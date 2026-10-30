@@ -1,11 +1,12 @@
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 
-type Variant = "primary" | "light" | "ghost-dark" | "ghost-light";
+type Variant = "primary" | "gold" | "light" | "ghost-dark" | "ghost-light";
 
-/** primary/ghost-light for white sections, light/ghost-dark for dark sections */
+/** primary/ghost-light for white sections, gold/light/ghost-dark for dark sections */
 const variants: Record<Variant, string> = {
   primary: "bg-ink text-white hover:bg-neutral-800",
+  gold: "bg-gold-sheen text-ink shadow-glow hover:-translate-y-0.5 hover:shadow-glow-lg hover:brightness-110",
   light: "bg-white text-ink hover:bg-neutral-200",
   "ghost-dark": "border border-white/35 text-white hover:border-white hover:bg-white/5",
   "ghost-light": "border border-edge bg-white text-ink hover:border-ink",
@@ -42,7 +43,7 @@ export function SectionHead({
 }) {
   return (
     <div className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
-      {eyebrow && <p className={`eyebrow mb-4 inline-flex items-center gap-2 ${dark ? "text-white/60" : "text-muted"}`}><span className="h-px w-6 bg-current" />{eyebrow}</p>}
+      {eyebrow && <p className={`eyebrow mb-4 inline-flex items-center gap-2 ${dark ? "text-gold-light" : "text-muted"}`}><span className="h-px w-6 bg-gold" />{eyebrow}</p>}
       <h2 className={`text-[26px] leading-[1.15] font-semibold md:text-[36px] ${dark ? "text-white" : "text-fg"}`}>
         {title}
       </h2>

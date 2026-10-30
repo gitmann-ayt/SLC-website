@@ -55,7 +55,10 @@ function LogoColumn({ offset, animation }: { offset: number; animation: string }
             aria-hidden={i >= list.length}
             className="flex h-32 flex-col items-center justify-center gap-3 rounded-2xl border border-white/10 bg-graphite"
           >
-            <BrandLogo logo={m.logo} name={m.name} className={`logo-silver ${m.logo === "changan" || m.logo === "haval" ? "h-8 w-24" : "size-12"}`} />
+            {/* Glow on a wrapper: the logo's mask would clip a filter on the logo itself */}
+            <span className="flex drop-shadow-glow">
+              <BrandLogo logo={m.logo} name={m.name} className={`logo-gold ${m.logo === "changan" || m.logo === "haval" ? "h-8 w-24" : "size-12"}`} />
+            </span>
             {m.logo !== "haval" && <span className="text-[11px] font-semibold tracking-[0.18em] text-white/45 uppercase">{m.name}</span>}
           </li>
         ))}
@@ -79,17 +82,17 @@ export function BrandBox() {
           <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,var(--color-charcoal)_0%,var(--color-charcoal)_30%,rgb(24_24_27/0.75)_52%,transparent_80%)] max-md:bg-[linear-gradient(180deg,var(--color-charcoal)_0%,rgb(24_24_27/0.9)_55%,rgb(24_24_27/0.6)_100%)]" />
 
           <div className="flex min-h-[520px] max-w-xl flex-col justify-center p-8 md:min-h-[560px] md:p-14">
-            <p className="eyebrow inline-flex items-center gap-2 text-white/55"><span className="h-px w-6 bg-current" />Brands we offer</p>
+            <p className="eyebrow inline-flex items-center gap-2 text-gold-light"><span className="h-px w-6 bg-gold" />Brands we offer</p>
             <h2 className="mt-4 text-[30px] leading-[1.12] font-semibold text-white md:text-[42px]">Pakistan&apos;s favourite car brands, in one fleet</h2>
             <p className="mt-4 text-[16px] leading-relaxed text-white/65">
               Toyota, Honda and Suzuki for everyday driving, Hyundai and Kia for modern SUVs, and Mercedes-Benz, Audi and Lexus when the occasion calls for it.
             </p>
             <div className="mt-8 flex gap-8 border-t border-white/10 pt-6">
-              <div><p className="font-heading text-[28px] font-semibold text-white">{carMakes.length}</p><p className="text-[13px] text-white/50">Brands</p></div>
-              <div><p className="font-heading text-[28px] font-semibold text-white">{cars.length}+</p><p className="text-[13px] text-white/50">Models</p></div>
-              <div><p className="font-heading text-[28px] font-semibold text-white">{categories.length}</p><p className="text-[13px] text-white/50">Car types</p></div>
+              <div><p className="font-heading text-[28px] font-semibold text-gold-light">{carMakes.length}</p><p className="text-[13px] text-white/50">Brands</p></div>
+              <div><p className="font-heading text-[28px] font-semibold text-gold-light">{cars.length}+</p><p className="text-[13px] text-white/50">Models</p></div>
+              <div><p className="font-heading text-[28px] font-semibold text-gold-light">{categories.length}</p><p className="text-[13px] text-white/50">Car types</p></div>
             </div>
-            <div className="mt-8"><Button href="/cars/" variant="light">Browse the fleet <ArrowRight className="size-4" /></Button></div>
+            <div className="mt-8"><Button href="/cars/" variant="gold">Browse the fleet <ArrowRight className="size-4" /></Button></div>
           </div>
         </div>
       </div>
@@ -109,13 +112,13 @@ export function Services() {
           {services.map((s, i) => {
             const Icon = serviceIcons[s.icon];
             return (
-              <Link key={s.title} href={s.href} className="group relative overflow-hidden rounded-2xl border border-white/10 bg-graphite p-7 transition duration-300 hover:-translate-y-1 hover:border-white/35">
-                <span aria-hidden className="font-heading absolute top-5 right-6 text-[48px] leading-none font-bold text-white/[0.06]">0{i + 1}</span>
-                <span className="grid size-12 place-items-center rounded-xl bg-white text-ink"><Icon className="size-6" aria-hidden /></span>
+              <Link key={s.title} href={s.href} className="group relative overflow-hidden rounded-2xl border border-white/10 bg-graphite p-7 transition duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-glow-lg">
+                <span aria-hidden className="font-heading absolute top-5 right-6 text-[48px] leading-none font-bold text-gold/[0.09]">0{i + 1}</span>
+                <span className="grid size-12 place-items-center rounded-xl bg-gold-sheen text-ink shadow-glow-sm"><Icon className="size-6" aria-hidden /></span>
                 <h3 className="mt-6 text-[19px] font-semibold text-white">{s.title}</h3>
                 <p className="mt-2 text-[14.5px] leading-relaxed text-white/60">{s.body}</p>
                 <span className="mt-6 inline-flex items-center gap-2 text-[13px] font-semibold text-white">
-                  Explore <span className="grid size-7 place-items-center rounded-full border border-white/30 transition group-hover:bg-white group-hover:text-ink"><ChevronRight className="size-4" aria-hidden /></span>
+                  Explore <span className="grid size-7 place-items-center rounded-full border border-gold/40 text-gold transition group-hover:bg-gold group-hover:text-ink"><ChevronRight className="size-4" aria-hidden /></span>
                 </span>
               </Link>
             );
@@ -148,7 +151,7 @@ export function WhySLC() {
           <ul className="mt-8 grid gap-5 sm:grid-cols-2">
             {points.map((p) => (
               <li key={p.title} className="flex gap-3">
-                <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-ink text-white"><p.icon className="size-5" aria-hidden /></span>
+                <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-ink text-gold"><p.icon className="size-5" aria-hidden /></span>
                 <span>
                   <span className="block text-[15px] font-bold">{p.title}</span>
                   <span className="text-[14px] text-muted">{p.body}</span>
@@ -160,8 +163,8 @@ export function WhySLC() {
         </div>
         <div className="grid grid-cols-2 gap-4">
           {stats.map((s, i) => (
-            <div key={s.label} className={`rounded-2xl p-7 ${i === 0 ? "bg-ink text-white" : i === 3 ? "bg-charcoal text-white" : "bg-stone"}`}>
-              <p className="font-heading text-[38px] font-bold md:text-[46px]">{s.value}</p>
+            <div key={s.label} className={`rounded-2xl p-7 ${i === 0 ? "bg-ink text-white shadow-glow-lg" : i === 3 ? "bg-charcoal text-white" : "bg-stone"}`}>
+              <p className={`font-heading text-[38px] font-bold md:text-[46px] ${i === 0 || i === 3 ? "text-gold-light" : ""}`}>{s.value}</p>
               <p className={`mt-1 text-[14px] ${i === 0 || i === 3 ? "text-white/60" : "text-muted"}`}>{s.label}</p>
             </div>
           ))}
@@ -231,7 +234,7 @@ export function HowToBook() {
             return (
               <li key={s.title} className="relative rounded-2xl border border-edge bg-white p-6">
                 <span className="font-heading absolute top-5 right-5 text-[40px] leading-none font-bold text-ink/[0.07]">0{i + 1}</span>
-                <span className="grid size-12 place-items-center rounded-xl bg-charcoal text-white"><Icon className="size-5" aria-hidden /></span>
+                <span className="grid size-12 place-items-center rounded-xl bg-charcoal text-gold"><Icon className="size-5" aria-hidden /></span>
                 <h3 className="mt-5 text-[17px] font-bold">{s.title}</h3>
                 <p className="mt-2 text-[14px] leading-relaxed text-muted">{s.body}</p>
               </li>
@@ -257,7 +260,7 @@ export function FAQ({ items }: { items: { q: string; a: string }[] }) {
             <details key={f.q} open={i === 0} className="group rounded-xl border border-white/10 bg-graphite px-5 open:pb-5">
               <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 text-[15.5px] font-semibold text-white [&::-webkit-details-marker]:hidden">
                 {f.q}
-                <span className="grid size-7 shrink-0 place-items-center rounded-full bg-white/10 text-white transition group-open:rotate-45">+</span>
+                <span className="grid size-7 shrink-0 place-items-center rounded-full bg-gold/15 text-gold transition group-open:rotate-45">+</span>
               </summary>
               <p className="text-[14.5px] leading-relaxed text-white/70">{f.a}</p>
             </details>
@@ -296,7 +299,7 @@ export function Reviews() {
               <Stars />
               <p className="mt-4 text-[14.5px] leading-relaxed text-muted">&ldquo;{r.text}&rdquo;</p>
               <div className="mt-5 flex items-center gap-3">
-                <span className="grid size-10 place-items-center rounded-full bg-ink text-[13px] font-semibold text-white">
+                <span className="grid size-10 place-items-center rounded-full bg-ink text-[13px] font-semibold text-gold-light">
                   {r.name.split(" ").map((p) => p[0]).join("")}
                 </span>
                 <div>
@@ -315,18 +318,20 @@ export function Reviews() {
 /* ---------- Closing CTA (dark box on white) ---------- */
 export function ClosingCTA() {
   return (
-    <section className="bg-mist pb-16 md:pb-24">
+    <section className="bg-mist py-16 md:py-24">
       <div className="container-x">
         <div className="relative isolate grid items-center gap-8 overflow-hidden rounded-[28px] bg-[linear-gradient(135deg,#27272a_0%,#0e0e10_70%)] px-6 py-12 md:grid-cols-[1.2fr_0.8fr] md:px-12">
+          {/* Soft gold glow behind the car */}
+          <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_45%_60%_at_80%_55%,rgb(201_160_106/0.22),transparent_70%)]" />
           <div>
             <h2 className="text-[28px] leading-tight font-bold text-white md:text-[38px]">Ready for your next journey?</h2>
             <p className="mt-3 max-w-xl text-[16px] text-white/65">Tell us the city, dates and car, and we will send a fixed price in minutes.</p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <Button href="/contact/" variant="light">Book your car</Button>
+              <Button href="/contact/" variant="gold">Book your car</Button>
               <Button href={waLink()} target="_blank" variant="ghost-dark"><WhatsAppIcon className="size-4 text-[#25d366]" /> Chat on WhatsApp</Button>
             </div>
           </div>
-          <Image src="/images/cars/toyota-corolla-cutout.webp" alt="" width={1400} height={700} sizes="(min-width:768px) 35vw, 90vw" className="h-auto w-full grayscale drop-shadow-[0_25px_30px_rgb(0_0_0/0.6)]" />
+          <Image src="/images/cars/toyota-corolla-cutout.webp" alt="" width={1400} height={700} sizes="(min-width:768px) 35vw, 90vw" className="h-auto w-full [filter:grayscale(1)_drop-shadow(0_25px_30px_rgb(0_0_0/0.6))_drop-shadow(0_10px_40px_rgb(201_160_106/0.35))]" />
         </div>
       </div>
     </section>
@@ -336,19 +341,19 @@ export function ClosingCTA() {
 /* ---------- Footer ---------- */
 export function Footer() {
   return (
-    <footer className="bg-ink pt-16 pb-8 text-white">
+    <footer className="border-t border-gold/30 bg-ink pt-16 pb-8 text-white">
       <div className="container-x grid gap-10 md:grid-cols-[1.4fr_repeat(4,1fr)]">
         <div>
           <Logo size={64} dark />
           <p className="mt-5 max-w-xs text-[14px] leading-relaxed text-white/60">{brand.tagline}</p>
           <p className="mt-2 text-[14px] font-semibold text-white">{brand.slogan}</p>
-          <p className="mt-5 flex items-center gap-2 text-[14px]"><Phone className="size-4 text-white/60" /><a href={brand.phoneHref} className="hover:underline">{brand.phoneDisplay}</a></p>
+          <p className="mt-5 flex items-center gap-2 text-[14px]"><Phone className="size-4 text-gold" /><a href={brand.phoneHref} className="hover:underline">{brand.phoneDisplay}</a></p>
           <p className="mt-1 text-[14px]"><a href={`mailto:${brand.email}`} className="hover:underline">{brand.email}</a></p>
           <p className="mt-1 text-[14px] text-white/60">{brand.address.street}, {brand.address.locality}</p>
         </div>
         {footerCols.map((col) => (
           <div key={col.title}>
-            <p className="font-heading text-[15px] font-bold">{col.title}</p>
+            <p className="font-heading text-[15px] font-bold text-gold-light">{col.title}</p>
             <ul className="mt-4 space-y-2.5">
               {col.links.map((l) => (
                 <li key={l.href}><Link href={l.href} className="text-[14px] text-white/60 hover:text-white">{l.label}</Link></li>

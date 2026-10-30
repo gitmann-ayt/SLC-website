@@ -56,7 +56,7 @@ export default function Header() {
             <div key={item.label} className="group relative flex items-center">
               <Link
                 href={item.href}
-                className={`flex h-[76px] items-center gap-1 px-3.5 text-[14px] font-medium transition-colors ${overlay ? "text-white hover:text-white/80" : dark ? "text-white/75 hover:text-white" : "text-ink/75 hover:text-ink"} ${isActive(item.href) ? (dark ? "border-b-2 border-white text-white" : "border-b-2 border-ink text-ink") : "border-b-2 border-transparent"}`}
+                className={`flex h-[76px] items-center gap-1 px-3.5 text-[14px] font-medium transition-colors ${overlay ? "text-white hover:text-white/80" : dark ? "text-white/75 hover:text-white" : "text-ink/75 hover:text-ink"} ${isActive(item.href) ? (dark ? "border-b-2 border-gold text-white" : "border-b-2 border-gold-deep text-ink") : "border-b-2 border-transparent"}`}
               >
                 {item.label}
                 {item.groups && <ChevronDown className="size-3.5 transition group-hover:rotate-180" />}
@@ -93,7 +93,7 @@ export default function Header() {
           <a href={brand.phoneHref} className={`${overlay ? "hidden" : "flex"} h-11 items-center gap-2 rounded-xl border px-4 text-[13px] font-semibold transition-colors ${dark ? "border-white/25 text-white hover:border-white" : "border-edge text-ink hover:border-ink"}`}>
             <Phone className="size-4" /> {brand.phoneDisplay}
           </a>
-          <Link href="/contact/" className={`flex h-11 items-center rounded-xl px-5 text-[13px] font-semibold transition-colors ${overlay ? "border border-white/70 bg-black/35 text-white backdrop-blur-md hover:border-white hover:bg-black/50" : dark ? "bg-white text-ink hover:bg-neutral-200" : "bg-ink text-white hover:bg-neutral-800"}`}>
+          <Link href="/contact/" className={`flex h-11 items-center rounded-xl px-5 text-[13px] font-semibold transition-colors ${overlay || dark ? "bg-gold-sheen text-ink shadow-glow-sm [text-shadow:none] hover:shadow-glow hover:brightness-110" : "bg-ink text-white hover:bg-neutral-800"}`}>
             Book your car
           </Link>
         </div>

@@ -8,7 +8,7 @@ import { WhatsAppIcon } from "./ui";
 
 function Field({ label, children, big = false }: { label: string; children: ReactNode; big?: boolean }) {
   return (
-    <label className={`block rounded-xl border bg-white transition focus-within:border-ink ${big ? "border-neutral-300 px-4 py-3.5" : "border-edge px-4 py-2.5"}`}>
+    <label className={`block rounded-xl border bg-white transition focus-within:border-gold-deep ${big ? "border-neutral-300 px-4 py-3.5" : "border-edge px-4 py-2.5"}`}>
       <span className={`block tracking-[0.12em] uppercase ${big ? "text-[12px] font-bold text-ink/70" : "text-[11px] font-semibold text-muted"}`}>{label}</span>
       {children}
     </label>
@@ -91,14 +91,14 @@ export default function BookingForm({
   );
 
   const button = (
-    <button type="submit" className={`flex items-center justify-center gap-2.5 rounded-xl bg-ink text-white transition hover:bg-neutral-800 ${big ? "min-h-[72px] px-8 text-[17px] font-bold" : "min-h-14 px-6 text-[15px] font-semibold"}`}>
-      <WhatsAppIcon className={`${big ? "size-6" : "size-5"} text-[#25d366]`} /> Get a quote
+    <button type="submit" className={`flex items-center justify-center gap-2.5 rounded-xl bg-gold-sheen text-ink shadow-glow transition hover:shadow-glow-lg hover:brightness-110 ${big ? "min-h-[72px] px-8 text-[17px] font-bold" : "min-h-14 px-6 text-[15px] font-semibold"}`}>
+      <WhatsAppIcon className={big ? "size-6" : "size-5"} /> Get a quote
     </button>
   );
 
   if (layout === "bar") {
     return (
-      <form id={id} onSubmit={submit} className={`scroll-mt-28 rounded-2xl border border-white/20 bg-white p-3 shadow-[0_30px_80px_-20px_rgb(0_0_0/0.8)] md:p-3.5 ${className}`}>
+      <form id={id} onSubmit={submit} className={`scroll-mt-28 rounded-2xl border border-white/20 bg-white p-3 shadow-[0_30px_80px_-20px_rgb(0_0_0/0.8),0_0_0_1px_rgb(201_160_106/0.35),0_40px_90px_-40px_rgb(201_160_106/0.45)] md:p-3.5 ${className}`}>
         <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-[repeat(5,minmax(0,1fr))_auto]">
           {fields}
           {button}

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Fuel, Gauge, Luggage, Phone, Users } from "lucide-react";
-import { carBySlug, carName, cars, categoryOf, fromPrice } from "@/data/cars";
+import { carBySlug, carName, cars, categoryOf, fromPrice, isStudioPhoto } from "@/data/cars";
 import { cities } from "@/data/locations";
 import { brand, pkr, waLink } from "@/data/site";
 import { carSchema, faqSchema, pageMeta } from "@/lib/seo";
@@ -80,8 +80,8 @@ export default async function CarPage({ params }: Props) {
       <section className="bg-white py-14 md:py-16">
         <div className="container-x grid gap-10 lg:grid-cols-[1.25fr_0.75fr]">
           <div>
-            <div className="relative aspect-[16/10] overflow-hidden rounded-[22px] bg-[radial-gradient(ellipse_at_50%_35%,#ffffff_0%,#f3f3f5_60%,#e4e4e8_100%)] ring-1 ring-edge">
-              <Image src={car.images[0]} alt={`${name} ${car.year} available for rent from SLC Car Rental`} fill priority sizes="(min-width:1024px) 60vw, 100vw" className="object-contain" />
+            <div className="relative aspect-[16/11] overflow-hidden rounded-[22px] bg-[radial-gradient(ellipse_at_50%_35%,#ffffff_0%,#f3f3f5_60%,#e4e4e8_100%)] ring-1 ring-edge">
+              <Image src={car.images[0]} alt={`${name} ${car.year} available for rent from SLC Car Rental`} fill priority sizes="(min-width:1024px) 60vw, 100vw" className={isStudioPhoto(car.images[0]) ? "object-cover" : "object-contain"} />
               {car.badge && <span className="absolute top-4 left-4 rounded-full bg-ink px-3 py-1 text-[12px] font-bold text-white">{car.badge}</span>}
             </div>
 

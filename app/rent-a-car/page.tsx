@@ -57,7 +57,7 @@ export default function LocationsHub() {
                     <span className="block text-[11px] font-semibold tracking-[0.14em] text-muted uppercase">Rent a car in</span>
                     <span className="font-heading text-[15px] font-medium text-ink">{l.place}</span>
                   </span>
-                  <ArrowUpRight className="size-5 shrink-0 text-accent transition group-hover:rotate-45" aria-hidden />
+                  <ArrowUpRight className="size-5 shrink-0 text-gold-ink transition group-hover:rotate-45" aria-hidden />
                 </Link>
               ))}
             </div>

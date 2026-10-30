@@ -60,7 +60,7 @@ export default function AboutPage() {
                 {ceo.bio.map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
               </div>
               <blockquote className="mt-8 rounded-[var(--radius-card)] border-l-4 border-ink bg-mist p-6">
-                <Quote className="size-6 text-accent" aria-hidden />
+                <Quote className="size-6 text-gold-ink" aria-hidden />
                 <p className="mt-3 text-[17px] leading-relaxed font-medium text-fg">&ldquo;{ceo.quote}&rdquo;</p>
                 <footer className="mt-3 text-[13px] text-muted">— {ceo.name}, {ceo.role}</footer>
               </blockquote>

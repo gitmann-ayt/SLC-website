@@ -2,7 +2,7 @@ import FleetFilter from "@/components/FleetFilter";
 import Hero from "@/components/Hero";
 import JsonLd from "@/components/JsonLd";
 import {
-  AreasWeServe, BrandBox, ClosingCTA, FAQ, HowToBook, Reviews, Services, WhySLC,
+  AreasWeServe, BrandBox, ClosingCTA, FAQ, Services, WhySLC,
 } from "@/components/Sections";
 import { faqs } from "@/data/site";
 import { faqSchema } from "@/lib/seo";
@@ -20,12 +20,10 @@ export default function Home() {
       </section>
 
       <BrandBox />
-      <AreasWeServe showAll={false} />
       <Services />
       <WhySLC />
-      <HowToBook />
+      <AreasWeServe showAll={false} />
       <FAQ items={faqs} />
-      <Reviews />
       <ClosingCTA />
     </main>
   );
