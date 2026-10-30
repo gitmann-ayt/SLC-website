@@ -38,7 +38,7 @@ export default function Hero() {
               <span className="text-gradient-accent drop-shadow-glow [text-shadow:none]">anywhere in Pakistan</span>
             </h1>
             <p className="mt-6 text-[16px] leading-[1.7] font-medium text-white/90 md:text-[19px]">
-              Hatchbacks, sedans, SUVs and luxury cars in 10 cities.
+              Hatchbacks, sedans, SUVs and luxury cars across Pakistan.
               <br className="hidden sm:block" /> Self drive or with a professional driver.
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row md:mt-12 md:gap-5">

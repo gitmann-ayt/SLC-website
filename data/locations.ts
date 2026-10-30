@@ -3,7 +3,7 @@
  *
  * Every location has its own copy, landmarks, trips and FAQs. Do not clone one
  * entry and swap the name: near-identical pages get filtered by Google as
- * doorway pages (that is a main weakness of the competitor site).
+ * doorway pages.
  *
  * Travel times are typical ranges and depend on traffic. Check landmarks and
  * pickup notes against your real operations before launch.
@@ -569,7 +569,7 @@ export const locationGroups: { kind: LocationKind; title: string }[] = [
   { kind: "destination", title: "Trips & destinations" },
 ];
 
-/** Photo for each location page (credits in data/credits.ts). */
+/** Photo for each location page. City photos are CC0 / public domain; Multan and Sialkot use SLC fleet tiles until real photos arrive. */
 const locationImages: Record<string, string> = {
   islamabad: "islamabad", rawalpindi: "rawalpindi", lahore: "lahore", karachi: "karachi", peshawar: "peshawar",
   faisalabad: "faisalabad", multan: "multan", sialkot: "sialkot", gujranwala: "gujranwala", abbottabad: "abbottabad",

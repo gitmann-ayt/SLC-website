@@ -10,14 +10,14 @@ Everything marked `PLACEHOLDER` in `data/` must be real before going live. Searc
 - Photo: `public/images/team/ceo.jpg`. A higher-resolution, well-lit portrait will look better.
 
 ## 2. Brand, contact and domain (`data/site.ts`)
-- `siteUrl` (or env `NEXT_PUBLIC_SITE_URL`): the exact live domain. Every canonical tag, the sitemap and robots.txt use it. The competitor's biggest SEO mistake was a wrong domain here.
+- `NEXT_PUBLIC_SITE_URL` (set when running `deploy.sh`): the exact live domain. Until it is set, builds are previews that search engines are told not to index. Every canonical tag, the sitemap and robots.txt use it. A wrong domain here is the most damaging SEO mistake.
 - `phoneDisplay`, `phoneHref`, `phoneE164`, `whatsapp`, `email`, `address.street`.
 - `geo`: the pin from your Google Business Profile. `googleMapsUrl`: your Business Profile link.
 - `social`: Facebook, Instagram, TikTok, YouTube URLs.
 
 ## 3. Fleet (`data/cars.ts`)
 - Real prices (self drive and with driver), model years, and which cars allow self drive (`priceSelfDrive: null` means driver only).
-- Car photos are licensed Wikimedia Commons photos of each model, cut out onto white. Replace them with photos of your own cars when possible (1600×1000, white background) and remove the matching rows from `data/credits.ts`. Until then keep the /credits/ page live: the CC BY-SA licences require it.
+- Car photos are SLC's own studio shots in `public/images/fleet/` (`<model>-<colour>.webp`, 1600×1100). Background-free versions for the category tiles, service cards and closing CTA are in `public/images/cutouts/`.
 - Self-drive terms (CNIC, licence, deposit, distance allowance) are typical wording. Confirm them.
 
 ## 4. Locations (`data/locations.ts`)
@@ -34,7 +34,7 @@ Replace the placeholder reviews with real ones, or remove `<Reviews />` from `ap
 
 ## 7. Photos and logo (`public/images/`)
 - `brand/slc-logo.png`: SLC logo (background removed). Also used for the favicon (`app/icon.png`).
-- `cities/`: Wikimedia Commons photos with credits on /credits/.
+- `cities/`: CC0 / public-domain photos (no attribution needed). `multan.webp` and `sialkot.webp` are SLC car tiles until real photos of those cities are available; replace the files, keeping the names.
 - `brands/`: car-maker logos (trademarks of their owners). Haval is a text wordmark because no free logo file exists.
 
 ## 8. Look and feel

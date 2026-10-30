@@ -19,7 +19,7 @@ export const servicePages: Service[] = [
     title: "Self Drive Car Rental",
     h1: "Self drive car rental in Pakistan",
     metaDescription: "Self drive car rental in Islamabad, Lahore, Karachi and across Pakistan. Hatchbacks, sedans and SUVs with clear deposit and fuel rules. Book on WhatsApp with SLC Car Rental.",
-    image: "/images/cars/suzuki-swift.webp",
+    image: "/images/cutouts/honda-civic-2022-white.webp",
     intro: [
       "Sometimes you just want the keys. SLC self-drive rentals give you the freedom to go where you like, when you like, in a clean, checked car, from an economical Suzuki Alto to a Kia Sportage or Toyota Fortuner.",
       "Booking is simple: choose a car, send your dates, and bring your CNIC and driving licence at handover. A refundable security deposit is taken and returned when the car comes back in the same condition. We can deliver the car to your home, office or hotel.",
@@ -38,7 +38,7 @@ export const servicePages: Service[] = [
     title: "Car Rental with Driver",
     h1: "Car rental with driver in Pakistan",
     metaDescription: "Chauffeur-driven car rental in Islamabad, Rawalpindi, Lahore, Karachi and across Pakistan by the hour, day or month. Trained drivers, clean cars, fixed quotes from SLC.",
-    image: "/images/cars/toyota-prado.webp",
+    image: "/images/cutouts/toyota-prado-white.webp",
     intro: [
       "Prefer to sit back? Every SLC car can be booked with a trained, verified driver who knows the city and the main highways. You get door-to-door travel without traffic, parking or fuel stops to worry about.",
       "Book for a few hours, a full day, a week or a month. Our drivers are courteous, smartly dressed and experienced on motorways and mountain roads alike.",
@@ -75,7 +75,7 @@ export const servicePages: Service[] = [
     title: "Corporate Car Rental",
     h1: "Corporate car rental and contracts",
     metaDescription: "Corporate car rental across Pakistan: monthly staff cars, delegations, roadshows and executive transport, self drive or with drivers. One monthly invoice from SLC Car Rental.",
-    image: "/images/cars/mercedes-benz-e-class.webp",
+    image: "/images/cutouts/mercedes-e250-white.webp",
     intro: [
       "Companies, NGOs and embassies use SLC to move staff and guests without running their own fleet. We supply cars, vans and drivers on daily, weekly, monthly and annual contracts, from a single sedan for a manager to a convoy of SUVs for a visiting delegation.",
       "You get one point of contact, one monthly invoice, and a replacement car if a vehicle needs servicing. Contracts can cover several cities at once.",
@@ -93,7 +93,7 @@ export const servicePages: Service[] = [
     title: "Monthly Car Rental",
     h1: "Monthly car rental in Pakistan",
     metaDescription: "Monthly car rental, self drive or with driver, in Islamabad, Lahore, Karachi and more. Lower daily rates for commutes, families and businesses. See monthly prices for every car.",
-    image: "/images/cars/honda-city.webp",
+    image: "/images/cutouts/honda-city-white.webp",
     intro: [
       "A monthly SLC car gives you a car for the office run, school pickups and family errands, without buying a car or paying for maintenance. Choose self drive, or add a driver for a fully managed service.",
       "Monthly rates work out much cheaper per day than daily hire, and every car page lists its monthly price. Servicing and maintenance are our job, and if the car needs a workshop visit we send a replacement.",
@@ -111,7 +111,7 @@ export const servicePages: Service[] = [
     title: "Wedding Car Rental",
     h1: "Wedding car rental",
     metaDescription: "Wedding car rental in Islamabad, Lahore, Karachi and across Pakistan: decorated Mercedes and Audi for the couple, plus sedans, vans and Coasters for guests. Drivers included.",
-    image: "/images/cars/mercedes-benz-s-class.webp",
+    image: "/images/cutouts/mercedes-s500-white.webp",
     intro: [
       "The car for the barat arrival is in half the wedding photos. SLC supplies the Mercedes S-Class, E-Class and Audi A6 for the couple, decorated to your colours, with a driver in formal dress.",
       "We also handle the rest of the wedding transport: SUVs for close family, sedans, Hiace vans and Coasters for guests, and airport pickups for relatives flying in. One coordinator keeps every car on schedule across mehndi, barat and walima.",

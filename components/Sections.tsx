@@ -2,12 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight, Armchair, BadgeCheck, Briefcase, CalendarCheck, Car, ChevronRight, CircleCheck, KeyRound,
-  MapPinned, MessageSquareText, Mountain, Phone, Plane, ShieldCheck, Sparkles, Star, Tag,
+  MapPinned, MessageSquareText, Mountain, Phone, Plane, ShieldCheck, Sparkles, Tag,
 } from "lucide-react";
 import { about, yearsInBusiness } from "@/data/about";
 import { cars, carsIn, categories, type CategorySlug } from "@/data/cars";
 import { locationGroups, locationImage, locations } from "@/data/locations";
-import { brand, carMakes, footerCols, reviewSummary, reviews, services, steps, waLink } from "@/data/site";
+import { brand, carMakes, footerCols, services, steps, waLink } from "@/data/site";
 import { Logo } from "./Header";
 import { BrandLogo, Button, SectionHead, WhatsAppIcon } from "./ui";
 
@@ -15,11 +15,11 @@ export { CarCard, CarGrid } from "./CarCard";
 
 /* ---------- Car types strip (under the hero) ---------- */
 const categoryImages: Record<CategorySlug, string> = {
-  hatchback: "/images/cars/suzuki-alto.webp",
-  sedan: "/images/cars/toyota-corolla.webp",
-  suv: "/images/cars/kia-sportage.webp",
-  luxury: "/images/cars/mercedes-benz-s-class.webp",
-  van: "/images/cars/toyota-hiace.webp",
+  hatchback: "/images/cutouts/suzuki-alto-white.webp",
+  sedan: "/images/cutouts/toyota-corolla-black.webp",
+  suv: "/images/cutouts/kia-sportage-black.webp",
+  luxury: "/images/cutouts/mercedes-s500-black.webp",
+  van: "/images/cutouts/toyota-hiace-grey.webp",
 };
 
 export function CategoryStrip() {
@@ -134,7 +134,7 @@ export function WhySLC() {
   const stats = [
     { value: `${yearsInBusiness()}+`, label: "Years in operation" },
     { value: `${cars.length}+`, label: "Car models" },
-    { value: `${locations.filter((l) => l.kind === "city").length}`, label: "Cities served" },
+    { value: "All", label: "Cities across Pakistan" },
     { value: "24/7", label: "Support" },
   ];
   const points = [
@@ -271,50 +271,6 @@ export function FAQ({ items }: { items: { q: string; a: string }[] }) {
   );
 }
 
-/* ---------- Reviews ---------- */
-function Stars({ className = "size-4" }: { className?: string }) {
-  return (
-    <span className="flex gap-0.5 text-star" aria-label="5 out of 5 stars">
-      {Array.from({ length: 5 }, (_, i) => <Star key={i} className={className} fill="currentColor" strokeWidth={0} />)}
-    </span>
-  );
-}
-
-export function Reviews() {
-  return (
-    <section id="reviews" className="scroll-mt-24 bg-mist py-16 md:py-24">
-      <div className="container-x">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <SectionHead align="left" eyebrow="Reviews" title="What our customers say" />
-          <Button href={brand.googleMapsUrl || "/contact/"} variant="ghost-light">Write a review</Button>
-        </div>
-        {reviewSummary.isPlaceholder && (
-          <p className="mt-4 inline-block rounded-lg border border-dashed border-star bg-star/10 px-3 py-2 text-[12px] text-fg">
-            Placeholder reviews. Replace with real customer reviews (or a Google reviews embed) before launch.
-          </p>
-        )}
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
-          {reviews.map((r, i) => (
-            <article key={i} className="rounded-2xl border border-edge bg-white p-6">
-              <Stars />
-              <p className="mt-4 text-[14.5px] leading-relaxed text-muted">&ldquo;{r.text}&rdquo;</p>
-              <div className="mt-5 flex items-center gap-3">
-                <span className="grid size-10 place-items-center rounded-full bg-ink text-[13px] font-semibold text-gold-light">
-                  {r.name.split(" ").map((p) => p[0]).join("")}
-                </span>
-                <div>
-                  <p className="text-[14px] font-semibold">{r.name}</p>
-                  <p className="text-[12px] text-muted">{r.date}</p>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ---------- Closing CTA (dark box on white) ---------- */
 export function ClosingCTA() {
   return (
@@ -331,7 +287,7 @@ export function ClosingCTA() {
               <Button href={waLink()} target="_blank" variant="ghost-dark"><WhatsAppIcon className="size-4 text-[#25d366]" /> Chat on WhatsApp</Button>
             </div>
           </div>
-          <Image src="/images/cars/toyota-corolla-cutout.webp" alt="" width={1400} height={700} sizes="(min-width:768px) 35vw, 90vw" className="h-auto w-full [filter:grayscale(1)_drop-shadow(0_25px_30px_rgb(0_0_0/0.6))_drop-shadow(0_10px_40px_rgb(201_160_106/0.35))]" />
+          <Image src="/images/cutouts/mercedes-s500-black.webp" alt="Mercedes S500 from the SLC fleet" width={1341} height={633} sizes="(min-width:768px) 35vw, 90vw" className="h-auto w-full [filter:drop-shadow(0_25px_30px_rgb(0_0_0/0.6))_drop-shadow(0_10px_40px_rgb(201_160_106/0.35))]" />
         </div>
       </div>
     </section>

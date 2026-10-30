@@ -23,7 +23,7 @@ export default function ServicesHub() {
       <section className="bg-surface py-14 md:py-20">
         <div className="container-x grid gap-5 md:grid-cols-2">
           {servicePages.map((s, i) => {
-            const isCar = s.image.includes("/cars/");
+            const isCar = s.image.includes("/cutouts/");
             return (
               <Link key={s.slug} href={`/services/${s.slug}/`} className="group relative isolate grid min-h-[15rem] overflow-hidden rounded-[22px] border border-ink bg-ink p-7 transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-24px_rgb(0_0_0/0.6)] sm:grid-cols-[1fr_0.9fr]">
                 {!isCar && (

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /*
- * Design tokens measured from the reference site's computed styles (Oct 2026).
+ * Design tokens: colours, fonts and radii.
  * Change these to rebrand; every component reads from them.
  */
 @theme {

@@ -1,5 +1,5 @@
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
-import { brand, waLink } from "@/data/site";
+import { brand, mapLink, waLink } from "@/data/site";
 import { pageMeta } from "@/lib/seo";
 import BookingForm from "@/components/BookingForm";
 import { MapEmbed, PageHero } from "@/components/Page";
@@ -17,7 +17,7 @@ export default function ContactPage() {
     { icon: WhatsAppIcon, label: "WhatsApp", value: "Chat with us", href: waLink() },
     { icon: Phone, label: "Phone", value: brand.phoneDisplay, href: brand.phoneHref },
     { icon: Mail, label: "Email", value: brand.email, href: `mailto:${brand.email}` },
-    { icon: MapPin, label: "Office", value: `${a.street}, ${a.locality}`, href: brand.googleMapsUrl || undefined },
+    { icon: MapPin, label: "Office", value: `${a.street}, ${a.locality}`, href: mapLink || undefined },
     { icon: Clock, label: "Hours", value: "Open 24 hours, 7 days a week" },
   ];
   return (
@@ -54,7 +54,7 @@ export default function ContactPage() {
                 );
               })}
             </ul>
-            <div className="mt-8"><MapEmbed query={`${brand.fullName} ${a.locality}`} title={`${brand.fullName} location`} /></div>
+            <div className="mt-8"><MapEmbed query={brand.geo ? `${brand.geo.lat},${brand.geo.lng}` : `${brand.fullName} ${a.locality}`} title={`${brand.fullName} location`} /></div>
           </div>
           <BookingForm id="book" title="Request a quote" />
         </div>

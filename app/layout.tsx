@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, Unbounded } from "next/font/google";
 import "./globals.css";
-import { brand, siteUrl } from "@/data/site";
+import { brand, isPreview, siteUrl } from "@/data/site";
 import Header from "@/components/Header";
 import { Footer, WhatsAppFab } from "@/components/Sections";
 import JsonLd from "@/components/JsonLd";
@@ -17,7 +17,9 @@ export const metadata: Metadata = {
   description: brand.tagline,
   applicationName: brand.fullName,
   alternates: { canonical: "/" },
-  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
+  robots: isPreview
+    ? { index: false, follow: false }
+    : { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
   openGraph: { siteName: brand.fullName, locale: "en_PK", type: "website", url: "/", images: [{ url: "/images/cities/islamabad.webp" }] },
   twitter: { card: "summary_large_image" },
   // Paste the Search Console verification code here at launch.

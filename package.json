@@ -1,13 +1,15 @@
 {
-  "name": "rentacar-clone",
+  "name": "slc-car-rental",
   "version": "0.1.0",
   "private": true,
-  "description": "Chauffeured car-rental landing page. Layout modelled on a reference site; all branding and copy are placeholders.",
+  "description": "SLC Car Rental website: static Next.js site for self-drive and chauffeured car rental across Pakistan.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "postbuild": "node scripts/fix-export-segments.mjs",
+    "start": "npx --yes serve@14 out",
+    "typecheck": "tsc --noEmit",
+    "deploy": "bash deploy.sh"
   },
   "dependencies": {
     "lucide-react": "^1.61.0",

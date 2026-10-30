@@ -3,19 +3,18 @@ import Link from "next/link";
 import { BadgeCheck, Car as CarIcon, CheckCircle2, Clock, KeyRound, MapPin, Quote, ShieldCheck, Sparkles, Tag } from "lucide-react";
 import { about, yearsInBusiness } from "@/data/about";
 import { cars } from "@/data/cars";
-import { cities } from "@/data/locations";
 import { brand } from "@/data/site";
 import { abs, pageMeta, personSchema } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
 import { CtaBand, PageHero } from "@/components/Page";
-import { AreasWeServe, Reviews } from "@/components/Sections";
+import { AreasWeServe } from "@/components/Sections";
 import { SectionHead } from "@/components/ui";
 
 const { ceo, company } = about;
 
 export const metadata = pageMeta({
   title: "About SLC Car Rental: Our Story, CEO & Fleet Standards",
-  description: `Meet ${brand.fullName}: ${yearsInBusiness()}+ years of car rental in ${cities().length} Pakistani cities, self drive or with driver. Our founder and CEO, fleet standards and service commitments.`,
+  description: `Meet ${brand.fullName}: ${yearsInBusiness()}+ years of car rental across Pakistan, self drive or with driver. Our founder and CEO, fleet standards and service commitments.`,
   path: "/about/",
   image: ceo.photo,
 });
@@ -27,7 +26,7 @@ export default function AboutPage() {
   const stats = [
     { value: `${yearsInBusiness()}+`, label: "Years of experience", icon: BadgeCheck },
     { value: `${cars.length}+`, label: "Car models, hatchback to Coaster", icon: CarIcon },
-    { value: `${cities().length}`, label: "Cities across Pakistan", icon: MapPin },
+    { value: "All", label: "Cities across Pakistan", icon: MapPin },
     { value: "24/7", label: "Bookings and roadside help", icon: Clock },
   ];
 
@@ -163,7 +162,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <Reviews />
       <AreasWeServe showAll={false} />
       <CtaBand title="Ready to book with SLC?" body="Send your trip details and we will reply with a fixed quote, usually within minutes." />
     </main>

@@ -7,7 +7,7 @@ export const metadata = pageMeta({
   title: "Our Fleet: Cars for Rent in Pakistan with Prices",
   description: `Browse ${cars.length} cars for rent: Suzuki Alto, Honda City, Toyota Corolla, Civic, Sportage, Fortuner, Prado, Land Cruiser, Lexus LX 570, Mercedes and Audi. Self drive or with driver, daily, weekly and monthly prices.`,
   path: "/cars/",
-  image: "/images/cars/toyota-corolla.webp",
+  image: "/images/fleet/toyota-corolla-white.webp",
 });
 
 export default function CarsPage() {

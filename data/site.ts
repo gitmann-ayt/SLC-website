@@ -9,28 +9,36 @@
 /** Live domain. Canonical tags, the sitemap, robots.txt and schema all use it. */
 export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.slccarrental.com").replace(/\/$/, ""); // PLACEHOLDER: confirm the real domain
 
+/**
+ * A build without NEXT_PUBLIC_SITE_URL is a preview (local, or the CloudFront
+ * address before the domain is live): robots.txt and every page tell search
+ * engines not to index it, so the temporary address never competes with the
+ * real domain.
+ */
+export const isPreview = !process.env.NEXT_PUBLIC_SITE_URL;
+
 export const brand = {
   name: "SLC",
   fullName: "SLC Car Rental",
   slogan: "Your Journey, Our Priority.",
   tagline: "Affordable car rental, luxury vehicles, airport transfers and corporate transport across Pakistan. Self drive or with a professional driver.",
-  phoneDisplay: "0300-0000000", // PLACEHOLDER
-  phoneHref: "tel:+923000000000", // PLACEHOLDER
-  phoneE164: "+923000000000", // PLACEHOLDER
-  whatsapp: "923000000000", // PLACEHOLDER: international format, digits only
-  email: "info@slccarrental.com", // PLACEHOLDER
+  phoneDisplay: "0310-0000132",
+  phoneHref: "tel:+923100000132",
+  phoneE164: "+923100000132",
+  whatsapp: "923100000132", // international format, digits only
+  email: "smartlinkservicesg8@gmail.com",
   logo: "/images/brand/slc-logo.png",
   address: {
-    street: "Add street address", // PLACEHOLDER
+    street: "Office# 216, 2nd Floor, Kashif Bell-Air Plaza, G-8 Markaz",
     locality: "Islamabad",
     region: "Islamabad Capital Territory",
     postalCode: "44000",
     country: "PK",
   },
-  /** PLACEHOLDER: copy the exact pin from your Google Business Profile. Left null, it is omitted from schema. */
-  geo: null as null | { lat: number; lng: number },
-  /** Google Business Profile link (also used for "Write a review"). */
-  googleMapsUrl: "", // PLACEHOLDER
+  /** Office pin. Left null, it is omitted from schema. */
+  geo: { lat: 33.698034838870456, lng: 73.04803654211084 } as null | { lat: number; lng: number },
+  /** Google Business Profile link. Used in schema (sameAs) and for the office map link. */
+  googleMapsUrl: "", // add once SLC has a Google Business Profile
   openingHours: { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], opens: "00:00", closes: "23:59" },
   /** Social profiles. Empty strings are skipped. */
   social: {
@@ -44,6 +52,9 @@ export const brand = {
 };
 
 export const sameAs = Object.values(brand.social).filter(Boolean).concat(brand.googleMapsUrl ? [brand.googleMapsUrl] : []);
+
+/** Google Maps link to the office: the Business Profile if set, else the pin. */
+export const mapLink = brand.googleMapsUrl || (brand.geo ? `https://www.google.com/maps?q=${brand.geo.lat},${brand.geo.lng}` : "");
 
 export const waLink = (text = "Hi SLC, I'd like to book a car.") =>
   `https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(text)}`;
@@ -168,7 +179,6 @@ export const nav: NavItem[] = [
           { label: "About SLC", href: "/about/" },
           { label: "Our CEO", href: "/about/#ceo" },
           { label: "Fleet standards", href: "/about/#standards" },
-          { label: "Customer reviews", href: "/about/#reviews" },
           { label: "FAQ", href: "/faq/" },
         ],
       },
@@ -198,7 +208,7 @@ export const steps = [
 /** General FAQs: shown on the home page and /faq/, and marked up as FAQPage schema. */
 export const faqs = [
   { q: "Can I rent a car without a driver (self drive)?", a: "Yes. Most hatchbacks, sedans and SUVs are available for self drive. You need a valid CNIC and driving licence, and a refundable security deposit is taken at handover." },
-  { q: "Which cities does SLC Car Rental cover?", a: "Islamabad, Rawalpindi, Lahore, Karachi, Peshawar, Faisalabad, Multan, Sialkot, Gujranwala and Abbottabad, plus trips anywhere in Pakistan, including Murree and the northern areas." },
+  { q: "Which cities does SLC Car Rental cover?", a: "All of Pakistan. That includes Islamabad, Rawalpindi, Lahore, Karachi, Peshawar, Faisalabad, Multan, Sialkot, Gujranwala and Abbottabad, as well as Murree and the northern areas." },
   { q: "How is a booking confirmed?", a: "Send your trip details on WhatsApp or the quote form. We reply with a fixed price, and the booking is confirmed once you accept it. No sign-up or SMS code needed." },
   { q: "Do you offer airport pickup and drop?", a: "Yes, at Islamabad, Lahore, Karachi, Peshawar, Multan, Faisalabad and Sialkot airports. Share your flight number and the driver will track it." },
   { q: "What do I need to book?", a: "For a car with driver: your name, phone number and trip details. For self drive: a CNIC, a valid driving licence and the security deposit." },
@@ -216,18 +226,6 @@ export const services = [
   { title: "Northern area tours", body: "SUVs and drivers experienced on the roads to Naran, Swat, Hunza and Skardu.", icon: "mountain", href: "/services/tour-packages/" },
 ] as const;
 
-/**
- * PLACEHOLDER REVIEWS. Replace with real, verifiable customer reviews (or
- * embed your Google reviews) before launch. No rating schema is emitted
- * while isPlaceholder is true.
- */
-export const reviewSummary = { rating: 0, count: 0, isPlaceholder: true };
-export const reviews = [
-  { name: "Sample Reviewer", date: "Add date", text: "Replace this with a real customer review. Keep it short, two or three lines reads best in the card.", color: "#0e7a55" },
-  { name: "Sample Reviewer", date: "Add date", text: "Replace this with a real customer review. Mention the car and city if the customer did.", color: "#c98a16" },
-  { name: "Sample Reviewer", date: "Add date", text: "Replace this with a real customer review, or remove the reviews section until you have some.", color: "#24344f" },
-];
-
 export const footerCols = [
   {
     title: "Company",
@@ -236,7 +234,6 @@ export const footerCols = [
       { label: "Our fleet", href: "/cars/" },
       { label: "FAQ", href: "/faq/" },
       { label: "Contact", href: "/contact/" },
-      { label: "Photo credits", href: "/credits/" },
     ],
   },
   {

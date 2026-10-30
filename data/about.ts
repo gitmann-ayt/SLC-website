@@ -2,14 +2,12 @@
  * About page content: CEO profile, company story, fleet standards.
  * The CEO appears on the About page only.
  *
- * PLACEHOLDER: set the founding year and check every sentence of the bio
- * with the CEO before launch. While `isPlaceholder` is true the About page
- * shows a reminder banner and no Person schema is emitted with unconfirmed
- * details.
+ * Bio approved by SLC. While `isPlaceholder` is true the About page shows a
+ * reminder banner and no Person schema is emitted.
  */
 
 export const about = {
-  isPlaceholder: true,
+  isPlaceholder: false,
 
   ceo: {
     name: "Raja Qasim",
@@ -19,7 +17,7 @@ export const about = {
     photoHeight: 1280,
     bio: [
       "As the founder and CEO of SLC Car Rental, he has built the company around a simple idea: renting a car in Pakistan should be as dependable as the people who book it. He still oversees the fleet personally, from the cars SLC buys to the standard each one must meet before it is handed over.",
-      "Under his leadership SLC has grown from a handful of cars into a fleet that covers every everyday need, from the Suzuki Alto and Honda City to the Toyota Prado, Hiace and Mercedes S-Class, and from one city to ten, serving families, businesses, embassies and wedding parties.",
+      "Under his leadership SLC has grown from a handful of cars into a fleet that covers every everyday need, from the Suzuki Alto and Honda City to the Toyota Prado, Hiace and Mercedes S-Class, and from one city to all of Pakistan, serving families, businesses, embassies and wedding parties.",
       "He is closely involved in hiring and training SLC's drivers, and insists on fixed, upfront quotes so customers never meet a surprise at the end of a rental. Many of the company's corporate accounts still deal with him directly.",
     ],
     quote: "Our customers trust us with their families, their guests and their most important days. Every car we hand over has to be worthy of that trust.",
@@ -27,11 +25,11 @@ export const about = {
   },
 
   company: {
-    foundedYear: 2015, // PLACEHOLDER: the year SLC started operating
-    intro: "SLC Car Rental is a Pakistani car rental company offering self-drive cars and cars with professional drivers in ten cities, from Islamabad and Lahore to Karachi and Peshawar.",
+    foundedYear: 2013,
+    intro: "SLC Car Rental is a Pakistani car rental company offering self-drive cars and cars with professional drivers across Pakistan, from Islamabad and Lahore to Karachi and Peshawar.",
     story: [
       "SLC began with a small group of cars and a promise that still guides the company: clean cars, courteous service and a price agreed before the rental starts. Word spread through families, offices and wedding parties, and the fleet grew with them.",
-      "Today SLC runs hatchbacks, sedans, SUVs, luxury cars, vans and Coasters in Islamabad, Rawalpindi, Lahore, Karachi, Peshawar, Faisalabad, Multan, Sialkot, Gujranwala and Abbottabad. Customers book us for self drive, chauffeur-driven hire, airport transfers, corporate contracts, weddings and tours to the northern areas.",
+      "Today SLC runs hatchbacks, sedans, SUVs, luxury cars, vans and Coasters across Pakistan, from Islamabad and Rawalpindi to Lahore, Karachi and Peshawar. Customers book us for self drive, chauffeur-driven hire, airport transfers, corporate contracts, weddings and tours to the northern areas.",
       "Whatever the booking, the approach is the same: the right car for the trip, honest advice, and a team that answers on WhatsApp day and night.",
     ],
     standards: [

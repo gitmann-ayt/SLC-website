@@ -6,8 +6,8 @@ import { pageMeta } from "@/lib/seo";
 import { CtaBand, PageHero } from "@/components/Page";
 
 export const metadata = pageMeta({
-  title: "Rent a Car Locations: 10 Cities Across Pakistan",
-  description: "Rent a car in Islamabad, Rawalpindi, Lahore, Karachi, Peshawar, Faisalabad, Multan, Sialkot, Gujranwala and Abbottabad, self drive or with driver. Choose your city for local details.",
+  title: "Rent a Car Locations: All Across Pakistan",
+  description: "Rent a car anywhere in Pakistan, including Islamabad, Rawalpindi, Lahore, Karachi, Peshawar, Faisalabad, Multan, Sialkot, Gujranwala and Abbottabad, self drive or with driver. Choose your city for local details.",
   path: "/rent-a-car/",
 });
 
@@ -17,7 +17,7 @@ export default function LocationsHub() {
     <main>
       <PageHero
         eyebrow="Locations"
-        title="Rent a car in 10 cities across Pakistan"
+        title="Rent a car anywhere across Pakistan"
         blurb="Pick your area to see local pickup details, popular trips, drive times and the cars people there book most."
         crumbs={[{ name: "Locations", path: "/rent-a-car/" }]}
         image="/images/cities/lahore.webp"

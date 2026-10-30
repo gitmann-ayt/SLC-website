@@ -56,7 +56,7 @@ export default async function CarPage({ params }: Props) {
   const faqs = [
     { q: `How much does it cost to rent a ${name}?`, a: `${selfDrive ? `Self drive costs ${pkr(car.priceSelfDrive!)} a day. ` : ""}With a driver it is ${pkr(car.priceDay)} a day for city use, ${pkr(car.priceWeek)} a week or ${pkr(car.priceMonth)} a month. Outstation trips with driver are ${pkr(car.priceOutstationDay)} a day plus fuel and tolls.` },
     { q: `Can I rent the ${name} without a driver?`, a: selfDrive ? `Yes. The ${name} is available for self drive with a valid CNIC, driving licence and a refundable security deposit.` : `The ${name} is rented with one of our trained drivers only, who handles parking, traffic and fuel stops.` },
-    { q: `In which cities can I rent the ${name}?`, a: `In ${cities().map((c) => c.name).join(", ")}, subject to availability. Tell us your city when you request a quote.` },
+    { q: `In which cities can I rent the ${name}?`, a: `Anywhere in Pakistan, including ${cities().map((c) => c.name).join(", ")}, subject to availability. Tell us your city when you request a quote.` },
   ];
 
   return (
