@@ -36,6 +36,7 @@ All content is plain data in `data/`:
 | Cities and areas | `data/locations.ts` |
 | Services | `data/services.ts` |
 | CEO and company story | `data/about.ts` |
+| City photo credits (required by the image licences) | `data/credits.ts` |
 
 Colours and fonts: `app/globals.css` (`@theme`) and `app/layout.tsx`.
 

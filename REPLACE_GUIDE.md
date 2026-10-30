@@ -34,7 +34,7 @@ Replace the placeholder reviews with real ones, or remove `<Reviews />` from `ap
 
 ## 7. Photos and logo (`public/images/`)
 - `brand/slc-logo.png`: SLC logo (background removed). Also used for the favicon (`app/icon.png`).
-- `cities/`: CC0 / public-domain photos (no attribution needed). `multan.webp` and `sialkot.webp` are SLC car tiles until real photos of those cities are available; replace the files, keeping the names.
+- `cities/`: Wikimedia Commons photos, credited on /credits/ as their licences require. Keep that page live while they are used. Replacing one with SLC's own photo (same file name) lets you drop its row from `data/credits.ts`.
 - `brands/`: car-maker logos (trademarks of their owners). Haval is a text wordmark because no free logo file exists.
 
 ## 8. Look and feel

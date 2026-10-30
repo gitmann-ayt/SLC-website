@@ -234,6 +234,7 @@ export const footerCols = [
       { label: "Our fleet", href: "/cars/" },
       { label: "FAQ", href: "/faq/" },
       { label: "Contact", href: "/contact/" },
+      { label: "Photo credits", href: "/credits/" },
     ],
   },
   {

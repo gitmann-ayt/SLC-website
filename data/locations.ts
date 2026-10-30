@@ -569,7 +569,7 @@ export const locationGroups: { kind: LocationKind; title: string }[] = [
   { kind: "destination", title: "Trips & destinations" },
 ];
 
-/** Photo for each location page. City photos are CC0 / public domain; Multan and Sialkot use SLC fleet tiles until real photos arrive. */
+/** Photo for each location page (credits in data/credits.ts). */
 const locationImages: Record<string, string> = {
   islamabad: "islamabad", rawalpindi: "rawalpindi", lahore: "lahore", karachi: "karachi", peshawar: "peshawar",
   faisalabad: "faisalabad", multan: "multan", sialkot: "sialkot", gujranwala: "gujranwala", abbottabad: "abbottabad",
