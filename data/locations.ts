@@ -330,7 +330,7 @@ export const locations: Location[] = [
     metaDescription: "Rent a car in Lahore, self drive or with driver. Pickup in Gulberg, DHA, Johar Town, Model Town and Allama Iqbal Airport. Hatchbacks to SUVs with fixed quotes from SLC.",
     intro: [
       "Lahore is Pakistan's second-largest city and its cultural heart, from the Walled City and Badshahi Mosque to the cafés of Gulberg and the wide boulevards of DHA. It is also a city of long distances: a trip from Johar Town to the old city or from DHA to the airport can take most of an hour, which makes having your own car the easiest way to get around.",
-      "SLC Car Rental serves all of Lahore with self-drive cars and cars with drivers. Visitors book a Corolla or City for business meetings on Main Boulevard, families take a BR-V or Hiace for weddings in the city's marquees, and travellers collect an SUV for the M-2 to Islamabad or the drive north. We pick up and drop at homes, hotels and Allama Iqbal International Airport.",
+      "SLC Car Rental Services serves all of Lahore with self-drive cars and cars with drivers. Visitors book a Corolla or City for business meetings on Main Boulevard, families take a BR-V or Hiace for weddings in the city's marquees, and travellers collect an SUV for the M-2 to Islamabad or the drive north. We pick up and drop at homes, hotels and Allama Iqbal International Airport.",
     ],
     landmarks: ["Gulberg and Liberty Market", "DHA Lahore phases", "Johar Town and Model Town", "Allama Iqbal International Airport", "Walled City and Badshahi Mosque"],
     pickup: "Doorstep delivery and collection anywhere in Lahore, including hotels on Mall Road and the Gulberg business district. Airport pickups are timed to your flight.",
@@ -354,10 +354,10 @@ export const locations: Location[] = [
     name: "Karachi",
     place: "Karachi",
     kind: "city",
-    metaDescription: "Rent a car in Karachi, self drive or with driver. Pickup in Clifton, DHA, PECHS, Gulshan-e-Iqbal and Jinnah International Airport. Fixed quotes from SLC Car Rental.",
+    metaDescription: "Rent a car in Karachi, self drive or with driver. Pickup in Clifton, DHA, PECHS, Gulshan-e-Iqbal and Jinnah International Airport. Fixed quotes from SLC Car Rental Services.",
     intro: [
       "Karachi is Pakistan's largest city and its business capital, stretching from the port and I.I. Chundrigar Road to Clifton, DHA and the fast-growing suburbs along the Super Highway. Distances are big and public transport is limited, so a reliable car makes all the difference for meetings, family visits and airport runs.",
-      "SLC Car Rental offers self-drive and chauffeur-driven cars across Karachi. Business travellers book sedans for days of meetings along Shahrah-e-Faisal, families choose SUVs and vans for weddings, and visitors arriving at Jinnah International Airport are met by a driver at arrivals. Every car is cleaned and checked before handover, and every quote is fixed upfront.",
+      "SLC Car Rental Services offers self-drive and chauffeur-driven cars across Karachi. Business travellers book sedans for days of meetings along Shahrah-e-Faisal, families choose SUVs and vans for weddings, and visitors arriving at Jinnah International Airport are met by a driver at arrivals. Every car is cleaned and checked before handover, and every quote is fixed upfront.",
     ],
     landmarks: ["Clifton and Sea View", "DHA Karachi", "Shahrah-e-Faisal and PECHS", "I.I. Chundrigar Road business district", "Jinnah International Airport"],
     pickup: "Doorstep delivery across Karachi, from Clifton and DHA to Gulshan-e-Iqbal and North Nazimabad, plus meet and greet at Jinnah International Airport.",
@@ -384,7 +384,7 @@ export const locations: Location[] = [
     metaDescription: "Rent a car in Peshawar, self drive or with driver. Pickup in Hayatabad, University Town, Saddar and Bacha Khan Airport, plus trips to Swat and Islamabad. Fixed quotes.",
     intro: [
       "Peshawar is one of the oldest cities in South Asia, where the bazaars of Qissa Khwani sit a short drive from the leafy streets of University Town and the planned phases of Hayatabad. It is the gateway to Swat, Chitral and the Khyber Pass, and only a couple of hours from Islamabad on the M-1.",
-      "SLC Car Rental provides self-drive cars and cars with drivers in Peshawar for family visits, business trips, university travel and tours to Swat and Kalam. Our drivers know the city's traffic and the safest routes north, and SUVs are available for mountain roads.",
+      "SLC Car Rental Services provides self-drive cars and cars with drivers in Peshawar for family visits, business trips, university travel and tours to Swat and Kalam. Our drivers know the city's traffic and the safest routes north, and SUVs are available for mountain roads.",
     ],
     landmarks: ["Hayatabad", "University Town", "Saddar and the Cantonment", "Qissa Khwani Bazaar", "Bacha Khan International Airport"],
     pickup: "Pickup and delivery across Peshawar, including Hayatabad, University Town, the Cantonment and Bacha Khan International Airport.",
@@ -410,7 +410,7 @@ export const locations: Location[] = [
     metaDescription: "Rent a car in Faisalabad, self drive or with driver. Pickup near the Clock Tower, D Ground, Peoples Colony and Faisalabad Airport. Cars for business, weddings and travel.",
     intro: [
       "Faisalabad is Pakistan's textile capital, built around the famous Clock Tower and its eight bazaars laid out in the pattern of the Union Jack. Buyers and business visitors travel between mills, factories and offices every day, and the city's motorway links make it easy to reach Lahore, Islamabad and Multan.",
-      "SLC Car Rental supports Faisalabad's business community with sedans and SUVs for factory visits and buyer meetings, and families with cars and vans for weddings and functions. Choose self drive or a driver who knows the industrial areas and the quickest routes to the motorway.",
+      "SLC Car Rental Services supports Faisalabad's business community with sedans and SUVs for factory visits and buyer meetings, and families with cars and vans for weddings and functions. Choose self drive or a driver who knows the industrial areas and the quickest routes to the motorway.",
     ],
     landmarks: ["Clock Tower (Ghanta Ghar) and the eight bazaars", "D Ground and Peoples Colony", "Textile mills and industrial estates", "Faisalabad International Airport"],
     pickup: "Delivery to homes, hotels, offices and mills across Faisalabad, and pickup at Faisalabad International Airport.",
@@ -436,7 +436,7 @@ export const locations: Location[] = [
     metaDescription: "Rent a car in Multan, self drive or with driver. Pickup in Cantt, Bosan Road, Gulgasht and Multan Airport, with trips on the M-4 and M-5. Fixed quotes from SLC.",
     intro: [
       "Multan, the City of Saints, is known for the shrines of Bahauddin Zakariya and Shah Rukn-e-Alam, its blue pottery and its mangoes. It is also a major hub of southern Punjab, connected by motorway to Faisalabad and Lahore in one direction and Sukkur in the other.",
-      "SLC Car Rental offers self-drive cars and cars with drivers in Multan for business travel, shrine visits, weddings and intercity trips. Summers are hot, so every car is checked for strong air conditioning before handover.",
+      "SLC Car Rental Services offers self-drive cars and cars with drivers in Multan for business travel, shrine visits, weddings and intercity trips. Summers are hot, so every car is checked for strong air conditioning before handover.",
     ],
     landmarks: ["Shrines of Bahauddin Zakariya and Shah Rukn-e-Alam", "Multan Cantt", "Bosan Road and Gulgasht", "Hussain Agahi Bazaar", "Multan International Airport"],
     pickup: "Doorstep delivery across Multan, including Cantt, Gulgasht, Bosan Road and Multan International Airport.",
@@ -462,7 +462,7 @@ export const locations: Location[] = [
     metaDescription: "Rent a car in Sialkot, self drive or with driver. Pickup in Cantt, Sialkot city and Sialkot International Airport, with fast motorway trips to Lahore. Fixed quotes.",
     intro: [
       "Sialkot is one of Pakistan's most successful export cities, known worldwide for sports goods, surgical instruments and leather. Its business community even built the city its own international airport, and the Lahore–Sialkot motorway puts Lahore about an hour and a half away.",
-      "SLC Car Rental serves Sialkot's exporters, visiting buyers and families. Book a sedan with driver to visit several factories in a day, a self-drive car for a family stay, or an airport transfer for overseas Pakistanis flying into Sialkot International Airport.",
+      "SLC Car Rental Services serves Sialkot's exporters, visiting buyers and families. Book a sedan with driver to visit several factories in a day, a self-drive car for a family stay, or an airport transfer for overseas Pakistanis flying into Sialkot International Airport.",
     ],
     landmarks: ["Sialkot Cantonment", "Sports goods and surgical instrument industries", "Clock Tower and the old city", "Sialkot International Airport"],
     pickup: "Delivery to homes, factories and hotels in Sialkot, and meet and greet at Sialkot International Airport.",
@@ -488,7 +488,7 @@ export const locations: Location[] = [
     metaDescription: "Rent a car in Gujranwala, self drive or with driver, along GT Road. Cars for weddings, business and trips to Lahore, Sialkot and Islamabad with fixed quotes from SLC.",
     intro: [
       "Gujranwala is a busy industrial city on the GT Road, known for its manufacturing, its wrestlers and, above all, its food. It sits between Lahore and Sialkot, so residents and businesses travel constantly to both cities and to Lahore and Sialkot airports.",
-      "SLC Car Rental provides self-drive cars and cars with drivers in Gujranwala for weddings, family events, factory visits and airport transfers. Large wedding parties can book matching cars, Hiace vans and Coasters together.",
+      "SLC Car Rental Services provides self-drive cars and cars with drivers in Gujranwala for weddings, family events, factory visits and airport transfers. Large wedding parties can book matching cars, Hiace vans and Coasters together.",
     ],
     landmarks: ["GT Road", "Satellite Town and Model Town", "Industrial areas", "Easy access to Lahore and Sialkot airports"],
     pickup: "Doorstep pickup anywhere in Gujranwala, with airport transfers to Lahore and Sialkot.",
@@ -511,10 +511,10 @@ export const locations: Location[] = [
     name: "Abbottabad",
     place: "Abbottabad",
     kind: "city",
-    metaDescription: "Rent a car in Abbottabad, self drive or with driver, for Nathia Gali, Ayubia and trips up the Karakoram Highway. SUVs and sedans with fixed quotes from SLC Car Rental.",
+    metaDescription: "Rent a car in Abbottabad, self drive or with driver, for Nathia Gali, Ayubia and trips up the Karakoram Highway. SUVs and sedans with fixed quotes from SLC Car Rental Services.",
     intro: [
       "Abbottabad is a green, cool hill city in Hazara, home to well-known schools and colleges and the gateway to the Galiyat, Nathia Gali and Ayubia. The Hazara Motorway has brought it within easy reach of Islamabad, and it is the natural stop on the way up the Karakoram Highway towards Naran and Gilgit-Baltistan.",
-      "SLC Car Rental serves Abbottabad with self-drive cars and SUVs with experienced drivers. Families visiting students, tourists heading to the Galiyat, and travellers going further north all book with us.",
+      "SLC Car Rental Services serves Abbottabad with self-drive cars and SUVs with experienced drivers. Families visiting students, tourists heading to the Galiyat, and travellers going further north all book with us.",
     ],
     landmarks: ["Hazara Motorway", "Nathia Gali and Ayubia", "Karakoram Highway", "Schools and colleges of Abbottabad"],
     pickup: "Pickup and delivery across Abbottabad and Mansehra, and transfers from Islamabad International Airport.",

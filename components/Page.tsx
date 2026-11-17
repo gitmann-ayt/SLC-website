@@ -48,7 +48,8 @@ export function PageHero({
   color?: boolean;
   eyebrow?: string;
   title: ReactNode;
-  blurb?: string;
+  /** One paragraph, or several rendered as separate paragraphs */
+  blurb?: string | string[];
   crumbs: Crumb[];
   children?: ReactNode;
 }) {
@@ -64,7 +65,9 @@ export function PageHero({
           </p>
         )}
         <h1 className="mt-4 max-w-3xl text-[34px] leading-[1.1] font-bold text-white md:text-[50px]">{title}</h1>
-        {blurb && <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-white/75 md:text-[16px]">{blurb}</p>}
+        {(Array.isArray(blurb) ? blurb : blurb ? [blurb] : []).map((p) => (
+          <p key={p.slice(0, 24)} className="mt-4 max-w-2xl text-[15px] leading-relaxed text-white/75 md:text-[16px]">{p}</p>
+        ))}
         {children ?? (
           <div className="mt-7 flex flex-wrap gap-3">
             <Button href={waLink()} target="_blank" variant="gold"><WhatsAppIcon className="size-4" /> Book on WhatsApp</Button>

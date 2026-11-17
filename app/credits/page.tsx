@@ -3,7 +3,7 @@ import { pageMeta } from "@/lib/seo";
 import { PageHero } from "@/components/Page";
 
 export const metadata = {
-  ...pageMeta({ title: "Photo Credits", description: "Attribution for the city photos used on the SLC Car Rental website.", path: "/credits/" }),
+  ...pageMeta({ title: "Photo Credits", description: "Attribution for the city photos used on the SLC Car Rental Services website.", path: "/credits/" }),
   robots: { index: false, follow: true },
 };
 

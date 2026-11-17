@@ -18,7 +18,7 @@ export const servicePages: Service[] = [
     slug: "self-drive-car-rental",
     title: "Self Drive Car Rental",
     h1: "Self drive car rental in Pakistan",
-    metaDescription: "Self drive car rental in Islamabad, Lahore, Karachi and across Pakistan. Hatchbacks, sedans and SUVs with clear deposit and fuel rules. Book on WhatsApp with SLC Car Rental.",
+    metaDescription: "Self drive car rental in Islamabad, Lahore, Karachi and across Pakistan. Hatchbacks, sedans and SUVs with clear deposit and fuel rules. Book on WhatsApp with SLC Car Rental Services.",
     image: "/images/cutouts/honda-civic-2022-white.webp",
     intro: [
       "Sometimes you just want the keys. SLC self-drive rentals give you the freedom to go where you like, when you like, in a clean, checked car, from an economical Suzuki Alto to a Kia Sportage or Toyota Fortuner.",
@@ -74,7 +74,7 @@ export const servicePages: Service[] = [
     slug: "corporate-car-rental",
     title: "Corporate Car Rental",
     h1: "Corporate car rental and contracts",
-    metaDescription: "Corporate car rental across Pakistan: monthly staff cars, delegations, roadshows and executive transport, self drive or with drivers. One monthly invoice from SLC Car Rental.",
+    metaDescription: "Corporate car rental across Pakistan: monthly staff cars, delegations, roadshows and executive transport, self drive or with drivers. One monthly invoice from SLC Car Rental Services.",
     image: "/images/cutouts/mercedes-e250-white.webp",
     intro: [
       "Companies, NGOs and embassies use SLC to move staff and guests without running their own fleet. We supply cars, vans and drivers on daily, weekly, monthly and annual contracts, from a single sedan for a manager to a convoy of SUVs for a visiting delegation.",

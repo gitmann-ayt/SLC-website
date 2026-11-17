@@ -12,7 +12,7 @@ export function GET() {
   const lines = [
     `# ${brand.fullName}`,
     "",
-    `> ${about.company.intro} ${brand.tagline}`,
+    `> ${about.company.intro.join(" ")} ${brand.tagline}`,
     "",
     `Phone/WhatsApp: ${brand.phoneDisplay}. Landline: ${brand.landlineDisplay}. Email: ${brand.email}. Open 24/7. Self drive or with a professional driver.`,
     "",

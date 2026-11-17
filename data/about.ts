@@ -16,7 +16,7 @@ export const about = {
     photoWidth: 720,
     photoHeight: 1280,
     bio: [
-      "As the founder and CEO of SLC Car Rental, Raja Qasim leads the company with a clear vision: to make car rental in Pakistan reliable, convenient and accessible. From vehicle selection to quality checks, he takes a personal interest in ensuring that every car meets SLC's standards before reaching a customer.",
+      "As the founder and CEO of SLC Car Rental Services, Qasim Raja leads the company with a clear vision: to make car rental in Pakistan reliable, convenient and accessible. From vehicle selection to quality checks, he takes a personal interest in ensuring that every car meets SLC's standards before reaching a customer.",
       "Under his leadership, SLC has expanded its fleet to serve a wide range of travel needs, offering vehicles from the Suzuki Alto and Honda City to the Toyota Prado, Hiace and Mercedes-Benz S-Class. The company caters to individuals, families, corporate clients, embassies and wedding events.",
       "Committed to customer satisfaction, he is closely involved in selecting and training professional drivers and maintaining transparent pricing. SLC believes in providing clear, upfront rental quotes so customers can travel with confidence and without unexpected charges.",
       "His hands-on leadership and commitment to service quality continue to shape SLC's growth and strengthen its reputation as a dependable car rental service in Pakistan.",
@@ -33,13 +33,19 @@ export const about = {
 
   company: {
     foundedYear: 2013,
-    intro:
-      "SLC Car Rental is a Pakistani car rental company offering self-drive cars and cars with professional drivers across Pakistan, from Islamabad and Lahore to Karachi and Peshawar.",
-    story: [
-      "SLC began with a small group of cars and a promise that still guides the company: clean cars, courteous service and a price agreed before the rental starts. Word spread through families, offices and wedding parties, and the fleet grew with them.",
-      "Today SLC runs hatchbacks, sedans, SUVs, luxury cars, vans and Coasters across Pakistan, from Islamabad and Rawalpindi to Lahore, Karachi and Peshawar. Customers book us for self drive, chauffeur-driven hire, airport transfers, corporate contracts, weddings and tours to the northern areas.",
-      "Whatever the booking, the approach is the same: the right car for the trip, honest advice, and a team that answers on WhatsApp day and night.",
+    headline: "Driven by Comfort. Built on Trust.",
+    intro: [
+      "SLC Car Rental Services is a trusted Pakistani car rental company providing premium self-drive and chauffeur-driven car rental services.",
+      "We make every journey comfortable, convenient and reliable, with quality vehicles and professional service across Pakistan.",
     ],
+    introSignoff: "Your Journey, Our Priority.",
+    story: [
+      "SLC Car Rental Services was established with a clear vision: to make car rental convenient, reliable and accessible through quality vehicles, professional service and transparent pricing.",
+      "What began as a commitment to dependable transportation has evolved into a growing car rental service catering to individuals, families, businesses and corporate clients. Throughout this journey, our focus has remained on maintaining high service standards, offering well-maintained vehicles and ensuring a seamless rental experience.",
+      "Today, SLC offers a diverse fleet of hatchbacks, sedans, SUVs, luxury vehicles, vans and Coasters, serving customers across Pakistan, including Islamabad, Rawalpindi, Lahore, Karachi and Peshawar. Our services cover self-drive rentals, chauffeur-driven transportation, airport transfers, corporate mobility, wedding transportation and customised travel arrangements, including tours to the northern areas.",
+      "At SLC, we believe that reliable transportation is built on trust, professionalism and attention to detail. From selecting the right vehicle to providing responsive customer support, we strive to make every journey comfortable, convenient and worry-free.",
+    ],
+    storySignoff: "SLC Car Rental Services — Your Journey, Our Commitment.",
     standards: [
       {
         title: "Inspected before every rental",

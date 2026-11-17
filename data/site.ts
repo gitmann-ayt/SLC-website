@@ -21,7 +21,7 @@ export const isPreview = !process.env.NEXT_PUBLIC_SITE_URL;
 
 export const brand = {
   name: "SLC",
-  fullName: "SLC Car Rental",
+  fullName: "SLC Car Rental Services",
   slogan: "Your Journey, Our Priority.",
   tagline:
     "Affordable car rental, luxury vehicles, airport transfers and corporate transport across Pakistan. Self drive or with a professional driver.",
@@ -285,7 +285,7 @@ export const faqs = [
     a: "Yes. Most hatchbacks, sedans and SUVs are available for self drive. You need a valid CNIC and driving licence, and a refundable security deposit is taken at handover.",
   },
   {
-    q: "Which cities does SLC Car Rental cover?",
+    q: "Which cities does SLC Car Rental Services cover?",
     a: "All of Pakistan. That includes Islamabad, Rawalpindi, Lahore, Karachi, Peshawar, Faisalabad, Multan, Sialkot, Gujranwala and Abbottabad, as well as Murree and the northern areas.",
   },
   {

@@ -13,7 +13,7 @@ import { SectionHead } from "@/components/ui";
 const { ceo, company } = about;
 
 export const metadata = pageMeta({
-  title: "About SLC Car Rental: Our Story, CEO & Fleet Standards",
+  title: "About SLC Car Rental Services: Our Story, CEO & Fleet Standards",
   description: `Meet ${brand.fullName}: ${yearsInBusiness()}+ years of car rental across Pakistan, self drive or with driver. Our founder and CEO, fleet standards and service commitments.`,
   path: "/about/",
   image: ceo.photo,
@@ -40,7 +40,7 @@ export default function AboutPage() {
         ]}
       />
 
-      <PageHero eyebrow="About SLC" title={`About ${brand.fullName}`} blurb={company.intro} crumbs={[{ name: "About", path: "/about/" }]} image="/images/cities/islamabad.webp" />
+      <PageHero eyebrow={`About ${brand.fullName}`} title={company.headline} blurb={[...company.intro, company.introSignoff]} crumbs={[{ name: "About", path: "/about/" }]} image="/images/cities/islamabad.webp" />
 
       {/* ---------- CEO: text left, photo right ---------- */}
       <section id="ceo" className="scroll-mt-24 overflow-x-clip bg-white py-16 md:py-24">
@@ -52,7 +52,7 @@ export default function AboutPage() {
           )}
           <div className="grid items-start gap-12 md:grid-cols-[1fr_280px] lg:grid-cols-[1fr_320px] lg:gap-16">
             <div>
-              <p className="eyebrow text-muted">Meet our CEO</p>
+              <p className="eyebrow text-muted">The leader who drives SLC</p>
               <h2 className="mt-3 text-[32px] leading-tight font-bold md:text-[44px]">{ceo.name}</h2>
               <p className="mt-2 text-[15px] font-semibold text-muted">{ceo.role}, {brand.fullName}</p>
               <div className="mt-6 space-y-4 text-[16px] leading-relaxed text-muted">
@@ -101,14 +101,15 @@ export default function AboutPage() {
       <section id="company" className="scroll-mt-24 bg-mist py-16 md:py-24">
         <div className="container-x grid gap-12 lg:grid-cols-2">
           <div>
-            <SectionHead align="left" eyebrow="Our story" title={`${yearsInBusiness()}+ years of car rental in Pakistan`} />
+            <SectionHead align="left" eyebrow="Our story" title={`Over ${yearsInBusiness()} Years of Excellence in Car Rental Across Pakistan`} />
             <div className="mt-6 space-y-4 text-[16px] leading-relaxed text-muted">
               {company.story.map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
+              <p className="font-semibold text-fg">{company.storySignoff}</p>
             </div>
             <p className="mt-6 text-[15px]">
-              <Link href="/cars/" className="font-semibold text-fg underline decoration-ink decoration-2 underline-offset-4 hover:text-ink">Browse the fleet</Link>
-              <span className="text-muted"> or see </span>
-              <Link href="/services/" className="font-semibold text-fg underline decoration-ink decoration-2 underline-offset-4 hover:text-ink">our services</Link>.
+              <Link href="/cars/" className="font-semibold text-fg underline decoration-ink decoration-2 underline-offset-4 hover:text-ink">Explore our fleet</Link>
+              <span className="text-muted"> or discover </span>
+              <Link href="/services/" className="font-semibold text-fg underline decoration-ink decoration-2 underline-offset-4 hover:text-ink">our range of services</Link>.
             </p>
           </div>
           <div>

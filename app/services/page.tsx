@@ -7,7 +7,7 @@ import { CtaBand, PageHero } from "@/components/Page";
 
 export const metadata = pageMeta({
   title: "Car Rental Services: Self Drive, With Driver & More",
-  description: "Self drive and chauffeur-driven car rental, airport transfers, corporate and monthly rentals, wedding cars and northern tours across Pakistan from SLC Car Rental.",
+  description: "Self drive and chauffeur-driven car rental, airport transfers, corporate and monthly rentals, wedding cars and northern tours across Pakistan from SLC Car Rental Services.",
   path: "/services/",
 });
 
