@@ -7,7 +7,7 @@ Console job adds topics for searches the site gets seen for but has no page on.
 
 - [x] Documents needed to rent a car in Pakistan
 - [x] Islamabad to Murree by car: time, route, which car
-- [ ] Islamabad to Lahore by car with driver: travel time, motorway, tolls and which car
+- [x] Islamabad to Lahore by car with driver: travel time, motorway, tolls and which car
 - [ ] Islamabad to Hunza road trip: route, days needed, best car
 - [ ] Islamabad to Skardu by road: route, days needed, best car
 - [ ] Islamabad to Naran and Kaghan by car: route, season, which car

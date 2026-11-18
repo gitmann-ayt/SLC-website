@@ -42,6 +42,67 @@ export type Guide = {
 
 export const guides: Guide[] = [
   {
+    slug: "islamabad-to-lahore-by-car-with-driver",
+    title: "Islamabad to Lahore by car with driver",
+    h1: "Islamabad to Lahore by car with driver: travel time, motorway, tolls and best car",
+    metaTitle: "Islamabad to Lahore by Car with Driver: Time & Tolls",
+    metaDescription: "How long Islamabad to Lahore takes on the M-2 motorway, how tolls and fuel are handled, and which car to hire with a driver for the trip. Fixed quotes from SLC.",
+    published: "2026-11-18",
+    updated: "2026-11-18",
+    image: "/images/cities/lahore.webp",
+    answer: "Islamabad to Lahore by car takes about 4.5 to 5 hours on the M-2 motorway, depending on traffic, weather and stops. With a driver, you are picked up at your door and dropped at your Lahore address. A Toyota Corolla suits most travellers; for larger groups with luggage, choose an SUV. Fuel and tolls are quoted separately.",
+    sections: [
+      {
+        heading: "How long does the drive take?",
+        paragraphs: [
+          "The usual range is 4.5 to 5 hours from Islamabad or Rawalpindi to Lahore on the M-2 motorway. Add time for prayer and meal stops, for fog in winter, and for the city traffic at either end, since reaching a Lahore address in Gulberg or DHA can take a further 30 to 45 minutes after leaving the motorway.",
+        ],
+        bullets: [
+          "Islamabad to Lahore (M-2): 4.5–5 hr",
+          "Islamabad International Airport to Lahore: allow 5–5.5 hr including the drive out of the airport",
+          "Lahore to Islamabad (M-2): 4.5–5 hr",
+          "Allama Iqbal Airport to Gulberg: 25–35 min",
+        ],
+      },
+      {
+        heading: "Which route and what about tolls?",
+        paragraphs: [
+          "Almost everyone takes the M-2 motorway, a controlled-access road with service areas along the way for fuel, food and prayer. It is the fastest and most comfortable way to drive between the two cities.",
+          "The M-2 is a tolled road, and toll rates change from time to time. We do not publish a fixed toll figure here: your SLC quote lists tolls separately, and it is worth checking current rates and any road closures before you travel.",
+        ],
+      },
+      {
+        heading: "Which car should you choose?",
+        paragraphs: [
+          "For one to four people, a Toyota Corolla is the usual choice: a quiet motorway ride and a boot that takes airport luggage. If the trip is a business one, the Honda Civic is a sharper option. For five to seven people, or a family with a lot of luggage, a Toyota Fortuner gives more space on a five-hour drive.",
+        ],
+      },
+      {
+        heading: "How booking with a driver works",
+        paragraphs: [
+          "Send your pickup address, your Lahore drop address, travel date and the number of passengers on WhatsApp. We reply with a fixed quote, and you confirm once you are happy with it. Prices for this route are not listed on the website, so they are quoted on WhatsApp.",
+        ],
+        bullets: [
+          "Ask for a one-way or a return quote; both are available",
+          "Outstation rates include the driver's stay and meals",
+          "Fuel and tolls are quoted separately",
+          "Airport pickups are timed to your flight, so you can go straight from arrivals to Lahore",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "Can I go to Lahore and back in one day?", a: "It is possible, but the drive alone is roughly 9 to 10 hours for the round trip. Most people prefer to stay at least one night. Tell us your schedule and we will advise on timings." },
+      { q: "Is the M-2 affected by fog in winter?", a: "Dense fog in the winter months can slow traffic or lead to closures on the motorway. Allow extra time, avoid very early starts on foggy days, and check conditions before you leave." },
+      { q: "Can I go straight from the airport to Lahore?", a: "Yes. Book an airport-to-destination transfer and the same driver takes you the whole way." },
+      { q: "Can I drive myself to Lahore in a rental car?", a: "Self-drive cars can be taken to another city with prior approval. Tell us your route when booking so it is included in the quote." },
+    ],
+    related: {
+      cars: ["toyota-corolla", "honda-civic", "toyota-fortuner"],
+      locations: ["islamabad", "lahore", "islamabad-airport"],
+      services: ["car-rental-with-driver", "airport-transfer"],
+    },
+  },
+  {
     slug: "islamabad-to-murree-by-car",
     title: "Islamabad to Murree by car",
     h1: "Islamabad to Murree by car: time, route and which car to take",
