@@ -1,0 +1,18 @@
+{
+  "_comment": "Questions customers ask AI assistants. The monthly AEO job asks each engine these and records whether SLC is mentioned or cited. Edit freely.",
+  "brand": ["SLC Car Rental", "slccarrentals.com.pk", "SLC Car Rental Services"],
+  "questions": [
+    "What is the best car rental company in Islamabad?",
+    "Rent a car with driver in Islamabad, which company should I use?",
+    "Car rental near G-8 Islamabad",
+    "Self drive car rental in Islamabad, what documents do I need?",
+    "Airport pickup from Islamabad International Airport, which car rental service?",
+    "Best car rental for a Murree trip from Islamabad",
+    "Rent a Prado with driver for Hunza or Skardu",
+    "Wedding car rental in Islamabad, Mercedes or Audi",
+    "Monthly car rental with driver in Islamabad price",
+    "Car rental in Rawalpindi with driver",
+    "Rent a car in Lahore with driver",
+    "Corporate car rental companies in Pakistan"
+  ]
+}

@@ -1,0 +1,17 @@
+# SLC automation schedule (Pakistan time). Installed for user slc by bootstrap.sh.
+CRON_TZ=Asia/Karachi
+AWS_DEFAULT_REGION=ap-south-1
+PATH=/usr/local/bin:/usr/bin:/bin
+J=/opt/slc/repo/automation/run-job.sh
+
+# Daily 08:00: live-site health check
+0 8 * * *   bash $J health
+# Mondays 10:00: write and publish one new guide
+0 10 * * 1  bash $J content
+# 3rd of the month 11:00: Search Console report and metadata tuning
+0 11 3 * *  bash $J search-console
+# AI answer engine check: runs from Claude in Chrome instead (automation/jobs/aeo-chrome.md).
+# To run it here through the APIs, set the API keys and uncomment:
+# 0 11 5 * *  bash $J aeo
+# Sundays 04:00: refresh the schedule and tools from the repo
+0 4 * * 0   bash /opt/slc/repo/automation/setup/bootstrap.sh update

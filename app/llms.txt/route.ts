@@ -1,5 +1,6 @@
 import { about } from "@/data/about";
 import { cars, carName } from "@/data/cars";
+import { guides } from "@/data/guides";
 import { locations } from "@/data/locations";
 import { servicePages } from "@/data/services";
 import { brand, faqs, pkr } from "@/data/site";
@@ -22,7 +23,11 @@ export function GET() {
     `- [Locations](${abs("/rent-a-car/")})`,
     `- [Services](${abs("/services/")})`,
     `- [FAQ](${abs("/faq/")})`,
+    `- [Guides](${abs("/guides/")})`,
     `- [Contact and booking](${abs("/contact/")})`,
+    "",
+    "## Guides",
+    ...guides.map((g) => `- [${g.h1}](${abs(`/guides/${g.slug}/`)}): ${g.answer}`),
     "",
     "## Locations served",
     ...locations.map((l) => `- [Rent a car in ${l.place}](${abs(`/rent-a-car/${l.slug}/`)}): ${l.metaDescription}`),

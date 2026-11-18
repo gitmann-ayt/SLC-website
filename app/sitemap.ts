@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { cars } from "@/data/cars";
+import { guides } from "@/data/guides";
 import { locations } from "@/data/locations";
 import { servicePages } from "@/data/services";
 import { abs } from "@/lib/seo";
@@ -29,5 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...locations.map((l) => entry(`/rent-a-car/${l.slug}/`, l.kind === "sector" ? 0.9 : 0.8)),
     ...cars.map((c) => entry(`/cars/${c.slug}/`, 0.7)),
     ...servicePages.map((s) => entry(`/services/${s.slug}/`, 0.8)),
+    entry("/guides/", 0.6, "weekly"),
+    ...guides.map((g) => ({ ...entry(`/guides/${g.slug}/`, 0.6), lastModified: new Date(`${g.updated}T00:00:00Z`) })),
   ];
 }

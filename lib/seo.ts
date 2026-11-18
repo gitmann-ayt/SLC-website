@@ -154,6 +154,23 @@ export function serviceSchema({ name, description, path }: { name: string; descr
   };
 }
 
+export function articleSchema(a: { headline: string; description: string; path: string; image: string; published: string; updated: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: a.headline,
+    description: a.description,
+    url: abs(a.path),
+    mainEntityOfPage: abs(a.path),
+    image: abs(a.image),
+    datePublished: a.published,
+    dateModified: a.updated,
+    inLanguage: "en-PK",
+    author: { "@id": businessId },
+    publisher: { "@id": businessId },
+  };
+}
+
 export function personSchema(p: { name: string; role: string; photo: string; description: string }) {
   return {
     "@context": "https://schema.org",
