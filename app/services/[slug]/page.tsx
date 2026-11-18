@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { carBySlug, type Car } from "@/data/cars";
+import { guidesFor } from "@/data/guides";
 import { serviceBySlug, servicePages } from "@/data/services";
 import { faqSchema, pageMeta, serviceSchema } from "@/lib/seo";
 import BookingForm from "@/components/BookingForm";
@@ -27,6 +28,7 @@ export default async function ServicePage({ params }: Props) {
   const path = `/services/${s.slug}/`;
   const carsFor = s.carSlugs.map(carBySlug).filter((c): c is Car => !!c);
   const others = servicePages.filter((o) => o.slug !== s.slug);
+  const related = guidesFor("services", s.slug);
 
   return (
     <main>
@@ -60,6 +62,16 @@ export default async function ServicePage({ params }: Props) {
           </div>
           <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
             <BookingForm id="book" title={`Book: ${s.title}`} defaultType={s.slug === "self-drive-car-rental" ? "Self drive" : "With driver"} />
+            {related.length > 0 && (
+              <div className="rounded-[var(--radius-card)] border border-edge bg-mist p-6">
+                <h2 className="text-[16px] font-semibold">Guides</h2>
+                <ul className="mt-3 space-y-1">
+                  {related.map((g) => (
+                    <li key={g.slug}><Link href={`/guides/${g.slug}/`} className="flex min-h-10 items-center py-1 text-[14px] text-muted hover:text-ink">{g.title}</Link></li>
+                  ))}
+                </ul>
+              </div>
+            )}
             <div className="rounded-[var(--radius-card)] border border-edge bg-mist p-6">
               <h2 className="text-[16px] font-semibold">Other services</h2>
               <ul className="mt-3 space-y-1">

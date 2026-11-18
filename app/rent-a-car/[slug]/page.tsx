@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Clock, MapPin, Navigation } from "lucide-react";
 import { carBySlug, cars, type Car } from "@/data/cars";
+import { guidesFor } from "@/data/guides";
 import { locationBySlug, locationImage, locations } from "@/data/locations";
 import { brand, faqs as generalFaqs } from "@/data/site";
 import { abs, faqSchema, pageMeta } from "@/lib/seo";
@@ -36,6 +37,7 @@ export default async function LocationPage({ params }: Props) {
   const nearby = loc.nearby.map(locationBySlug).filter((l) => !!l);
   const faqs = [...loc.faqs, generalFaqs[2], generalFaqs[5]];
   const path = `/rent-a-car/${loc.slug}/`;
+  const travelGuides = guidesFor("locations", loc.slug);
 
   return (
     <main>
@@ -121,6 +123,22 @@ export default async function LocationPage({ params }: Props) {
       <section className="bg-white py-14">
         <div className="container-x grid gap-12 lg:grid-cols-[1.4fr_0.6fr]">
           <FaqList items={faqs} title={`Car rental in ${loc.name}: FAQs`} />
+          {(nearby.length > 0 || travelGuides.length > 0) && (
+            <div className="space-y-10">
+          {travelGuides.length > 0 && (
+            <div>
+              <h2 className="text-[20px] font-bold">Travel guides</h2>
+              <ul className="mt-4 space-y-2">
+                {travelGuides.map((g) => (
+                  <li key={g.slug}>
+                    <Link href={`/guides/${g.slug}/`} className="flex min-h-11 items-center rounded-lg border border-edge px-4 py-2 text-[14px] font-medium hover:border-ink hover:text-ink">
+                      {g.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
           {nearby.length > 0 && (
             <div>
               <h2 className="text-[20px] font-bold">Nearby areas</h2>
@@ -133,6 +151,8 @@ export default async function LocationPage({ params }: Props) {
                   </li>
                 ))}
               </ul>
+            </div>
+          )}
             </div>
           )}
         </div>

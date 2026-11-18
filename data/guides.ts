@@ -199,3 +199,11 @@ export const guides: Guide[] = [
 ];
 
 export const guideBySlug = (slug: string) => guides.find((g) => g.slug === slug);
+
+/**
+ * Guides whose `related` list names this car, location or service. Those pages
+ * link back to them, so each new guide gets internal links as soon as it is
+ * published.
+ */
+export const guidesFor = (kind: keyof Guide["related"], slug: string) =>
+  guides.filter((g) => g.related[kind].includes(slug));

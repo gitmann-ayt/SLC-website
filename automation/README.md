@@ -11,6 +11,13 @@ commits to `main`, pushes to GitHub and deploys to S3/CloudFront.
 | `search-console` | 3rd of month 11:00 | Pulls 28 days of Search Console data; Claude improves the titles and descriptions of pages with low click-through and adds missing topics to the backlog | Yes |
 | `aeo` | Monthly, from Claude in Chrome | Claude in Chrome asks ChatGPT, Perplexity and Gemini (in your logged-in browser) the questions in `aeo-questions.json` and emails whether SLC is mentioned. Prompt: `automation/jobs/aeo-chrome.md`. The API version (`aeo.mjs`) is off in the crontab | No |
 
+| `backlinks` | Every week or two, from Claude in Chrome | Claude in Chrome works through `automation/backlinks.md`: creates and checks free business listings (Google Business Profile, Bing, Apple, social profiles, directories) with the exact same name, address and phone, finds sites that list competitors, saves outreach emails as Gmail drafts (never sends them), and emails what's waiting on you plus an updated tracker. Prompt: `automation/jobs/backlinks-chrome.md` | No |
+
+Internal links are handled by the site itself: service and location pages link
+to every guide whose `related` list names them, so each weekly guide is linked
+the day it goes live. `npm run seo:check` warns about orphan pages and lists the
+pages with the fewest inbound links.
+
 Nothing is published if the typecheck, build or `npm run seo:check` fails: the
 job resets to `main` and emails you the error.
 
