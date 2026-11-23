@@ -42,6 +42,74 @@ export type Guide = {
 
 export const guides: Guide[] = [
   {
+    slug: "islamabad-to-hunza-road-trip",
+    title: "Islamabad to Hunza road trip",
+    h1: "Islamabad to Hunza road trip: route, days needed and best car",
+    metaTitle: "Islamabad to Hunza Road Trip: Route & Car",
+    metaDescription: "Plan an Islamabad to Hunza road trip: the Karakoram Highway route, how many days to allow, the best season and which SUV or van to hire with a driver from SLC.",
+    published: "2026-11-23",
+    updated: "2026-11-23",
+    image: "/images/cities/hunza.webp",
+    answer: "Hunza is reached from Islamabad by the Karakoram Highway, a long mountain drive usually split into two driving days with a night near Chilas or Besham. Allow five to seven days in total to enjoy the valley without rushing. An SUV such as a Toyota Prado or Fortuner, or a Hiace for groups, with an experienced driver is the usual choice.",
+    sections: [
+      {
+        heading: "How many days do you need?",
+        paragraphs: [
+          "The drive itself takes two long days, and the road is slow because of mountain sections, checkposts, roadworks and landslide delays. Most travellers who want to see Hunza properly, rather than just reach it, plan five to seven days from Islamabad at a comfortable pace.",
+        ],
+        bullets: [
+          "Day 1: Islamabad to an overnight stop near Besham or Chilas (a full day of driving)",
+          "Day 2: on to Gilgit and Karimabad in Hunza",
+          "Days 3 to 5: Karimabad, Attabad Lake, Passu and the upper valley",
+          "Final days: the return drive, again over two days",
+        ],
+      },
+      {
+        heading: "Which route do you take?",
+        paragraphs: [
+          "Almost all trips follow the Karakoram Highway (KKH): out of Islamabad towards Hasan Abdal, then through Abbottabad and Mansehra, along the Indus through Besham, Dasu and Chilas, and on to Gilgit before turning up the Hunza valley. Abbottabad is a natural first break, and our Abbottabad page covers pickups there if you are joining from the Hazara side.",
+          "In summer some travellers return through Naran and over the Babusar Pass instead, which is a scenic alternative but a seasonal one. Road and pass conditions change, so check the current situation before you travel and ask your driver to confirm the plan the day before.",
+        ],
+      },
+      {
+        heading: "When is the best time to go?",
+        paragraphs: [
+          "Late spring to early autumn is the usual window, when the valley is open, green and clear. In winter, snow and cold can close mountain roads and some services in Hunza shut down, so check conditions and plan extra days if you travel then. Peak summer weekends and public holidays bring heavy traffic and full hotels, so book early.",
+        ],
+      },
+      {
+        heading: "Which car is best for Hunza?",
+        paragraphs: [
+          "The KKH is paved for most of the way, but it is long, with steep sections, rockfall areas and bumpy stretches. An SUV with good ground clearance is more comfortable than a sedan on a trip this long. Our tour page recommends a Toyota Prado or Fortuner, and a Hiace for groups.",
+          "The Prado is rented with a driver only. The Fortuner seats seven with room for luggage. For families or friends travelling together with several bags, the Hiace Grand Cabin carries a much larger group in one vehicle.",
+        ],
+      },
+      {
+        heading: "How booking with a driver works",
+        paragraphs: [
+          "Send your dates, number of passengers, pickup city and the places you want to see on WhatsApp. We reply with a fixed quote for the whole trip. Prices for Hunza tours are not listed on the website, so they are quoted on WhatsApp.",
+        ],
+        bullets: [
+          "Outstation rates include the driver's stay and meals",
+          "Fuel and tolls are quoted separately",
+          "The itinerary is flexible, so you can add stops or extra nights",
+          "The same car and driver stay with you for the whole trip",
+        ],
+      },
+    ],
+    faqs: [
+      { q: "Can I do Hunza as a short weekend trip from Islamabad?", a: "It is not practical. The drive alone takes two long days each way, so a weekend would be spent almost entirely on the road. Five to seven days is a much better plan." },
+      { q: "Is it safe to travel to Hunza by road?", a: "Many families and tourists make the trip every season. Travel in the open months, check road and weather conditions before leaving, and use a driver who knows the mountain roads." },
+      { q: "Can we visit Attabad Lake and Passu on the same trip?", a: "Yes. They are in the upper Hunza valley and can be added as day trips from Karimabad. Tell us your list when you ask for a quote." },
+      { q: "Can I start my Hunza trip from Lahore or Peshawar instead?", a: "Yes. We pick up from any city we serve, and the quote reflects the longer or shorter distance. Send us your starting city on WhatsApp." },
+    ],
+    related: {
+      cars: ["toyota-prado", "toyota-fortuner", "toyota-hiace"],
+      locations: ["islamabad", "abbottabad"],
+      services: ["tour-packages", "car-rental-with-driver"],
+    },
+  },
+  {
     slug: "islamabad-to-lahore-by-car-with-driver",
     title: "Islamabad to Lahore by car with driver",
     h1: "Islamabad to Lahore by car with driver: travel time, motorway, tolls and best car",
